@@ -1,8 +1,8 @@
-import './App.css';
+import "./App.css";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,7 +35,7 @@ function App() {
             >
               Learn React
             </a>
-            {' | '}
+            {" | "}
             <a
               className="App-link"
               href="https://vitejs.dev/guide/features.html"
