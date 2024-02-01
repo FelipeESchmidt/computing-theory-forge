@@ -1,0 +1,45 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/Thumbs.db": true,
+    "**/__MACOSX": true,
+    "**/.DS_Store": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.insertSpaces": true,
+  "terminal.integrated.profiles.windows": {
+    "GitBash": {
+      "path": ["C:\\Program Files\\Git\\bin\\bash.exe"],
+      "source": "Git Bash",
+      "icon": "terminal-bash"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "GitBash",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "zsh",
+      "args": ["-l"],
+      "icon": "terminal-bash"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "cSpell.language": "en,pt,pt_BR",
+  "cSpell.words": [
+  ],
+  "files.eol": "auto",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}
