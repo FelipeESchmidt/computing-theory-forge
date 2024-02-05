@@ -6,7 +6,7 @@
     "**/.DS_Store": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
@@ -29,8 +29,7 @@
   },
   "terminal.integrated.defaultProfile.osx": "zsh",
   "cSpell.language": "en,pt,pt_BR",
-  "cSpell.words": [
-  ],
+  "cSpell.words": [],
   "files.eol": "auto",
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
