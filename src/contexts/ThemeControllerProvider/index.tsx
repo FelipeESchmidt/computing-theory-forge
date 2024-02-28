@@ -30,7 +30,7 @@ const ThemeControllerProvider: React.FC<ThemeControllerProviderProps> = ({
   useEffect(() => {
     const body = document.querySelector("body");
 
-    body?.style.setProperty("background-color", theme[themeMode].background);
+    body?.style.setProperty("background-color", theme[themeMode].principal.background);
   }, [themeMode]);
 
   return (
