@@ -3,7 +3,9 @@ import { thunk } from "redux-thunk";
 
 import recorderReducer from "./Recorder/reducer";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  recorder: recorderReducer,
+});
 
 export type IRootState = ReturnType<typeof rootReducer>;
 
