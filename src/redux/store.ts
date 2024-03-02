@@ -1,10 +1,10 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { thunk } from "redux-thunk";
 
-import recorderReducer from "./Recorder/reducer";
+import TMDefinitionReducer from "./TMDefinition/reducer";
 
 const rootReducer = combineReducers({
-  recorder: recorderReducer,
+  TMDefinition: TMDefinitionReducer,
 });
 
 export type IRootState = ReturnType<typeof rootReducer>;
