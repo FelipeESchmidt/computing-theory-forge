@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { thunk } from "redux-thunk";
 
+import AlertMessageReducer from "./AlertMessage/reducer";
 import TMDefinitionReducer from "./TMDefinition/reducer";
 
 const rootReducer = combineReducers({
+  AlertMessage: AlertMessageReducer,
   TMDefinition: TMDefinitionReducer,
 });
 
