@@ -21,6 +21,7 @@
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@redux/*": ["redux/*"],
+      "@utils/*": ["utils/*"],
       "@globalTypes/*": ["types/*"],
     }
   },
