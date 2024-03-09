@@ -12,6 +12,12 @@ export const addRecorder = (functionalities: TheoreticalMachineFunctionalityProp
     functionalities,
   } as const);
 
+export const removeRecorder = (recorderId: number) =>
+  ({
+    type: constants.REMOVE_RECORDER,
+    recorderId,
+  } as const);
+
 export const markFunctionality = (recorderId: number, functionalityId: number) =>
   ({
     type: constants.MARK_RECORDER,
@@ -27,4 +33,10 @@ export const randomMachine = (
     type: constants.GENERATE_RANDOM_MACHINE,
     functionalities,
     recorderLimits,
+  } as const);
+
+export const createTheoreticalMachine = (recorders: TheoreticalMachineRecorderProps[]) =>
+  ({
+    type: constants.CREATE_THEORETICAL_MACHINE,
+    recorders,
   } as const);

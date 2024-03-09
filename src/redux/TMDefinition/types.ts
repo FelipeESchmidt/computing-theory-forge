@@ -1,12 +1,33 @@
 import { TheoreticalMachineFunctionalityProps } from "@globalTypes/theoreticalMachine";
 
-import { addRecorder, markFunctionality, randomMachine } from "./actions";
+import {
+  addRecorder,
+  createTheoreticalMachine,
+  markFunctionality,
+  randomMachine,
+  removeRecorder,
+} from "./actions";
+
+export interface TheoreticalMachineRecorderFunctionalityProps
+  extends TheoreticalMachineFunctionalityProps {
+  marked: boolean;
+}
+
+export interface TheoreticalMachineFunctionalityDefinitionProps {
+  type: string;
+  recorder: string;
+  definition: string;
+}
 
 export interface TheoreticalMachineRecorderProps {
   name: string;
-  functionalities: (TheoreticalMachineFunctionalityProps & { marked: boolean })[];
+  functionalities: TheoreticalMachineRecorderFunctionalityProps[];
 }
 
 export type RecorderActions = ReturnType<
-  typeof addRecorder | typeof markFunctionality | typeof randomMachine
+  | typeof addRecorder
+  | typeof removeRecorder
+  | typeof markFunctionality
+  | typeof randomMachine
+  | typeof createTheoreticalMachine
 >;
