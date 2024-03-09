@@ -5,4 +5,8 @@ export const commonTheme = {
     danger: "#F44336",
     info: "#2196F3",
   },
+  constant: {
+    realBlack: "#000",
+    realWhite: "#FFF",
+  },
 };
