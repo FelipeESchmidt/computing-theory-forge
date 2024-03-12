@@ -1,5 +1,6 @@
 import "./index.css";
 
+import AlertMessage from "@components/AlertMessage";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
@@ -17,6 +18,7 @@ const App = () => {
     <ReduxProvider store={store}>
       <ThemeControllerProvider setThemeMode={setThemeMode} themeMode={themeMode}>
         <ThemeProvider theme={theme[themeMode]}>
+          <AlertMessage />
           <Router />
         </ThemeProvider>
       </ThemeControllerProvider>
