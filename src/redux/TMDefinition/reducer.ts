@@ -55,7 +55,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
         generateTheoreticalMachine(action.recorders);
       return {
         ...state,
-        machine: { inputs, outputs, functions, comparators, definition },
+        machine: { inputs, outputs, functions, comparators, definitionText: definition },
       };
     }
 
