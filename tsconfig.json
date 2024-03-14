@@ -18,11 +18,12 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@redux/*": ["redux/*"],
       "@utils/*": ["utils/*"],
-      "@globalTypes/*": ["types/*"],
+      "@globalTypes/*": ["types/*"]
     }
   },
   "include": ["src"],
