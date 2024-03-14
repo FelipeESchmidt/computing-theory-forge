@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { StyledAlert, StyledCloseButton, StyledSnackbar } from "./styles";
 
-function AlertMessage() {
+const AlertMessage = () => {
   const dispatch = useDispatch();
   const [timer, setTimer] = useState<NodeJS.Timeout>();
 
@@ -26,13 +26,14 @@ function AlertMessage() {
 
   useEffect(() => {
     if (open) {
+      clearTimeout(timer);
       const t = setTimeout(() => {
         dispatch(hideMessage());
       }, 5000);
       setTimer(t);
     }
     return clearTimer;
-  }, [open, dispatch]);
+  }, [open, message]);
 
   return (
     <StyledSnackbar data-open={open}>
@@ -42,6 +43,6 @@ function AlertMessage() {
       </StyledCloseButton>
     </StyledSnackbar>
   );
-}
+};
 
 export default AlertMessage;
