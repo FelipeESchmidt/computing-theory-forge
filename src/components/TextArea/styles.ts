@@ -3,41 +3,39 @@ import { styled } from "styled-components";
 export const StyledTextArea = styled.textarea`
   width: 100%;
   min-height: 300px;
-  padding: 10px;
+  padding: 12px;
   background-color: transparent;
-  border: 0;
-  box-shadow: 0 0 8px 4px ${({ theme }) => theme.darkGray};
+  border: 2px solid ${({ theme }) => theme.principal.text};
+  border-radius: 8px;
   line-height: 20px;
   font-size: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.principal.text};
   resize: none;
   outline: none;
   cursor: inherit;
   box-sizing: border-box;
 
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 15px;
     height: 100%;
+    cursor: pointer;
   }
 
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px ${({ theme }) => theme.white};
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px ${({ theme }) => theme.principal.text};
     border-radius: 10px;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.black};
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.brand.primary};
     border-radius: 6px;
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.black}DD;
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.brand.dark};
   }
 
-  ::-webkit-resizer {
+  &::-webkit-resizer {
     display: none;
   }
 `;

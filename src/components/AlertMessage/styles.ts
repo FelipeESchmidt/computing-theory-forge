@@ -27,6 +27,7 @@ export const StyledSnackbar = styled.div`
 `;
 
 export const StyledAlert = styled.div<{ type: AlertMessageType }>`
+  font-weight: 600;
   padding: 16px;
   padding-inline: 32px;
   color: ${({ theme }) => theme.constant.realBlack};
