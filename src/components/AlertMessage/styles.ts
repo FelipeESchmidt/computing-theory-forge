@@ -30,7 +30,7 @@ export const StyledAlert = styled.div<{ type: AlertMessageType }>`
   padding: 16px;
   padding-inline: 32px;
   color: ${({ theme }) => theme.constant.realBlack};
-  background: ${({ theme, type }) => theme.primary[type]};
+  background: ${({ theme, type }) => theme.indicators[type]};
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.constant.realBlack};
 `;
