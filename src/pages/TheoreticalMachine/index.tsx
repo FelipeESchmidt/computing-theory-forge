@@ -1,7 +1,5 @@
-import { useThemeController } from "../../contexts/ThemeControllerProvider";
+import { Definition } from "./Definition";
 
 export const TheoreticalMachine: React.FC = () => {
-  const { switchThemeMode, themeMode } = useThemeController();
-
-  return <></>;
+  return <Definition />;
 };
