@@ -8,6 +8,7 @@ import { generateRandomMachine } from "./random";
 import { RecorderActions, TheoreticalMachineRecorderProps } from "./types";
 
 const defaultState = {
+  machineIsGenerated: false as boolean,
   recorders: [] as TheoreticalMachineRecorderProps[],
   machine: {
     inputs: [],
@@ -22,13 +23,17 @@ export default function reducer(state = defaultState, action: RecorderActions) {
   switch (action.type) {
     case constants.ADD_RECORDER: {
       const newRecorder = createNewRecorder(action.functionalities, state.recorders);
-      return { ...state, recorders: [...state.recorders, newRecorder] };
+      return {
+        ...state,
+        recorders: [...state.recorders, newRecorder],
+        machineIsGenerated: false,
+      };
     }
 
     case constants.REMOVE_RECORDER: {
       const newRecorders = [...state.recorders];
       newRecorders.splice(action.recorderId, 1);
-      return { ...state, recorders: [...newRecorders] };
+      return { ...state, recorders: [...newRecorders], machineIsGenerated: false };
     }
 
     case constants.MARK_RECORDER: {
@@ -38,7 +43,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
         [...state.recorders],
       );
 
-      return { ...state, recorders: newRecorders };
+      return { ...state, recorders: newRecorders, machineIsGenerated: false };
     }
 
     case constants.GENERATE_RANDOM_MACHINE: {
@@ -47,7 +52,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
         action.recorderLimits,
       );
 
-      return { ...state, recorders: randomRecorders };
+      return { ...state, recorders: randomRecorders, machineIsGenerated: false };
     }
 
     case constants.CREATE_THEORETICAL_MACHINE: {
@@ -56,6 +61,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
       return {
         ...state,
         machine: { inputs, outputs, functions, comparators, definitionText: definition },
+        machineIsGenerated: true,
       };
     }
 
