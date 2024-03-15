@@ -29,7 +29,10 @@
   },
   "terminal.integrated.defaultProfile.osx": "zsh",
   "cSpell.language": "en,pt,pt_BR",
-  "cSpell.words": [],
+  "cSpell.words": [
+    "Exponencializa",
+    "exponencializa"
+  ],
   "files.eol": "auto",
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
