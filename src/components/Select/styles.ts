@@ -88,6 +88,7 @@ export const StyledOption = styled.option<
   color: ${({ theme }) => theme.principal.text};
 
   pointer-events: ${({ open }) => (open ? "all" : "none")};
+  white-space: normal;
 
   &:hover {
     background-color: ${({ theme }) => theme.principal.text};
