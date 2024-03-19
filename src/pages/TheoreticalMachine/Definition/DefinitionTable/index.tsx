@@ -41,7 +41,7 @@ export const DefinitionTable: React.FC<DefinitionTableProps> = ({
 
   return (
     <Table>
-      <TableHead hideBorder={!recorders.length}>
+      <TableHead data-hide-border={!recorders.length}>
         <TableRow>
           <S.StyledTableHeadItem>
             <S.StyledAddRecorder>
