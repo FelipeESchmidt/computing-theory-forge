@@ -17,6 +17,13 @@ const getPadding = (type: SelectStyleTypes) => {
   return "12px";
 };
 
+const getGap = (type: SelectStyleTypes) => {
+  if (type === "thin") {
+    return "4px";
+  }
+  return "8px";
+};
+
 export const StyledSelectWrapper = styled.div`
   position: relative;
 `;
@@ -25,6 +32,7 @@ export const StyledSelect = styled.div<StyledSelectComponentProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: ${({ type }) => getGap(type)};
   padding: ${({ type }) => getPadding(type)};
   border: 1px solid ${({ theme }) => theme.principal.text};
   border-radius: 4px;

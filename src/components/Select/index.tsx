@@ -57,7 +57,6 @@ export const Select: React.FC<SelectProps> = ({
             type={styleType}
             key={option.value}
             value={option.value}
-            selected={option.value === value}
             onClick={() => handleSelectOption(option.value)}
           >
             {option.label}
