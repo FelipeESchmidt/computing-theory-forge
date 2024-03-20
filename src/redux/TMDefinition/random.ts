@@ -18,7 +18,9 @@ export const generateRandomMachine = (
 ) => {
   const recorders = [] as TheoreticalMachineRecorderProps[];
 
-  Array.from(new Array(generateRandomNumber(recorderLimits))).forEach(() => {
+  Array.from(
+    new Array(generateRandomNumber({ min: 4, max: recorderLimits.max })),
+  ).forEach(() => {
     recorders.push(createNewRecorder(functionalities, recorders));
   });
 
