@@ -1,3 +1,4 @@
+import { useClickOutside } from "@hooks/useClickOutside";
 import React, { useEffect } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
@@ -27,6 +28,8 @@ export const Select: React.FC<SelectProps> = ({
   const labelSelected = options.find((option) => option.value === value)?.label;
 
   const filteredOptions = options.filter((option) => option.value !== value);
+
+  useClickOutside(optionsRef, () => setOpen(false));
 
   const handleSelectOption = (value: string) => {
     onChange(value);
