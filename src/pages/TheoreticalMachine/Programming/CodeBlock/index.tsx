@@ -1,3 +1,4 @@
+import { Notice } from "@components/Notice";
 import { Select } from "@components/Select";
 import { addLine, removeLine, setLineType } from "@redux/TMProgramming/actions";
 import { TMProgrammingSelector } from "@redux/TMProgramming/selectors";
@@ -37,6 +38,10 @@ export const CodeBlock: React.FC = () => {
           </S.StyledAddLineButton>
           <S.StyledAddLineText>Adicionar linha</S.StyledAddLineText>
         </S.StyledAddLine>
+        <Notice
+          text="Adicione linhas e programe a máquina utilizando os seletores acima."
+          type="info"
+        />
       </S.StyledHeader>
       <S.StyledLines>
         {lines.map((line, index) => (

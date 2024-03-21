@@ -37,5 +37,6 @@ export const DefinitionTitle = styled.h2`
 export const DefinitionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  gap: 16px;
+  margin-bottom: 32px;
 `;

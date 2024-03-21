@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StyledCodeBlock = styled.div`
   display: flex;
@@ -13,6 +13,7 @@ export const StyledCodeBlock = styled.div`
 export const StyledHeader = styled.div`
   display: flex;
   padding: 12px;
+  justify-content: space-between;
   border-bottom: 2px solid ${({ theme }) => theme.principal.text};
 `;
 
@@ -141,10 +142,4 @@ export const LineText = styled(Text)`
       bottom: auto;
     }
   }
-`;
-
-export const StyledSelect = styled.select`
-  width: 12%;
-  min-width: 140px;
-  height: 36px;
 `;
