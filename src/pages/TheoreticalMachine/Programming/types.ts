@@ -1,8 +1,10 @@
+import { TheoreticalMachineFunctionalityProps } from "@globalTypes/theoreticalMachine";
+
 export type LineTypeOption = "condition" | "function";
 
 export interface LineItemsProps {
   select?: "comparators" | "functions" | "lines";
-  text: string;
+  text: TheoreticalMachineFunctionalityProps["definitionString"];
   color: string;
 }
 

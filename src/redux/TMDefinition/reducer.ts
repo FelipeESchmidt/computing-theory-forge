@@ -5,16 +5,20 @@ import {
   markRecorderFunctionality,
 } from "./functions";
 import { generateRandomMachine } from "./random";
-import { RecorderActions, TheoreticalMachineRecorderProps } from "./types";
+import {
+  RecorderActions,
+  TheoreticalMachineFunctionalityDefinitionProps,
+  TheoreticalMachineRecorderProps,
+} from "./types";
 
 const defaultState = {
   machineIsGenerated: false as boolean,
   recorders: [] as TheoreticalMachineRecorderProps[],
   machine: {
-    inputs: [],
-    outputs: [],
-    functions: [],
-    comparators: [],
+    inputs: [] as TheoreticalMachineFunctionalityDefinitionProps[],
+    outputs: [] as TheoreticalMachineFunctionalityDefinitionProps[],
+    functions: [] as TheoreticalMachineFunctionalityDefinitionProps[],
+    comparators: [] as TheoreticalMachineFunctionalityDefinitionProps[],
     definitionText: "",
   },
 } as const;
