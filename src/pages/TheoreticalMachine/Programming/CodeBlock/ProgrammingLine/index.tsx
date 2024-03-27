@@ -1,7 +1,7 @@
 import { Select } from "@components/Select";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { TheoreticalMachineFunctionalityDefinitionProps } from "@redux/TMDefinition/types";
-import { setLineSelection } from "@redux/TMProgramming/actions";
+import { addLine, setLineSelection } from "@redux/TMProgramming/actions";
 import { TMProgrammingSelector } from "@redux/TMProgramming/selectors";
 import { LineProps } from "@redux/TMProgramming/types";
 import React from "react";
@@ -39,6 +39,7 @@ export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line })
       ...lines
         .map((_, i) => ({ value: `${i}`, label: `${i}` }))
         .filter((l) => l.label !== `${index}`),
+      { value: "newLine", label: "Nova Linha" },
     ];
   };
 
@@ -49,6 +50,11 @@ export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line })
   };
 
   const handleSelect = (value: string, lineItem: LineItemsProps, itemIndex: number) => {
+    if (value === "newLine") {
+      dispatch(addLine());
+      dispatch(setLineSelection(lines.length.toString(), lineItem, itemIndex, index));
+      return;
+    }
     dispatch(setLineSelection(value, lineItem, itemIndex, index));
   };
 
