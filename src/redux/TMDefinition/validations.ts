@@ -1,8 +1,15 @@
 import { getRecordersFilteredBy } from "./functions";
-import { TheoreticalMachineRecorderProps } from "./types";
+import {
+  TheoreticalMachineFunctionalityDefinitionProps,
+  TheoreticalMachineRecorderProps,
+} from "./types";
 
 /* Valida se programa tem no mínimo 4 funções */
-const mustHaveAtLeastFourFunctions = ({ functions }) => {
+const mustHaveAtLeastFourFunctions = ({
+  functions,
+}: {
+  functions: TheoreticalMachineFunctionalityDefinitionProps[];
+}) => {
   const minimumFunctions = 4;
   if (functions.length < minimumFunctions) {
     return `Programa precisa ter pelo menos ${minimumFunctions} funções!`;
@@ -11,7 +18,11 @@ const mustHaveAtLeastFourFunctions = ({ functions }) => {
 };
 
 /* Valida se programa tem no mínimo 3 comparadores */
-const mustHaveAtLeastThreeComparators = ({ comparators }) => {
+const mustHaveAtLeastThreeComparators = ({
+  comparators,
+}: {
+  comparators: TheoreticalMachineFunctionalityDefinitionProps[];
+}) => {
   const minimumComparators = 3;
   if (comparators.length < minimumComparators) {
     return `Programa precisa ter pelo menos ${minimumComparators} comparadores!`;
@@ -24,8 +35,8 @@ const validations = [mustHaveAtLeastFourFunctions, mustHaveAtLeastThreeComparato
 /* Roda todas as validações e retorna o erro */
 export const validateFunctionalities = (recorders: TheoreticalMachineRecorderProps[]) => {
   let error = "";
-  const functions = [];
-  const comparators = [];
+  const functions: TheoreticalMachineFunctionalityDefinitionProps[] = [];
+  const comparators: TheoreticalMachineFunctionalityDefinitionProps[] = [];
   recorders.forEach((recorder) => {
     const recorderFunctionalities = recorder.functionalities;
     functions.push(

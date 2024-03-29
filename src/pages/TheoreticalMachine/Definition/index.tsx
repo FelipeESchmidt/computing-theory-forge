@@ -1,5 +1,6 @@
 import { Button } from "@components/Button";
 import { Container } from "@components/Container";
+import { Notice } from "@components/Notice";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { AlertMessageType } from "@redux/AlertMessage/types";
 import { createTheoreticalMachine, randomMachine } from "@redux/TMDefinition/actions";
@@ -103,6 +104,12 @@ export const Definition = () => {
         </S.TopWrapper>
         <S.DefinitionWrapper>
           <DefinitionTable onSelectFunctionality={onSelectFunctionality} />
+          {!recorders.length && (
+            <Notice
+              text="Adicione um registrador para iniciar a definição da máquina ou crie uma máquina aleatória."
+              type="info"
+            />
+          )}
         </S.DefinitionWrapper>
         {ableToGoNext && (
           <S.DefinitionWrapper>

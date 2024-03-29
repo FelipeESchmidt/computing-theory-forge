@@ -74,7 +74,7 @@ export const whatTheFGLMachineIsAbleToDo: TheoreticalMachineFunctionalityProps[]
     nameResponsive: "=0",
     definitionString: "eh_zero_{recorder}",
     definitionStringFull:
-      "eh_zero_{recorder}: N{length} -> {verdadeiro, falso} tal que, ∀({recorders})∈N{length}, eh_zero_{recorder}({recorders}) = verdadeiro, se {recorder} = 0; eh_zero_{recorder}({recorders}) = falso, se {recorder} ≠ 0.",
+      "é_zero_{recorder}: N{length} -> {verdadeiro, falso} tal que, ∀({recorders})∈N{length}, é_zero_{recorder}({recorders}) = verdadeiro, se {recorder} = 0; é_zero_{recorder}({recorders}) = falso, se {recorder} ≠ 0.",
     type: "comparator",
   },
 ];

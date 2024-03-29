@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
-export const Definition = styled.div`
+export const CodeRunner = styled.div`
+  display: flex;
   width: 100%;
-  padding-bottom: 20px;
+  flex-direction: column;
 `;
 
 export const TopWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   justify-content: space-between;
   align-items: center;
-  margin: 24px 0;
+  margin: 20px 0;
+  padding: 0 10px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     > a {
@@ -32,11 +34,4 @@ export const DefinitionTitle = styled.h2`
   @media screen and (max-width: 768px) {
     font-size: 1em;
   }
-`;
-
-export const DefinitionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
 `;

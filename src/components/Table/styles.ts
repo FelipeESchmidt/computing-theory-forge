@@ -7,9 +7,11 @@ export const StyledTable = styled.table`
   background-color: #4444;
 `;
 
-export const StyledTableHead = styled.thead<{ hideBorder?: boolean }>`
+export const StyledTableHead = styled.thead`
   border-bottom: 3px solid ${({ theme }) => theme.secondary.background};
-  border-bottom-width: ${({ hideBorder }) => (hideBorder ? "0" : "3px")};
+  &[data-hide-border="true"] {
+    border-bottom-width: 0;
+  }
 `;
 
 export const StyledTableBody = styled.tbody``;
