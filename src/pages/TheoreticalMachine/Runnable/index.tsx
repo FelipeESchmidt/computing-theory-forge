@@ -40,8 +40,6 @@ export const Runnable = () => {
     document.body.appendChild(script);
   };
 
-  if (code) console.log(code);
-
   useEffect(() => {
     dispatch(resetCode());
     dispatch(startInitialValues(inputs));
