@@ -74,10 +74,12 @@ export const StyledCompletedIcon = styled.div`
   background-color: ${({ theme }) => theme.indicators.info};
 `;
 
-export const StyledStepNumber = styled.span<{ bg?: string }>`
+export const StyledStepNumber = styled.span<{ isActive: 1 | 0; bg?: string }>`
   ${iconStyles}
-  color: ${({ theme }) => theme.indicators.info};
-  border: 1px solid ${({ theme }) => theme.indicators.info};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.indicators.info : theme.principal.text};
+  border: 1px solid
+    ${({ theme, isActive }) => (isActive ? theme.indicators.info : theme.principal.text)};
   background-color: ${({ theme, bg }) => bg || theme.principal.background};
   font-size: 12px;
   pointer-events: none;

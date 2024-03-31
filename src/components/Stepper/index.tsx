@@ -31,7 +31,12 @@ export const Stepper: React.FC<StepperProps> = ({
       );
     }
     return (
-      <S.StyledStepNumber bg={customNumberBackground}>{index + 1}</S.StyledStepNumber>
+      <S.StyledStepNumber
+        bg={customNumberBackground}
+        isActive={step.key === activeStep ? 1 : 0}
+      >
+        {index + 1}
+      </S.StyledStepNumber>
     );
   };
 
