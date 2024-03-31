@@ -19,7 +19,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ children }) => {
       <S.StyledTooltipIcon>
         <AiOutlineQuestionCircle onClick={() => setShow(!show)} />
       </S.StyledTooltipIcon>
-      <S.StyledTooltipContentWrapper show={show}>
+      <S.StyledTooltipContentWrapper show={show ? 1 : 0}>
         <S.StyledTooltipContent ref={childrenRef}>
           <S.StyleTooltipCloseButton onClick={() => setShow(false)}>
             <AiOutlineClose />
