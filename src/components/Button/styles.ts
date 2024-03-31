@@ -11,9 +11,10 @@ const getButtonsProps = (variant: ButtonProps["variant"]) => {
     outlined: css`
       transition-duration: 1s;
       background-color: ${({ theme }) => theme.principal.background};
-      color: ${({ theme }) => theme.constant.realWhite};
+      color: ${({ theme }) => theme.principal.text};
       border-color: ${({ theme }) => theme.brand.primary};
       &:hover {
+        color: ${({ theme }) => theme.constant.realWhite};
         text-shadow: 0 0 5px ${({ theme }) => theme.constant.realBlack};
         border-color: ${({ theme }) => theme.brand.primary};
         background-color: ${({ theme }) => theme.brand.primary};
