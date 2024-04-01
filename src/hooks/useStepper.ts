@@ -50,6 +50,12 @@ export const useStepper: UseStepperHookProps = (
     const hasNextStep = !!nextStep;
     if (!hasNextStep) return;
     setActiveStep(nextStep.key);
+    updateStep(nextStep.key, { success: false, withError: false, completed: false });
+  };
+
+  const jumpToStep = (stepKey: string) => {
+    setActiveStep(stepKey);
+    updateStep(stepKey, { success: false, withError: false, completed: false });
   };
 
   const updateStepToSuccess = (stepKey: string) => {
@@ -69,6 +75,7 @@ export const useStepper: UseStepperHookProps = (
     activeStep,
     customNumberBackground,
     nextStep,
+    jumpToStep,
     updateStepToSuccess,
     updateStepToError,
     updateStepToCompleted,

@@ -9,5 +9,7 @@ export interface StepProp {
 export interface StepperProps {
   steps: StepProp[];
   activeStep: string;
+  jumpToStep: (stepKey: string) => void;
+  canJumpToForwardStep?: boolean;
   customNumberBackground?: string;
 }

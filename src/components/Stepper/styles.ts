@@ -46,6 +46,11 @@ export const StyledStep = styled.div`
   }
 `;
 
+export const StyledIconContainer = styled.div`
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
+  z-index: 2;
+`;
+
 const iconStyles = css`
   display: flex;
   width: 24px;
@@ -53,7 +58,6 @@ const iconStyles = css`
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-  z-index: 2;
 `;
 
 export const StyledSuccessIcon = styled.div`
