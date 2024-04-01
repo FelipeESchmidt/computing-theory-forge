@@ -1,32 +1,12 @@
-import { StepperProps, StepProp } from "@components/Stepper/types";
+import { StepProp } from "@components/Stepper/types";
 import React, { useEffect } from "react";
 
-interface UseStepperHookStepProps {
-  key: string;
-  title: string;
-  onActive: () => void;
-}
-
-type UpdatableStepProps = Partial<Omit<StepProp, keyof UseStepperHookStepProps>>;
-
-interface UseStepperHookReturnProps extends StepperProps {
-  nextStep: (lastStepStatus: UpdatableStepProps) => void;
-  updateStepToSuccess: (stepKey: string) => void;
-  updateStepToError: (stepKey: string) => void;
-  updateStepToCompleted: (stepKey: string) => void;
-}
-
-type UseStepperHookProps = (
-  baseSteps: UseStepperHookStepProps[],
-  customNumberBackground?: string,
-) => UseStepperHookReturnProps;
-
-const getDefaultStepProps = (step: UseStepperHookStepProps): StepProp => ({
-  ...step,
-  success: false,
-  withError: false,
-  completed: false,
-});
+import { getDefaultStepProps } from "./constants";
+import {
+  UpdatableStepProps,
+  UseStepperHookProps,
+  UseStepperHookReturnProps,
+} from "./types";
 
 export const useStepper: UseStepperHookProps = (
   baseSteps,
