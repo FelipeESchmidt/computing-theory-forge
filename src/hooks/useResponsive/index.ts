@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { breakpoint } from "../assets/styles/breakpoints";
+import { breakpoint } from "../../assets/styles/breakpoints";
 
 export const useResponsive = () => {
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= breakpoint);
