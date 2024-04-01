@@ -2,7 +2,6 @@ import { css, styled } from "styled-components";
 
 export const StyledStepper = styled.div`
   display: flex;
-  padding: 8px;
 `;
 
 export const StyledStep = styled.div`
