@@ -30,10 +30,10 @@ export const StyledAlert = styled.div<{ type: AlertMessageType }>`
   font-weight: 600;
   padding: 16px;
   padding-inline: 32px;
-  color: ${({ theme }) => theme.constant.realBlack};
-  background: ${({ theme, type }) => theme.indicators[type]};
+  color: ${({ theme }) => theme.principal.text};
+  background-color: ${({ theme, type }) => `${theme.indicators[type]}22`};
   border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.constant.realBlack};
+  border: 1px solid ${({ theme, type }) => theme.indicators[type]};
 `;
 
 export const StyledCloseButton = styled.div`
