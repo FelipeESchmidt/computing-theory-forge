@@ -1,9 +1,10 @@
 import { StepperProps, StepProp } from "@components/Stepper/types";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface UseStepperHookStepProps {
   key: string;
   title: string;
+  onActive: () => void;
 }
 
 type UpdatableStepProps = Partial<Omit<StepProp, keyof UseStepperHookStepProps>>;
@@ -69,6 +70,14 @@ export const useStepper: UseStepperHookProps = (
   const updateStepToCompleted = (stepKey: string) => {
     updateStep(stepKey, { success: true, withError: false, completed: true });
   };
+
+  useEffect(() => {
+    const activeStepIndex = steps.findIndex((step) => step.key === activeStep);
+    if (activeStepIndex === -1) return;
+
+    const currentStep = steps[activeStepIndex];
+    currentStep.onActive();
+  }, [activeStep, steps]);
 
   return {
     steps,

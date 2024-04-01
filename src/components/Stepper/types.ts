@@ -4,6 +4,7 @@ export interface StepProp {
   success: boolean;
   withError: boolean;
   completed: boolean;
+  onActive: () => void;
 }
 
 export interface StepperProps {
