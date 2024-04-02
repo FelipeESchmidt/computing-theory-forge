@@ -7,6 +7,7 @@ export const darkTheme = {
   principal: {
     text: "#F5F5F5",
     background: "#1E1E1E",
+    darkBackground: "#121212",
   },
   secondary: {
     text: "#F3F3F3",

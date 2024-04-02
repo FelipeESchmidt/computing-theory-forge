@@ -1,0 +1,40 @@
+import { Container } from "@components/Container";
+import { Stepper } from "@components/Stepper";
+import { ThemeSwitch } from "@components/ThemeSwitch";
+import { useHeaderController } from "@contexts/HeaderProvider";
+import React, { useMemo } from "react";
+import { useTheme } from "styled-components";
+
+import * as S from "./styles";
+
+export const Header: React.FC = () => {
+  const theme = useTheme();
+
+  const { steps, activeStep, jumpToStep } = useHeaderController();
+
+  const stepperMemoized = useMemo(
+    () => (
+      <Stepper
+        steps={steps}
+        activeStep={activeStep}
+        jumpToStep={jumpToStep}
+        customNumberBackground={theme.principal.darkBackground}
+      />
+    ),
+    [steps, activeStep, theme],
+  );
+
+  return (
+    <S.StyledHeader>
+      <Container>
+        <S.StyledHeaderContainer>
+          <S.StyledTitle>Computing Theory Forge</S.StyledTitle>
+          <S.StyledHandlersContainer>
+            {stepperMemoized}
+            <ThemeSwitch />
+          </S.StyledHandlersContainer>
+        </S.StyledHeaderContainer>
+      </Container>
+    </S.StyledHeader>
+  );
+};

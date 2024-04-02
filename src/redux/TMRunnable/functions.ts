@@ -180,7 +180,6 @@ const generateLineFunction = (line: LineProps, index: number) => {
 const generateRecordersLog = (recorders: TheoreticalMachineRecorderProps[]) => {
   const getRecordersName = recorders.map((r) => getRecorderName(r.name)).join("}, ${");
   const recordersToPrint = "`(${" + getRecordersName + "})`";
-  console.log(`const getRecordersValues = () => ${recordersToPrint}\n`);
   return `const getRecordersValues = () => ${recordersToPrint}\n`;
 };
 

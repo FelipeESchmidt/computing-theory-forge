@@ -1,15 +1,14 @@
 import { Button } from "@components/Button";
 import { Container } from "@components/Container";
 import { Notice } from "@components/Notice";
+import { useHeaderController } from "@contexts/HeaderProvider";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { AlertMessageType } from "@redux/AlertMessage/types";
 import { createTheoreticalMachine, randomMachine } from "@redux/TMDefinition/actions";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { validateFunctionalities } from "@redux/TMDefinition/validations";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import { recorderLimits, whatTheFGLMachineIsAbleToDo } from "./constants";
 import { DefinitionTable } from "./DefinitionTable";
@@ -18,8 +17,8 @@ import * as S from "./styles";
 
 export const Definition = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
+  const { nextStep, updateStepToError, updateStepToDefault } = useHeaderController();
   const { recorders, machineIsGenerated } = useSelector(TMDefinitionSelector);
 
   const [isValid, setIsValid] = useState(false);
@@ -27,7 +26,8 @@ export const Definition = () => {
 
   const onSelectFunctionality = () => setAbleToGoNext(false);
 
-  const handleGoNext = () => navigate("/theoretical-machine/transition");
+  const handleGoNext = () =>
+    nextStep({ success: true, withError: false, completed: true });
 
   const dispatchMessage = (message: string, type: AlertMessageType = "success") =>
     dispatch(newMessage(message, type));
@@ -38,6 +38,7 @@ export const Definition = () => {
     if (!error) {
       dispatchMessage("Máquina validada!");
     } else {
+      updateStepToError();
       dispatchMessage(`Máquina possui problemas! -> ${error} <-`, "danger");
     }
   };
@@ -84,6 +85,7 @@ export const Definition = () => {
   };
 
   useEffect(() => {
+    updateStepToDefault();
     setIsValid(false);
     setAbleToGoNext(false);
   }, [recorders]);

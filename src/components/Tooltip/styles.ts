@@ -15,7 +15,7 @@ export const StyledTooltipIcon = styled.div`
   }
 `;
 
-export const StyledTooltipContentWrapper = styled.div<{ show: boolean }>`
+export const StyledTooltipContentWrapper = styled.div<{ show: 0 | 1 }>`
   position: fixed;
   inset: 0;
   transition: opacity 0.3s;

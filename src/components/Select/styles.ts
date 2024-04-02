@@ -26,6 +26,7 @@ const getGap = (type: SelectStyleTypes) => {
 
 export const StyledSelectWrapper = styled.div`
   position: relative;
+  height: fit-content;
 `;
 
 export const StyledSelect = styled.div<StyledSelectComponentProps>`

@@ -1,6 +1,8 @@
 import { Button } from "@components/Button";
 import { Container } from "@components/Container";
 import { TextArea } from "@components/TextArea";
+import { useHeaderController } from "@contexts/HeaderProvider";
+import { newMessage } from "@redux/AlertMessage/actions";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { TMProgrammingSelector } from "@redux/TMProgramming/selectors";
 import { generateCode, resetCode, startInitialValues } from "@redux/TMRunnable/actions";
@@ -14,6 +16,7 @@ import * as S from "./styles";
 export const Runnable = () => {
   const dispatch = useDispatch();
 
+  const { updateStepToSuccess, updateStepToDefault } = useHeaderController();
   const { code } = useSelector(TMRunnableSelector);
   const {
     recorders,
@@ -22,7 +25,11 @@ export const Runnable = () => {
   const { lines } = useSelector(TMProgrammingSelector);
 
   /* Gera código do programa escrito */
-  const handleGenerateCode = () => dispatch(generateCode(recorders, lines, outputs));
+  const handleGenerateCode = () => {
+    dispatch(generateCode(recorders, lines, outputs));
+    dispatch(newMessage("Código gerado com sucesso!", "success"));
+    updateStepToSuccess();
+  };
 
   const clearScripts = () => {
     document.querySelectorAll("script[data-op=code]").forEach((el) => el.remove());
@@ -40,18 +47,20 @@ export const Runnable = () => {
     document.body.appendChild(script);
   };
 
-  if (code) console.log(code);
-
   useEffect(() => {
     dispatch(resetCode());
     dispatch(startInitialValues(inputs));
   }, [dispatch, inputs, outputs]);
 
+  useEffect(() => {
+    if (!code) updateStepToDefault();
+  }, [code]);
+
   return (
     <Container>
       <S.CodeRunner>
         <S.TopWrapper>
-          <S.DefinitionTitle>Rodar Código</S.DefinitionTitle>
+          <S.DefinitionTitle>Executável</S.DefinitionTitle>
           {code ? (
             <Button onClick={runCode} text="Rodar Código" variant="contained" />
           ) : (

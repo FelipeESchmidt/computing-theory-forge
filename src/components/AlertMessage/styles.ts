@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StyledSnackbar = styled.div`
   &[data-open="true"] {
     opacity: 1;
-    top: 16px;
+    top: 96px;
   }
   &[data-open="false"] {
     opacity: 0;
@@ -30,10 +30,10 @@ export const StyledAlert = styled.div<{ type: AlertMessageType }>`
   font-weight: 600;
   padding: 16px;
   padding-inline: 32px;
-  color: ${({ theme }) => theme.constant.realBlack};
-  background: ${({ theme, type }) => theme.indicators[type]};
+  color: ${({ theme }) => theme.principal.text};
+  background-color: ${({ theme, type }) => `${theme.indicators[type]}22`};
   border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.constant.realBlack};
+  border: 1px solid ${({ theme, type }) => theme.indicators[type]};
 `;
 
 export const StyledCloseButton = styled.div`
@@ -44,7 +44,7 @@ export const StyledCloseButton = styled.div`
   right: 12px;
   align-items: center;
   cursor: pointer;
-  color: ${({ theme }) => theme.constant.realBlack};
+  color: ${({ theme }) => theme.principal.text};
   &:hover {
     transform: scale(1.2);
     transition-duration: 0.2s;

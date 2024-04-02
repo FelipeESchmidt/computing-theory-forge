@@ -2,7 +2,6 @@ import { css, styled } from "styled-components";
 
 export const StyledStepper = styled.div`
   display: flex;
-  padding: 8px;
 `;
 
 export const StyledStep = styled.div`
@@ -46,6 +45,11 @@ export const StyledStep = styled.div`
   }
 `;
 
+export const StyledIconContainer = styled.div`
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
+  z-index: 2;
+`;
+
 const iconStyles = css`
   display: flex;
   width: 24px;
@@ -53,7 +57,6 @@ const iconStyles = css`
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-  z-index: 2;
 `;
 
 export const StyledSuccessIcon = styled.div`
@@ -74,10 +77,12 @@ export const StyledCompletedIcon = styled.div`
   background-color: ${({ theme }) => theme.indicators.info};
 `;
 
-export const StyledStepNumber = styled.span<{ bg?: string }>`
+export const StyledStepNumber = styled.span<{ isActive: 1 | 0; bg?: string }>`
   ${iconStyles}
-  color: ${({ theme }) => theme.indicators.info};
-  border: 1px solid ${({ theme }) => theme.indicators.info};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.indicators.info : theme.principal.text};
+  border: 1px solid
+    ${({ theme, isActive }) => (isActive ? theme.indicators.info : theme.principal.text)};
   background-color: ${({ theme, bg }) => bg || theme.principal.background};
   font-size: 12px;
   pointer-events: none;
