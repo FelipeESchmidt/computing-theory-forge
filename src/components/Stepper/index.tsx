@@ -44,8 +44,6 @@ export const Stepper: React.FC<StepperProps> = ({
 
   const getJumpToStepFunction = (index: number) => {
     const activeIndex = steps.findIndex((step) => step.key === activeStep);
-    console.log("activeIndex", activeIndex);
-
     if (index < activeIndex) {
       return () => jumpToStep(steps[index].key);
     }

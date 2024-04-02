@@ -10,9 +10,10 @@ export type UpdatableStepProps = Partial<Omit<StepProp, keyof UseStepperHookStep
 
 export interface UseStepperHookReturnProps extends StepperProps {
   nextStep: (lastStepStatus: UpdatableStepProps) => void;
-  updateStepToSuccess: (stepKey: string) => void;
-  updateStepToError: (stepKey: string) => void;
-  updateStepToCompleted: (stepKey: string) => void;
+  updateStepToSuccess: (stepKey?: string) => void;
+  updateStepToError: (stepKey?: string) => void;
+  updateStepToCompleted: (stepKey?: string) => void;
+  updateStepToDefault: (stepKey?: string) => void;
 }
 
 export type UseStepperHookProps = (

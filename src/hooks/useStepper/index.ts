@@ -12,7 +12,7 @@ export const useStepper: UseStepperHookProps = (
   baseSteps,
   customNumberBackground,
 ): UseStepperHookReturnProps => {
-  const [activeStep, setActiveStep] = React.useState<string>(baseSteps[0].key);
+  const [activeStep, setActiveStep] = React.useState<string>(baseSteps[0]?.key);
   const [steps, setSteps] = React.useState<StepProp[]>(
     baseSteps.map(getDefaultStepProps),
   );
@@ -39,19 +39,36 @@ export const useStepper: UseStepperHookProps = (
     updateStep(stepKey, { success: false, withError: false, completed: false });
   };
 
-  const updateStepToSuccess = (stepKey: string) => {
-    updateStep(stepKey, { success: true, withError: false });
+  const updateStepToDefault = (stepKey?: string) => {
+    updateStep(stepKey || activeStep, {
+      success: false,
+      withError: false,
+      completed: false,
+    });
   };
 
-  const updateStepToError = (stepKey: string) => {
-    updateStep(stepKey, { success: false, withError: true, completed: false });
+  const updateStepToSuccess = (stepKey?: string) => {
+    updateStep(stepKey || activeStep, { success: true, withError: false });
   };
 
-  const updateStepToCompleted = (stepKey: string) => {
-    updateStep(stepKey, { success: true, withError: false, completed: true });
+  const updateStepToError = (stepKey?: string) => {
+    updateStep(stepKey || activeStep, {
+      success: false,
+      withError: true,
+      completed: false,
+    });
+  };
+
+  const updateStepToCompleted = (stepKey?: string) => {
+    updateStep(stepKey || activeStep, {
+      success: true,
+      withError: false,
+      completed: true,
+    });
   };
 
   useEffect(() => {
+    if (!steps.length) return;
     const activeStepIndex = steps.findIndex((step) => step.key === activeStep);
     if (activeStepIndex === -1) return;
 
@@ -59,12 +76,18 @@ export const useStepper: UseStepperHookProps = (
     currentStep.onActive();
   }, [activeStep, steps]);
 
+  useEffect(() => {
+    setActiveStep(baseSteps[0]?.key);
+    setSteps(baseSteps.map(getDefaultStepProps));
+  }, [baseSteps]);
+
   return {
     steps,
     activeStep,
     customNumberBackground,
     nextStep,
     jumpToStep,
+    updateStepToDefault,
     updateStepToSuccess,
     updateStepToError,
     updateStepToCompleted,
