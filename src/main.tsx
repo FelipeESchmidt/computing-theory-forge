@@ -1,13 +1,14 @@
 import "./index.css";
 
 import AlertMessage from "@components/AlertMessage";
+import { HeaderControllerProvider } from "@contexts/HeaderProvider";
+import { ThemeControllerProvider } from "@contexts/ThemeControllerProvider";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
 import { theme, themeOptions } from "./assets/styles/themes";
-import { ThemeControllerProvider } from "./contexts/ThemeControllerProvider";
 import { store } from "./redux/store";
 import { Router } from "./routes";
 
@@ -17,10 +18,12 @@ const App = () => {
   return (
     <ReduxProvider store={store}>
       <ThemeControllerProvider setThemeMode={setThemeMode} themeMode={themeMode}>
-        <ThemeProvider theme={theme[themeMode]}>
-          <AlertMessage />
-          <Router />
-        </ThemeProvider>
+        <HeaderControllerProvider>
+          <ThemeProvider theme={theme[themeMode]}>
+            <AlertMessage />
+            <Router />
+          </ThemeProvider>
+        </HeaderControllerProvider>
       </ThemeControllerProvider>
     </ReduxProvider>
   );

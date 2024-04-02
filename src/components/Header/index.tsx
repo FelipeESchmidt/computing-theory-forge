@@ -1,35 +1,29 @@
 import { Container } from "@components/Container";
 import { Stepper } from "@components/Stepper";
+import { useHeaderController } from "@contexts/HeaderProvider";
 import { useThemeController } from "@contexts/ThemeControllerProvider";
-import { useStepper } from "@hooks/useStepper";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useMemo } from "react";
 import { useTheme } from "styled-components";
 
 import * as S from "./styles";
 
 export const Header: React.FC = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
 
   const { switchThemeMode, themeMode } = useThemeController();
-  const { steps, activeStep, jumpToStep } = useStepper([
-    {
-      key: "definition",
-      title: "Definição",
-      onActive: () => navigate("/theoretical-machine/definition"),
-    },
-    {
-      key: "programming",
-      title: "Programação",
-      onActive: () => navigate("/theoretical-machine/programming"),
-    },
-    {
-      key: "runnable",
-      title: "Executável",
-      onActive: () => navigate("/theoretical-machine/run"),
-    },
-  ]);
+  const { steps, activeStep, jumpToStep } = useHeaderController();
+
+  const stepperMemoized = useMemo(
+    () => (
+      <Stepper
+        steps={steps}
+        activeStep={activeStep}
+        jumpToStep={jumpToStep}
+        customNumberBackground={theme.principal.darkBackground}
+      />
+    ),
+    [steps, activeStep],
+  );
 
   return (
     <S.StyledHeader>
@@ -37,12 +31,7 @@ export const Header: React.FC = () => {
         <S.StyledHeaderContainer>
           <S.StyledTitle>Computing Theory Forge</S.StyledTitle>
           <S.StyledHandlersContainer>
-            <Stepper
-              steps={steps}
-              activeStep={activeStep}
-              jumpToStep={jumpToStep}
-              customNumberBackground={theme.principal.darkBackground}
-            />
+            {stepperMemoized}
             <button onClick={switchThemeMode}>{themeMode}</button>
           </S.StyledHandlersContainer>
         </S.StyledHeaderContainer>
