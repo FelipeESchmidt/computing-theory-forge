@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StyledSnackbar = styled.div`
   &[data-open="true"] {
     opacity: 1;
-    top: 16px;
+    top: 96px;
   }
   &[data-open="false"] {
     opacity: 0;
@@ -44,7 +44,7 @@ export const StyledCloseButton = styled.div`
   right: 12px;
   align-items: center;
   cursor: pointer;
-  color: ${({ theme }) => theme.constant.realBlack};
+  color: ${({ theme }) => theme.principal.text};
   &:hover {
     transform: scale(1.2);
     transition-duration: 0.2s;
