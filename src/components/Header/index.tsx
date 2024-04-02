@@ -1,7 +1,7 @@
 import { Container } from "@components/Container";
 import { Stepper } from "@components/Stepper";
+import { ThemeSwitch } from "@components/ThemeSwitch";
 import { useHeaderController } from "@contexts/HeaderProvider";
-import { useThemeController } from "@contexts/ThemeControllerProvider";
 import React, { useMemo } from "react";
 import { useTheme } from "styled-components";
 
@@ -10,7 +10,6 @@ import * as S from "./styles";
 export const Header: React.FC = () => {
   const theme = useTheme();
 
-  const { switchThemeMode, themeMode } = useThemeController();
   const { steps, activeStep, jumpToStep } = useHeaderController();
 
   const stepperMemoized = useMemo(
@@ -22,7 +21,7 @@ export const Header: React.FC = () => {
         customNumberBackground={theme.principal.darkBackground}
       />
     ),
-    [steps, activeStep],
+    [steps, activeStep, theme],
   );
 
   return (
@@ -32,7 +31,7 @@ export const Header: React.FC = () => {
           <S.StyledTitle>Computing Theory Forge</S.StyledTitle>
           <S.StyledHandlersContainer>
             {stepperMemoized}
-            <button onClick={switchThemeMode}>{themeMode}</button>
+            <ThemeSwitch />
           </S.StyledHandlersContainer>
         </S.StyledHeaderContainer>
       </Container>
