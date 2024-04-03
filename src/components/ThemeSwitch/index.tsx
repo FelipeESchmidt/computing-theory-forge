@@ -4,7 +4,7 @@ import { BsMoonStars, BsSun } from "react-icons/bs";
 
 import * as S from "./styles";
 
-export const ThemeSwitch = () => {
+export const ThemeSwitch: React.FC = () => {
   const { switchThemeMode, themeMode } = useThemeController();
 
   return (

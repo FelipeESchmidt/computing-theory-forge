@@ -12,7 +12,7 @@ export const SwitchContainer = styled.div<{ dark: 1 | 0 }>`
   border-radius: 50%;
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: box-shadow 0.3s;
   transition-timing-function: ease-out;
   transform: ${(props) => (props.dark ? "rotate(0deg)" : "rotate(360deg)")};
 
