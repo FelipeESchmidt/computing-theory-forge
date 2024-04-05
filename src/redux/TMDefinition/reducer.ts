@@ -61,7 +61,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
 
     case constants.CREATE_THEORETICAL_MACHINE: {
       const { inputs, outputs, functions, comparators, definition } =
-        generateTheoreticalMachine(action.recorders);
+        generateTheoreticalMachine(action.recorders, action.texts);
       return {
         ...state,
         machine: { inputs, outputs, functions, comparators, definitionText: definition },

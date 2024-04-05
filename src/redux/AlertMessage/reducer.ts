@@ -10,7 +10,6 @@ const defaultAlert = {
 export default function reducer(state = defaultAlert, action: RecorderActions) {
   switch (action.type) {
     case NEW_MESSAGE: {
-      action;
       return {
         ...state,
         message: action.message,

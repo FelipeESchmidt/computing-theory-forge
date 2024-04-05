@@ -1,3 +1,5 @@
+import { LanguageType } from "@assets/languages";
+
 import { getRecordersFilteredBy } from "./functions";
 import {
   TheoreticalMachineFunctionalityDefinitionProps,
@@ -7,12 +9,17 @@ import {
 /* Valida se programa tem no mínimo 4 funções */
 const mustHaveAtLeastFourFunctions = ({
   functions,
+  texts,
 }: {
   functions: TheoreticalMachineFunctionalityDefinitionProps[];
+  texts: LanguageType;
 }) => {
   const minimumFunctions = 4;
   if (functions.length < minimumFunctions) {
-    return `Programa precisa ter pelo menos ${minimumFunctions} funções!`;
+    return texts.theoreticalMachine.definitionStep.notEnoughFunctions.replace(
+      "{{n}}",
+      minimumFunctions.toString(),
+    );
   }
   return "";
 };
@@ -20,12 +27,17 @@ const mustHaveAtLeastFourFunctions = ({
 /* Valida se programa tem no mínimo 3 comparadores */
 const mustHaveAtLeastThreeComparators = ({
   comparators,
+  texts,
 }: {
   comparators: TheoreticalMachineFunctionalityDefinitionProps[];
+  texts: LanguageType;
 }) => {
   const minimumComparators = 3;
   if (comparators.length < minimumComparators) {
-    return `Programa precisa ter pelo menos ${minimumComparators} comparadores!`;
+    return texts.theoreticalMachine.definitionStep.notEnoughComparators.replace(
+      "{{n}}",
+      minimumComparators.toString(),
+    );
   }
   return "";
 };
@@ -33,7 +45,10 @@ const mustHaveAtLeastThreeComparators = ({
 const validations = [mustHaveAtLeastFourFunctions, mustHaveAtLeastThreeComparators];
 
 /* Roda todas as validações e retorna o erro */
-export const validateFunctionalities = (recorders: TheoreticalMachineRecorderProps[]) => {
+export const validateFunctionalities = (
+  recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
+) => {
   let error = "";
   const functions: TheoreticalMachineFunctionalityDefinitionProps[] = [];
   const comparators: TheoreticalMachineFunctionalityDefinitionProps[] = [];
@@ -47,7 +62,7 @@ export const validateFunctionalities = (recorders: TheoreticalMachineRecorderPro
     );
   });
   validations.every((validation) => {
-    const e = validation({ functions, comparators });
+    const e = validation({ functions, comparators, texts });
     error = e;
     return !e;
   });

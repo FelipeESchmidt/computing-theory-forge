@@ -1,5 +1,6 @@
+import { LanguageType } from "@assets/languages";
 import { TheoreticalMachineFunctionalityProps } from "@globalTypes/theoreticalMachine";
-import { machineDefinition } from "@pages/TheoreticalMachine/Definition/constants";
+import { getMachineDefinition } from "@pages/TheoreticalMachine/Definition/constants";
 import { getValueFromObject } from "@utils/index";
 
 import { getLengthValue, replaceableParts } from "./constants";
@@ -77,7 +78,7 @@ const normalizeDefinition = (
     allRecordersPlus: betterAll(name, allRecordersJoined, `${name}+1`),
     allRecordersLess: betterAll(name, allRecordersJoined, `${name}-1`),
     allRecordersZero: betterAll(name, allRecordersJoined, "0"),
-    allRecordersExp: betterAll(name, allRecordersJoined, `${name}^2`),
+    allRecordersExponential: betterAll(name, allRecordersJoined, `${name}^2`),
   };
   replaceableParts.forEach((replaceable) => {
     if (Object.keys(replaceableObj).includes(replaceable.for))
@@ -108,8 +109,11 @@ const generateMachineDefinition = (recorders: TheoreticalMachineRecorderProps[])
   return normalizedDefinitions.join("\n");
 };
 
-const generateMainDefinition = (recorders: TheoreticalMachineRecorderProps[]) => {
-  let mainDefinition = machineDefinition;
+const generateMainDefinition = (
+  recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
+) => {
+  let mainDefinition = getMachineDefinition(texts);
   const definitions: string[] = [];
   const inputs: TheoreticalMachineRecorderFunctionalityProps[] = [];
   const outputs: TheoreticalMachineRecorderFunctionalityProps[] = [];
@@ -153,6 +157,7 @@ export const getRecordersFilteredBy = (
 
 export const generateTheoreticalMachine = (
   recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
 ) => {
   const inputs: TheoreticalMachineFunctionalityDefinitionProps[] = [];
   const outputs: TheoreticalMachineFunctionalityDefinitionProps[] = [];
@@ -171,7 +176,7 @@ export const generateTheoreticalMachine = (
   });
   functions.sort();
   comparators.sort();
-  const mainDefinition = generateMainDefinition(recorders);
+  const mainDefinition = generateMainDefinition(recorders, texts);
   const funcsDefinition = generateMachineDefinition(recorders);
   return {
     inputs,

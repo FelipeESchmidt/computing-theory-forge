@@ -1,7 +1,11 @@
+import { LanguageType } from "@assets/languages";
 import {
   TheoreticalMachineFunctionalityProps,
   TheoreticalMachineRecorderLimits,
 } from "@globalTypes/theoreticalMachine";
+import { IRootState } from "@redux/store";
+import { UnknownAction } from "redux";
+import { ThunkAction } from "redux-thunk";
 
 import * as constants from "./constants";
 import { TheoreticalMachineRecorderProps } from "./types";
@@ -35,8 +39,22 @@ export const randomMachine = (
     recorderLimits,
   } as const);
 
-export const createTheoreticalMachine = (recorders: TheoreticalMachineRecorderProps[]) =>
+export const createTheoreticalMachineWithThunk = (
+  recorders: TheoreticalMachineRecorderProps[],
+): ThunkAction<void, IRootState, unknown, UnknownAction> => {
+  return (dispatch, getState) => {
+    const { texts } = getState().Language;
+
+    dispatch(createTheoreticalMachine(recorders, texts));
+  };
+};
+
+export const createTheoreticalMachine = (
+  recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
+) =>
   ({
     type: constants.CREATE_THEORETICAL_MACHINE,
     recorders,
+    texts,
   } as const);

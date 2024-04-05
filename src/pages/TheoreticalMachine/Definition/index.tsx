@@ -4,22 +4,33 @@ import { Notice } from "@components/Notice";
 import { useHeaderController } from "@contexts/HeaderProvider";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { AlertMessageType } from "@redux/AlertMessage/types";
-import { createTheoreticalMachine, randomMachine } from "@redux/TMDefinition/actions";
+import { selectLanguage } from "@redux/Language/selectors";
+import {
+  createTheoreticalMachineWithThunk,
+  randomMachine,
+} from "@redux/TMDefinition/actions";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { validateFunctionalities } from "@redux/TMDefinition/validations";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 
-import { recorderLimits, whatTheFGLMachineIsAbleToDo } from "./constants";
+import { getWhatTheFGLMachineIsAbleToDo, recorderLimits } from "./constants";
 import { DefinitionTable } from "./DefinitionTable";
 import DefinitionText from "./DefinitionText";
 import * as S from "./styles";
 
 export const Definition = () => {
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
 
   const { nextStep, updateStepToError, updateStepToDefault } = useHeaderController();
   const { recorders, machineIsGenerated } = useSelector(TMDefinitionSelector);
+  const { texts } = useSelector(selectLanguage);
+
+  const whatTheFGLMachineIsAbleToDo = useMemo(
+    () => getWhatTheFGLMachineIsAbleToDo(texts),
+    [texts],
+  );
 
   const [isValid, setIsValid] = useState(false);
   const [ableToGoNext, setAbleToGoNext] = useState(false);
@@ -33,36 +44,41 @@ export const Definition = () => {
     dispatch(newMessage(message, type));
 
   const handleValidateFunctionalities = () => {
-    const error = validateFunctionalities(recorders);
+    const error = validateFunctionalities(recorders, texts);
     setIsValid(!error);
     if (!error) {
-      dispatchMessage("Máquina validada!");
+      dispatchMessage(texts.theoreticalMachine.definitionStep.validatedMachine);
     } else {
       updateStepToError();
-      dispatchMessage(`Máquina possui problemas! -> ${error} <-`, "danger");
+      const errorMessage = texts.theoreticalMachine.definitionStep.baseError.replace(
+        "{{message}}",
+        error,
+      );
     }
   };
 
   const handleGenerateFunctionalities = () => {
-    dispatch(createTheoreticalMachine(recorders));
-    dispatchMessage("Máquina gerada com sucesso!");
+    dispatch(createTheoreticalMachineWithThunk(recorders));
+    dispatchMessage(texts.theoreticalMachine.definitionStep.generatedMachine);
     setAbleToGoNext(true);
   };
 
   const handleGenerateRandom = () => {
     dispatch(randomMachine(whatTheFGLMachineIsAbleToDo, recorderLimits));
-    dispatchMessage("Máquina aleatória gerada com sucesso!");
+    dispatchMessage(texts.theoreticalMachine.definitionStep.randomMachineGenerated);
   };
 
   const renderSecondaryButton = () => {
     if (ableToGoNext)
-      return <Button onClick={handleGoNext} text="Próximo Passo" variant="contained" />;
+      return (
+        <Button onClick={handleGoNext} text={texts.basic.nextStep} variant="contained" />
+      );
     if (recorders.length && !isValid)
       return (
         <Button
           onClick={handleValidateFunctionalities}
           disabled={recorders.length < recorderLimits.min}
-          text="Validar Máquina"
+          text={texts.theoreticalMachine.definitionStep.validateMachine}
           variant="contained"
         />
       );
@@ -71,14 +87,14 @@ export const Definition = () => {
         <Button
           onClick={handleGenerateFunctionalities}
           disabled={recorders.length < recorderLimits.min}
-          text="Gerar Máquina"
+          text={texts.theoreticalMachine.definitionStep.generateMachine}
           variant="contained"
         />
       );
     return (
       <Button
         onClick={handleGenerateRandom}
-        text="Máquina Aleatória"
+        text={texts.theoreticalMachine.definitionStep.randomMachine}
         variant="contained"
       />
     );
@@ -101,16 +117,15 @@ export const Definition = () => {
     <Container>
       <S.Definition>
         <S.TopWrapper>
-          <S.DefinitionTitle>Definição da Máquina</S.DefinitionTitle>
+          <S.DefinitionTitle>
+            {texts.theoreticalMachine.definitionStep.title}
+          </S.DefinitionTitle>
           {renderSecondaryButton()}
         </S.TopWrapper>
         <S.DefinitionWrapper>
           <DefinitionTable onSelectFunctionality={onSelectFunctionality} />
           {!recorders.length && (
-            <Notice
-              text="Adicione um registrador para iniciar a definição da máquina ou crie uma máquina aleatória."
-              type="info"
-            />
+            <Notice text={texts.theoreticalMachine.definitionStep.notice} type="info" />
           )}
         </S.DefinitionWrapper>
         {ableToGoNext && (

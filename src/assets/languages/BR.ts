@@ -6,20 +6,26 @@ export const BR = {
   languageSelector: {
     title: "Selecione a linguagem do programa",
   },
+  basic: {
+    nextStep: "Próximo Passo",
+  },
   theoreticalMachine: {
-    definition: {
+    definitionStep: {
       stepTitle: "Definição",
       title: "Definição da Máquina",
       notice:
         "Adicione um registrador para iniciar a definição da máquina ou crie uma máquina aleatória.",
       definition:
-        "FGL_machine = (N{length}, N{input}, N{output}, {functionalities})\nN{length} - Conjuntos de Memória\nN{input} - Conjuntos de Entrada\nN{output} - Conjuntos de Saída",
+        "FES_machine = (N{length}, N{input}, N{output}, {functionalities})\nN{length} - Conjuntos de Memória\nN{input} - Conjuntos de Entrada\nN{output} - Conjuntos de Saída",
       randomMachine: "Máquina Aleatória",
       validateMachine: "Validar Máquina",
+      validatedMachine: "Máquina validada com sucesso!",
       generateMachine: "Gerar Máquina",
+      generatedMachine: "Máquina gerada com sucesso!",
+      randomMachineGenerated: "Máquina aleatória gerada com sucesso!",
       baseError: "Máquina possui problemas! -> {{message}} <-",
-      notEnoughComparators: "Programa precisa ter pelo menos 3 comparadores!",
-      notEnoughFunctions: "Programa precisa ter pelo menos 4 funções!",
+      notEnoughComparators: "Programa precisa ter pelo menos {{n}} comparadores!",
+      notEnoughFunctions: "Programa precisa ter pelo menos {{n}} funções!",
       functionalities: {
         store: {
           title: "Armazena",
@@ -55,7 +61,7 @@ export const BR = {
           title: "Exponencializa",
           definition: "exponencializa_{recorder}",
           definitionFull:
-            "exponencializa_{recorder}: N{length} -> N{length} tal que, ∀({recorders})∈N{length}, exponencializa_{recorder}({recorders}) = ({recordersExp})",
+            "exponencializa_{recorder}: N{length} -> N{length} tal que, ∀({recorders})∈N{length}, exponencializa_{recorder}({recorders}) = ({recordersExponential})",
         },
         compareZero: {
           title: "Compara 0",
@@ -65,7 +71,7 @@ export const BR = {
         },
       },
     },
-    programming: {
+    programmingStep: {
       stepTitle: "Programação",
       title: "Programação",
       notice: "Adicione linhas e programe a máquina utilizando os seletores abaixo.",
@@ -91,7 +97,7 @@ export const BR = {
         goTo: "vá_para",
       },
     },
-    runnable: {
+    runnableStep: {
       stepTitle: "Execução",
       title: "Execução",
       generateCode: "Gerar Código",

@@ -11,7 +11,7 @@ export const replaceableParts = [
   { to: "{recordersPlus}", for: "allRecordersPlus" },
   { to: "{recordersLess}", for: "allRecordersLess" },
   { to: "{recordersZero}", for: "allRecordersZero" },
-  { to: "{recordersExp}", for: "allRecordersExp" },
+  { to: "{recordersExponential}", for: "allRecordersExponential" },
   { to: "{recorders}", for: "allRecorders" },
   { to: "{recorder}", for: "name" },
   { to: "{length}", for: "length" },

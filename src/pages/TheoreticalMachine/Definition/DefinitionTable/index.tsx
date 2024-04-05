@@ -1,17 +1,19 @@
 import { Table, TableBody, TableHead, TableRow } from "@components/Table";
 import { useResponsive } from "@hooks/useResponsive";
+import { selectLanguage } from "@redux/Language/selectors";
 import {
   addRecorder,
   markFunctionality,
   removeRecorder,
 } from "@redux/TMDefinition/actions";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
-import React from "react";
+import React, { useMemo } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { FiPlusCircle, FiTrash } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 
-import { whatTheFGLMachineIsAbleToDo } from "../constants";
+import { getWhatTheFGLMachineIsAbleToDo } from "../constants";
 import * as S from "./styles";
 
 export interface DefinitionTableProps {
@@ -24,7 +26,13 @@ export const DefinitionTable: React.FC<DefinitionTableProps> = ({
   const dispatch = useDispatch();
   const isMobile = useResponsive();
 
+  const { texts } = useSelector(selectLanguage);
   const { recorders } = useSelector(TMDefinitionSelector);
+
+  const whatTheFGLMachineIsAbleToDo = useMemo(
+    () => getWhatTheFGLMachineIsAbleToDo(texts),
+    [texts],
+  );
 
   const handleSelectFunctionality = (recorderId: number, functionalityId: number) => {
     dispatch(markFunctionality(recorderId, functionalityId));

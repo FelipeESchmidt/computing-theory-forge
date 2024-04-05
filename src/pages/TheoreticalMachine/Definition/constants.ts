@@ -1,3 +1,4 @@
+import { languages, LanguageType } from "@assets/languages";
 import {
   TheoreticalMachineFunctionalityProps,
   TheoreticalMachineRecorderLimits,
@@ -9,72 +10,82 @@ export const recorderLimits = {
 } as TheoreticalMachineRecorderLimits;
 
 /* String para gerar o cabeçalho da definição da máquina */
-export const machineDefinition =
-  "FGL_machine = (N{length}, N{input}, N{output}, {functionalities})\nN{length} - Conjuntos de Memória\nN{input} - Conjuntos de Entrada\nN{output} - Conjuntos de Saída";
+export const getMachineDefinition = (texts: LanguageType = languages.BR) =>
+  texts.theoreticalMachine.definitionStep.definition;
 
 /* Objeto que identifica quais as funcionalidades possíveis para cada registrador */
-export const whatTheFGLMachineIsAbleToDo: TheoreticalMachineFunctionalityProps[] = [
+export const getWhatTheFGLMachineIsAbleToDo = (
+  texts: LanguageType = languages.BR,
+): TheoreticalMachineFunctionalityProps[] => [
   {
     id: 1,
-    name: "Armazena",
+    name: texts.theoreticalMachine.definitionStep.functionalities.store.title,
     nameResponsive: "IN",
-    definitionString: "armazena_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.store.definition,
     definitionStringFull:
-      "armazena_{recorder}: N -> N{length} tal que, ∀n∈N, armazena_{recorder}({recorder}) = ({recorders})",
+      texts.theoreticalMachine.definitionStep.functionalities.store.definitionFull,
     type: "input",
   },
   {
     id: 2,
-    name: "Retorna",
+    name: texts.theoreticalMachine.definitionStep.functionalities.return.title,
     nameResponsive: "OUT",
-    definitionString: "retorna_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.return.definition,
     definitionStringFull:
-      "retorna_{recorder}: N{length} -> N tal que, ∀({recorders})∈N{length}, retorna_{recorder}({recorders}) = {recorder}",
+      texts.theoreticalMachine.definitionStep.functionalities.return.definitionFull,
     type: "output",
   },
   {
     id: 3,
-    name: "Soma",
+    name: texts.theoreticalMachine.definitionStep.functionalities.sum.title,
     nameResponsive: "+1",
-    definitionString: "soma_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.sum.definition,
     definitionStringFull:
-      "soma_{recorder}: N{length} -> N{length} tal que, ∀({recorders})∈N{length}, soma_{recorder}({recorders}) = ({recordersPlus})",
+      texts.theoreticalMachine.definitionStep.functionalities.sum.definitionFull,
     type: "function",
   },
   {
     id: 4,
-    name: "Subtrai",
+    name: texts.theoreticalMachine.definitionStep.functionalities.subtract.title,
     nameResponsive: "-1",
-    definitionString: "subtrai_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.subtract.definition,
     definitionStringFull:
-      "subtrai_{recorder}: N{length} -> N{length} tal que, ∀({recorders})∈N{length}, subtrai_{recorder}({recorders}) = ({recordersLess}), se {recorder} ≥ 0;  subtrai_{recorder}({recorders}) = ({recordersZero}), se {recorder} = 0",
+      texts.theoreticalMachine.definitionStep.functionalities.subtract.definitionFull,
     type: "function",
   },
   {
     id: 5,
-    name: "Dobra",
+    name: texts.theoreticalMachine.definitionStep.functionalities.double.title,
     nameResponsive: "*2",
-    definitionString: "dobra_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.double.definition,
     definitionStringFull:
-      "dobra_{recorder}: N{length} -> N{length} tal que, ∀({recorders})∈N{length}, dobra_{recorder}({recorders}) = ({recordersTimes})",
+      texts.theoreticalMachine.definitionStep.functionalities.double.definitionFull,
     type: "function",
   },
   {
     id: 6,
-    name: "Exponencializa",
+    name: texts.theoreticalMachine.definitionStep.functionalities.exponentialize.title,
     nameResponsive: "^2",
-    definitionString: "exponencializa_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.exponentialize.definition,
     definitionStringFull:
-      "exponencializa_{recorder}: N{length} -> N{length} tal que, ∀({recorders})∈N{length}, exponencializa_{recorder}({recorders}) = ({recordersExp})",
+      texts.theoreticalMachine.definitionStep.functionalities.exponentialize
+        .definitionFull,
     type: "function",
   },
   {
     id: 7,
-    name: "Compara 0",
+    name: texts.theoreticalMachine.definitionStep.functionalities.compareZero.title,
     nameResponsive: "=0",
-    definitionString: "eh_zero_{recorder}",
+    definitionString:
+      texts.theoreticalMachine.definitionStep.functionalities.compareZero.definition,
     definitionStringFull:
-      "é_zero_{recorder}: N{length} -> {verdadeiro, falso} tal que, ∀({recorders})∈N{length}, é_zero_{recorder}({recorders}) = verdadeiro, se {recorder} = 0; é_zero_{recorder}({recorders}) = falso, se {recorder} ≠ 0.",
+      texts.theoreticalMachine.definitionStep.functionalities.compareZero.definitionFull,
     type: "comparator",
   },
 ];

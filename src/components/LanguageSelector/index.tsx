@@ -1,46 +1,48 @@
+import { LanguageOptions, languages } from "@assets/languages";
 import { Tooltip } from "@components/Tooltip";
-import { useLanguageController } from "@contexts/LanguageProvider";
+import { changeLanguage } from "@redux/Language/actions";
+import { selectLanguage } from "@redux/Language/selectors";
 import React from "react";
 import ReactCountryFlag from "react-country-flag";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as S from "./styles";
 
 export const LanguageSelector: React.FC = () => {
-  const { language, setLanguage } = useLanguageController();
+  const dispatch = useDispatch();
+  const { currentLanguage, texts } = useSelector(selectLanguage);
+
+  const handleChangeLanguage = (newLanguage: LanguageOptions) => {
+    dispatch(changeLanguage(newLanguage));
+  };
 
   const getFlag = () => {
     return (
       <S.StyledFlagContainer>
-        <ReactCountryFlag countryCode={language} />
+        <ReactCountryFlag countryCode={currentLanguage} />
       </S.StyledFlagContainer>
     );
   };
+
+  const currentLanguages = Object.keys(languages) as unknown as LanguageOptions[];
 
   return (
     <Tooltip customIcon={getFlag()}>
       <S.StyledTooltipContent>
         <S.StyledTooltipContentTitle>
-          Selecione a linguagem do programa
+          {texts.languageSelector.title}
         </S.StyledTooltipContentTitle>
         <S.StyledTooltipContentFlags>
-          <S.StyledTooltipContentFlag>
-            <S.StyledFlagContainer onClick={() => setLanguage("BR")}>
-              <ReactCountryFlag countryCode="BR" />
-            </S.StyledFlagContainer>
-            <S.StyledTooltipContentFlagText>Português</S.StyledTooltipContentFlagText>
-          </S.StyledTooltipContentFlag>
-          <S.StyledTooltipContentFlag>
-            <S.StyledFlagContainer onClick={() => setLanguage("US")}>
-              <ReactCountryFlag countryCode="US" />
-            </S.StyledFlagContainer>
-            <S.StyledTooltipContentFlagText>Inglês</S.StyledTooltipContentFlagText>
-          </S.StyledTooltipContentFlag>
-          <S.StyledTooltipContentFlag>
-            <S.StyledFlagContainer onClick={() => setLanguage("ES")}>
-              <ReactCountryFlag countryCode="ES" />
-            </S.StyledFlagContainer>
-            <S.StyledTooltipContentFlagText>Espanhol</S.StyledTooltipContentFlagText>
-          </S.StyledTooltipContentFlag>
+          {currentLanguages.map((language: LanguageOptions) => (
+            <S.StyledTooltipContentFlag key={language}>
+              <S.StyledFlagContainer onClick={() => handleChangeLanguage(language)}>
+                <ReactCountryFlag countryCode={language} />
+              </S.StyledFlagContainer>
+              <S.StyledTooltipContentFlagText>
+                {languages[language].language}
+              </S.StyledTooltipContentFlagText>
+            </S.StyledTooltipContentFlag>
+          ))}
         </S.StyledTooltipContentFlags>
       </S.StyledTooltipContent>
     </Tooltip>
