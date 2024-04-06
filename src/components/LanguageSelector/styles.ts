@@ -11,8 +11,8 @@ export const StyledFlagContainer = styled.div`
   border-radius: 50%;
   cursor: pointer;
 
-  > span {
-    font-size: 24px !important;
+  > * {
+    font-size: 20px !important;
   }
 
   transition: box-shadow 0.3s;

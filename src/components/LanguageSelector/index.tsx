@@ -19,7 +19,7 @@ export const LanguageSelector: React.FC = () => {
   const getFlag = () => {
     return (
       <S.StyledFlagContainer>
-        <ReactCountryFlag countryCode={currentLanguage} />
+        <ReactCountryFlag countryCode={currentLanguage} svg />
       </S.StyledFlagContainer>
     );
   };
@@ -36,7 +36,7 @@ export const LanguageSelector: React.FC = () => {
           {currentLanguages.map((language: LanguageOptions) => (
             <S.StyledTooltipContentFlag key={language}>
               <S.StyledFlagContainer onClick={() => handleChangeLanguage(language)}>
-                <ReactCountryFlag countryCode={language} />
+                <ReactCountryFlag countryCode={language} svg />
               </S.StyledFlagContainer>
               <S.StyledTooltipContentFlagText>
                 {languages[language].language}
