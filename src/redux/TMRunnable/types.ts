@@ -1,7 +1,7 @@
+import { TheoreticalMachineFunctionsIds } from "@globalTypes/theoreticalMachine";
 import { TheoreticalMachineFunctionalityDefinitionProps } from "@redux/TMDefinition/types";
 
 import { generateCode, resetCode, setInitialValue, startInitialValues } from "./actions";
-import { realFunction } from "./constants";
 
 export type RecorderActions = ReturnType<
   | typeof generateCode
@@ -14,4 +14,11 @@ export interface InitialValueObject {
   [key: TheoreticalMachineFunctionalityDefinitionProps["recorder"]]: number;
 }
 
-export type FunctionType = keyof typeof realFunction;
+export interface RealFunctionProp {
+  func: (recorderName: string) => string;
+  compLine: (recorder: string, line: number, nextLine: number | "Return") => string;
+}
+
+export type RealFunctionProps = {
+  [key in TheoreticalMachineFunctionsIds]: RealFunctionProp;
+};

@@ -1,3 +1,5 @@
+import { TheoreticalMachineFunctionalityIds } from "@globalTypes/theoreticalMachine";
+
 import * as constants from "./constants";
 import { validadePossibleErrors } from "./functions";
 import { LineProps, RecorderActions } from "./types";
@@ -31,9 +33,14 @@ export default function reducer(state = defaultState, action: RecorderActions) {
 
     case constants.SET_LINE_SELECTION: {
       const lines = [...state.lines];
+      const [text, id] = action.value.split("/") as [
+        string,
+        TheoreticalMachineFunctionalityIds?,
+      ];
       lines[action.lineIndex].items[action.itemIndex] = {
         ...action.lineItem,
-        text: action.value,
+        text,
+        id,
       };
       return { ...state, lines };
     }

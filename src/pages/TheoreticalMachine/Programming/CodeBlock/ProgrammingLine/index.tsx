@@ -29,7 +29,7 @@ export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line })
   const { lines } = useSelector(TMProgrammingSelector);
 
   const mountSelector = (f: TheoreticalMachineFunctionalityDefinitionProps) => ({
-    value: f.definition,
+    value: `${f.definition}/${f.id}`,
     label: f.definition,
   });
 
@@ -81,6 +81,7 @@ export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line })
       placeholder="Selecione..."
       value=""
       onChange={(value) => handleSelect(value, lineItem, itemIndex)}
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       options={selectors[lineItem.select!]}
     />
   );

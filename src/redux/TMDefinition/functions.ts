@@ -54,7 +54,10 @@ const replaceInfo = (string: string, search: string, value: string) =>
 
 const normalizeFuncs =
   (recorder: TheoreticalMachineRecorderProps, type: string) =>
-  (func: TheoreticalMachineRecorderFunctionalityProps) => ({
+  (
+    func: TheoreticalMachineRecorderFunctionalityProps,
+  ): TheoreticalMachineFunctionalityDefinitionProps => ({
+    id: func.functionalityId,
     type,
     recorder: recorder.name,
     definition: replaceInfo(func.definitionString, "{recorder}", recorder.name),

@@ -1,3 +1,4 @@
+import { TheoreticalMachineFunctionsIds } from "@globalTypes/theoreticalMachine";
 import { LineItemsProps } from "@pages/TheoreticalMachine/Programming/types";
 import {
   TheoreticalMachineFunctionalityDefinitionProps,
@@ -6,7 +7,7 @@ import {
 import { LineProps } from "@redux/TMProgramming/types";
 
 import { firstCompLine, ifComps, realFunction } from "./constants";
-import { FunctionType, InitialValueObject } from "./types";
+import { InitialValueObject } from "./types";
 
 /* Inicio do script */
 const codeStart = "(() => {\n\nlet programOut = ''\n";
@@ -56,12 +57,6 @@ const normalizeLine = (line: string) => {
 */
 const normalizeRecorderName = (definitionString: string) =>
   (definitionString.split("_").pop() || "").toUpperCase();
-
-/* Normaliza funcionalidade do Programa
-   normalizeFunction('funcaoTeste_A') retorna 'funcaoTeste'     precisa ser de acordo com realFunction types do arquivo de constantes (Code.constants.js)
-*/
-const normalizeFunction = (definitionString: string): FunctionType =>
-  definitionString.split("_").shift() as FunctionType;
 
 /* Pega nome da função da linha 
    getFunctionName(2) retornda line2Function
@@ -122,7 +117,7 @@ const generateIfFunction = (lineItems: LineItemsProps[], index: number) => {
 const mountFunctionByRecorder = (
   recorderName: string,
   variable: string,
-  funcType: FunctionType,
+  funcType: TheoreticalMachineFunctionsIds,
   line: number,
   nextLine: number | "Return",
 ) =>
@@ -148,7 +143,8 @@ const mountFunctionByRecorder = (
 const generateFunctionFunction = (lineItems: LineItemsProps[], index: number) => {
   const recorderName = normalizeRecorderName(lineItems[0].text);
   const nextLine = normalizeLine(lineItems[2].text);
-  const functionType = normalizeFunction(lineItems[0].text);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const functionType = lineItems[0].id! as TheoreticalMachineFunctionsIds;
   const realFunction = mountFunctionByRecorder(
     recorderName,
     getRecorderName(recorderName),

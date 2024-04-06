@@ -1,3 +1,5 @@
+import { RealFunctionProps } from "./types";
+
 export const START_INITIAL_VALUES = "@TMRunnable/START_INITIAL_VALUES";
 export const SET_INITIAL_VALUE = "@TMRunnable/SET_INITIAL_VALUE";
 export const GENERATE_CODE = "@TMRunnable/GENERATE_CODE";
@@ -12,23 +14,23 @@ export const ifComps = {
     `'\tem ${line}, como ${recorder} ≠ 0, desviou para ${nextLine}'`,
 };
 
-export const realFunction = {
-  soma: {
+export const realFunction: RealFunctionProps = {
+  sum: {
     func: (recorderName: string) => `${recorderName} += 1;`,
     compLine: (recorder: string, line: number, nextLine: number | "Return") =>
       `'\tem ${line}, adicionou do registrador ${recorder} e desviou para ${nextLine}'`,
   },
-  subtrai: {
+  subtract: {
     func: (recorderName: string) => `${recorderName} -= 1;`,
     compLine: (recorder: string, line: number, nextLine: number | "Return") =>
       `'\tem ${line}, subtraiu do registrador ${recorder} e desviou para ${nextLine}'`,
   },
-  dobra: {
+  double: {
     func: (recorderName: string) => `${recorderName} *= 2;`,
     compLine: (recorder: string, line: number, nextLine: number | "Return") =>
       `'\tem ${line}, duplicou do registrador ${recorder} e desviou para ${nextLine}'`,
   },
-  exponencializa: {
+  exponentialize: {
     func: (recorderName: string) => `${recorderName} *= ${recorderName};`,
     compLine: (recorder: string, line: number, nextLine: number | "Return") =>
       `'\tem ${line}, exponenciou-se do registrador ${recorder} e desviou para ${nextLine}'`,

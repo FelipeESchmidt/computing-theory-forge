@@ -19,6 +19,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
 ): TheoreticalMachineFunctionalityProps[] => [
   {
     id: 1,
+    functionalityId: "store",
     name: texts.theoreticalMachine.definitionStep.functionalities.store.title,
     nameResponsive: "IN",
     definitionString:
@@ -29,6 +30,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
   },
   {
     id: 2,
+    functionalityId: "return",
     name: texts.theoreticalMachine.definitionStep.functionalities.return.title,
     nameResponsive: "OUT",
     definitionString:
@@ -39,6 +41,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
   },
   {
     id: 3,
+    functionalityId: "sum",
     name: texts.theoreticalMachine.definitionStep.functionalities.sum.title,
     nameResponsive: "+1",
     definitionString:
@@ -49,6 +52,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
   },
   {
     id: 4,
+    functionalityId: "subtract",
     name: texts.theoreticalMachine.definitionStep.functionalities.subtract.title,
     nameResponsive: "-1",
     definitionString:
@@ -59,6 +63,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
   },
   {
     id: 5,
+    functionalityId: "double",
     name: texts.theoreticalMachine.definitionStep.functionalities.double.title,
     nameResponsive: "*2",
     definitionString:
@@ -69,6 +74,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
   },
   {
     id: 6,
+    functionalityId: "exponentialize",
     name: texts.theoreticalMachine.definitionStep.functionalities.exponentialize.title,
     nameResponsive: "^2",
     definitionString:
@@ -80,6 +86,7 @@ export const getWhatTheFGLMachineIsAbleToDo = (
   },
   {
     id: 7,
+    functionalityId: "compareZero",
     name: texts.theoreticalMachine.definitionStep.functionalities.compareZero.title,
     nameResponsive: "=0",
     definitionString:

@@ -1,4 +1,7 @@
-import { TheoreticalMachineFunctionalityProps } from "@globalTypes/theoreticalMachine";
+import {
+  TheoreticalMachineFunctionalityIds,
+  TheoreticalMachineFunctionalityProps,
+} from "@globalTypes/theoreticalMachine";
 
 import {
   addRecorder,
@@ -14,6 +17,7 @@ export interface TheoreticalMachineRecorderFunctionalityProps
 }
 
 export interface TheoreticalMachineFunctionalityDefinitionProps {
+  id: TheoreticalMachineFunctionalityIds;
   type: string;
   recorder: string;
   definition: string;
