@@ -76,7 +76,7 @@ export const BR = {
       title: "Programação",
       notice: "Adicione linhas e programe a máquina utilizando os seletores abaixo.",
       validateProgram: "Validar e Gerar",
-      notEnoughLines: "Programa precisa ter pelo menos 2 linhas!",
+      notEnoughLines: "Programa precisa ter pelo menos {{lines}} linhas!",
       emptyLine: "Existe uma linha em branco!",
       emptySelector: "Existe uma linha com selecionador em branco!",
       notEnoughReturn: "O programa precisa conter ao menos um retorno no programa!",
@@ -85,6 +85,7 @@ export const BR = {
       selectLineType: "Selecione o tipo da linha",
       endLine: "Fim",
       newLine: "Nova Linha",
+      selectPlaceholder: "Selecione ",
       condition: {
         selectText: "Condição",
         text: "se",
@@ -95,6 +96,11 @@ export const BR = {
         selectText: "Função",
         text: "faça",
         goTo: "vá_para",
+      },
+      placeholderType: {
+        comparators: "o comparador",
+        functions: "a função",
+        lines: "a linha",
       },
     },
     runnableStep: {

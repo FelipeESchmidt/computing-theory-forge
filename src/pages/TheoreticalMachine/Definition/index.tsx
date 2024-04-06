@@ -54,6 +54,7 @@ export const Definition = () => {
         "{{message}}",
         error,
       );
+      dispatchMessage(errorMessage, "danger");
     }
   };
 

@@ -1,7 +1,11 @@
+import { LanguageType } from "@assets/languages";
 import {
   LineItemsProps,
   LineTypeOption,
 } from "@pages/TheoreticalMachine/Programming/types";
+import { IRootState } from "@redux/store";
+import { UnknownAction } from "redux";
+import { ThunkAction } from "redux-thunk";
 
 import * as constants from "./constants";
 
@@ -42,7 +46,21 @@ export const setLineSelection = (
     lineIndex,
   } as const);
 
-export const validateLines = () =>
+export const validateLinesWithThunk = (): ThunkAction<
+  void,
+  IRootState,
+  unknown,
+  UnknownAction
+> => {
+  return (dispatch, getState) => {
+    const { texts } = getState().Language;
+
+    dispatch(validateLines(texts));
+  };
+};
+
+export const validateLines = (texts: LanguageType) =>
   ({
     type: constants.VALIDATE_LINES,
+    texts,
   } as const);

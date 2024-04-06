@@ -1,4 +1,5 @@
 import { Select } from "@components/Select";
+import { selectLanguage } from "@redux/Language/selectors";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { TheoreticalMachineFunctionalityDefinitionProps } from "@redux/TMDefinition/types";
 import { addLine, setLineSelection } from "@redux/TMProgramming/actions";
@@ -7,7 +8,7 @@ import { LineProps } from "@redux/TMProgramming/types";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { lineTypes } from "../../constants";
+import { getLineTypes } from "../../constants";
 import { LineItemsProps } from "../../types";
 import * as SLine from "../styles";
 import * as S from "./styles";
@@ -20,13 +21,25 @@ export interface ProgrammingLineProps {
 export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line }) => {
   const dispatch = useDispatch();
 
+  const { texts } = useSelector(selectLanguage);
+
   const lineType = line.type;
-  const programaLine = lineTypes[lineType];
+  const programaLine = getLineTypes(texts)[lineType];
 
   const {
     machine: { functions, comparators },
   } = useSelector(TMDefinitionSelector);
   const { lines } = useSelector(TMProgrammingSelector);
+
+  const mountBaseSelectPlaceholder = (lineItem: LineItemsProps) => {
+    if (!lineItem.select)
+      return `${texts.theoreticalMachine.programmingStep.selectPlaceholder}...`;
+
+    const lineTypeTranslated =
+      texts.theoreticalMachine.programmingStep.placeholderType[lineItem.select];
+
+    return `${texts.theoreticalMachine.programmingStep.selectPlaceholder} ${lineTypeTranslated}`;
+  };
 
   const mountSelector = (f: TheoreticalMachineFunctionalityDefinitionProps) => ({
     value: `${f.definition}/${f.id}`,
@@ -35,11 +48,11 @@ export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line })
 
   const mountLines = () => {
     return [
-      { value: "-1", label: "FIM" },
+      { value: "-1", label: texts.theoreticalMachine.programmingStep.endLine },
       ...lines
         .map((_, i) => ({ value: `${i}`, label: `${i}` }))
         .filter((l) => l.label !== `${index}`),
-      { value: "newLine", label: "Nova Linha" },
+      { value: "newLine", label: texts.theoreticalMachine.programmingStep.newLine },
     ];
   };
 
@@ -78,7 +91,7 @@ export const ProgrammingLine: React.FC<ProgrammingLineProps> = ({ index, line })
 
   const renderSelector = (lineItem: LineItemsProps, itemIndex: number) => (
     <Select
-      placeholder="Selecione..."
+      placeholder={mountBaseSelectPlaceholder(lineItem)}
       value=""
       onChange={(value) => handleSelect(value, lineItem, itemIndex)}
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
