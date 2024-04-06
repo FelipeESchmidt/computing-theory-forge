@@ -46,7 +46,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
     }
 
     case constants.VALIDATE_LINES: {
-      const error = validadePossibleErrors([...state.lines]);
+      const error = validadePossibleErrors([...state.lines], action.texts);
       return { ...state, error, isValid: !error };
     }
 
