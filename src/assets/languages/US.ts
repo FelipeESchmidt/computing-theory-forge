@@ -106,12 +106,28 @@ export const US: LanguageType = {
       },
     },
     runnableStep: {
-      stepTitle: "Execução",
-      title: "Execução",
-      generateCode: "Gerar Código",
-      runCode: "Executar Código",
-      defineValues: "Defina os valores iniciais",
-      codeGenerated: "Código gerado com sucesso!",
+      stepTitle: "Execution",
+      title: "Execution",
+      generateCode: "Generate Code",
+      runCode: "Run Code",
+      defineValues: "Define the initial values",
+      codeGenerated: "Code generated successfully!",
+      recorder: "Recorder",
+      programTexts: {
+        programCouldBeInLoop:
+          "Your program may be in an infinite loop! Do you wish to continue?",
+        finalRecorderValue: "Final value of recorder",
+        initialInstruction: "initial instruction and input values stored",
+        ifGood: "in {{line}}, as {{recorder}} = 0, diverted to {{nextLine}}",
+        ifBad: "in {{line}}, as {{recorder}} ≠ 0, diverted to {{nextLine}}",
+        sum: "in {{line}}, added from recorder {{recorder}} and diverted to {{nextLine}}",
+        subtract:
+          "in {{line}}, subtracted from recorder {{recorder}} and diverted to {{nextLine}}",
+        double:
+          "in {{line}}, doubled from recorder {{recorder}} and diverted to {{nextLine}}",
+        exponentialize:
+          "in {{line}}, exponentialized from recorder {{recorder}} and diverted to {{nextLine}}",
+      },
     },
   },
 };

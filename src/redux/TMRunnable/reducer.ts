@@ -15,6 +15,7 @@ export default function reducer(state = { ...defaultState }, action: RecorderAct
         action.lines,
         state.initialValues,
         action.machineOutputs,
+        action.texts,
       );
       return { ...state, code };
     }

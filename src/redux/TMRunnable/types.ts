@@ -1,3 +1,4 @@
+import { LanguageType } from "@assets/languages";
 import { TheoreticalMachineFunctionsIds } from "@globalTypes/theoreticalMachine";
 import { TheoreticalMachineFunctionalityDefinitionProps } from "@redux/TMDefinition/types";
 
@@ -16,7 +17,12 @@ export interface InitialValueObject {
 
 export interface RealFunctionProp {
   func: (recorderName: string) => string;
-  compLine: (recorder: string, line: number, nextLine: number | "Return") => string;
+  compLine: (
+    recorder: string,
+    line: number,
+    nextLine: number | "Return",
+    texts: LanguageType,
+  ) => string;
 }
 
 export type RealFunctionProps = {

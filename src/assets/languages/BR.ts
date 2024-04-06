@@ -110,6 +110,22 @@ export const BR = {
       runCode: "Executar Código",
       defineValues: "Defina os valores iniciais",
       codeGenerated: "Código gerado com sucesso!",
+      recorder: "Registrador",
+      programTexts: {
+        initialInstruction: "instrução inicial e valores de entrada armazenados",
+        programCouldBeInLoop:
+          "Seu programa pode estar em loop infinito! Deseja continuar?",
+        finalRecorderValue: "Valor final Registrador",
+        ifGood: "em {{line}}, como {{recorder}} = 0, desviou para {{nextLine}}",
+        ifBad: "em {{line}}, como {{recorder}} ≠ 0, desviou para {{nextLine}}",
+        sum: "em {{line}}, adicionou do registrador {{recorder}} e desviou para {{nextLine}}",
+        subtract:
+          "em {{line}}, subtraiu do registrador {{recorder}} e desviou para {{nextLine}}",
+        double:
+          "em {{line}}, duplicou do registrador {{recorder}} e desviou para {{nextLine}}",
+        exponentialize:
+          "em {{line}}, exponenciou-se do registrador {{recorder}} e desviou para {{nextLine}}",
+      },
     },
   },
 };
