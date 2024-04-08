@@ -38,6 +38,7 @@ export const StyledTooltipContentTitle = styled.h4`
 
 export const StyledTooltipContentFlags = styled.div`
   display: grid;
+  row-gap: 24px;
   grid-template-columns: repeat(3, 1fr);
 `;
 
