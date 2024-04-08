@@ -32,9 +32,8 @@ export const getLineTypes = (texts: LanguageType = languages.BR): LineTypeObject
   },
 });
 
-export const lineOptions = Object.entries(getLineTypes()).map(
-  ([option, { selectText }]) => ({
+export const getLineOptions = (texts: LanguageType) =>
+  Object.entries(getLineTypes(texts)).map(([option, { selectText }]) => ({
     value: option,
     label: selectText,
-  }),
-);
+  }));

@@ -8,7 +8,7 @@ import React from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getLineTypes, lineOptions } from "../constants";
+import { getLineOptions, getLineTypes } from "../constants";
 import { LineTypeOption } from "../types";
 import { ProgrammingLine } from "./ProgrammingLine";
 import * as S from "./styles";
@@ -53,7 +53,7 @@ export const CodeBlock: React.FC = () => {
                 placeholder={texts.theoreticalMachine.programmingStep.selectLineType}
                 value=""
                 onChange={(value) => handleSelectLineType(value as LineTypeOption, index)}
-                options={lineOptions}
+                options={getLineOptions(texts)}
               />
             ) : (
               <ProgrammingLine line={line as Required<LineProps>} index={index} />
