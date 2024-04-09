@@ -49,6 +49,9 @@ export const createTheoreticalMachineWithThunk = (
   };
 };
 
+export const changeMachineLanguage = (texts: LanguageType) =>
+  ({ type: constants.CHANGE_LANGUAGE, texts } as const);
+
 export const createTheoreticalMachine = (
   recorders: TheoreticalMachineRecorderProps[],
   texts: LanguageType,

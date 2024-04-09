@@ -15,20 +15,20 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 
-import { getWhatTheFGLMachineIsAbleToDo, recorderLimits } from "./constants";
+import { getWhatTheFESMachineIsAbleToDo, recorderLimits } from "./constants";
 import { DefinitionTable } from "./DefinitionTable";
 import DefinitionText from "./DefinitionText";
 import * as S from "./styles";
 
-export const Definition = () => {
+export const Definition: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
 
   const { nextStep, updateStepToError, updateStepToDefault } = useHeaderController();
   const { recorders, machineIsGenerated } = useSelector(TMDefinitionSelector);
   const { texts } = useSelector(selectLanguage);
 
-  const whatTheFGLMachineIsAbleToDo = useMemo(
-    () => getWhatTheFGLMachineIsAbleToDo(texts),
+  const whatTheFESMachineIsAbleToDo = useMemo(
+    () => getWhatTheFESMachineIsAbleToDo(texts),
     [texts],
   );
 
@@ -65,7 +65,7 @@ export const Definition = () => {
   };
 
   const handleGenerateRandom = () => {
-    dispatch(randomMachine(whatTheFGLMachineIsAbleToDo, recorderLimits));
+    dispatch(randomMachine(whatTheFESMachineIsAbleToDo, recorderLimits));
     dispatchMessage(texts.theoreticalMachine.definitionStep.randomMachineGenerated);
   };
 

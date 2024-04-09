@@ -1,6 +1,12 @@
 import { LanguageType } from "@assets/languages";
-import { TheoreticalMachineFunctionalityProps } from "@globalTypes/theoreticalMachine";
-import { getMachineDefinition } from "@pages/TheoreticalMachine/Definition/constants";
+import {
+  TheoreticalMachineFunctionalityIds,
+  TheoreticalMachineFunctionalityProps,
+} from "@globalTypes/theoreticalMachine";
+import {
+  getMachineDefinition,
+  getWhatTheFESMachineIsAbleToDo,
+} from "@pages/TheoreticalMachine/Definition/constants";
 import { getValueFromObject } from "@utils/index";
 
 import { getLengthValue, replaceableParts } from "./constants";
@@ -32,6 +38,30 @@ export const createNewRecorder = (
     name: String.fromCharCode(newRecorderName + 1),
     functionalities: normalizeFunctionalities(functionalities),
   };
+};
+
+export const adaptMachineLanguage = (
+  recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
+) => {
+  const whatTheFESMachineIsAbleToDo = getWhatTheFESMachineIsAbleToDo(texts);
+
+  const getFunctionality = (functionalityId: TheoreticalMachineFunctionalityIds) =>
+    whatTheFESMachineIsAbleToDo.find(
+      (functionality) => functionality.functionalityId === functionalityId,
+    )!;
+
+  const recordersTranslated: TheoreticalMachineRecorderProps[] = recorders.map(
+    (recorder) => ({
+      name: recorder.name,
+      functionalities: recorder.functionalities.map((func) => ({
+        marked: func.marked,
+        ...getFunctionality(func.functionalityId),
+      })),
+    }),
+  );
+
+  return recordersTranslated;
 };
 
 /* Seleciona funcionalidade para um registrador */

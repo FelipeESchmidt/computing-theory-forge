@@ -13,7 +13,7 @@ import { FiPlusCircle, FiTrash } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 
-import { getWhatTheFGLMachineIsAbleToDo } from "../constants";
+import { getWhatTheFESMachineIsAbleToDo } from "../constants";
 import * as S from "./styles";
 
 export interface DefinitionTableProps {
@@ -29,8 +29,8 @@ export const DefinitionTable: React.FC<DefinitionTableProps> = ({
   const { texts } = useSelector(selectLanguage);
   const { recorders } = useSelector(TMDefinitionSelector);
 
-  const whatTheFGLMachineIsAbleToDo = useMemo(
-    () => getWhatTheFGLMachineIsAbleToDo(texts),
+  const whatTheFESMachineIsAbleToDo = useMemo(
+    () => getWhatTheFESMachineIsAbleToDo(texts),
     [texts],
   );
 
@@ -40,7 +40,7 @@ export const DefinitionTable: React.FC<DefinitionTableProps> = ({
   };
 
   const handleAddRecorder = () => {
-    dispatch(addRecorder(whatTheFGLMachineIsAbleToDo));
+    dispatch(addRecorder(whatTheFESMachineIsAbleToDo));
   };
 
   const handleRemoveRecorder = (recorderId: number) => {
@@ -56,7 +56,7 @@ export const DefinitionTable: React.FC<DefinitionTableProps> = ({
               <FiPlusCircle onClick={handleAddRecorder} />
             </S.StyledAddRecorder>
           </S.StyledTableHeadItem>
-          {whatTheFGLMachineIsAbleToDo.map((func) => (
+          {whatTheFESMachineIsAbleToDo.map((func) => (
             <S.StyledTableHeadItem key={func.name}>
               {isMobile ? func.nameResponsive : func.name}
             </S.StyledTableHeadItem>

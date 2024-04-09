@@ -2,6 +2,7 @@ export const CHANGE_MODE = "@TMDefinition/CHANGE_MODE";
 export const ADD_RECORDER = "@TMDefinition/ADD_RECORDER";
 export const REMOVE_RECORDER = "@TMDefinition/REMOVE_RECORDER";
 export const MARK_RECORDER = "@TMDefinition/MARK_RECORDER";
+export const CHANGE_LANGUAGE = "@TMDefinition/CHANGE_LANGUAGE";
 export const GENERATE_RANDOM_MACHINE = "@TMDefinition/GENERATE_RANDOM_MACHINE";
 export const CREATE_THEORETICAL_MACHINE = "@TMDefinition/CREATE_THEORETICAL_MACHINE";
 

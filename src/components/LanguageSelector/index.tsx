@@ -1,19 +1,20 @@
 import { LanguageOptions, languages } from "@assets/languages";
 import { Tooltip } from "@components/Tooltip";
-import { changeLanguage } from "@redux/Language/actions";
+import { changeLanguageWithThunk } from "@redux/Language/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import React from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 
 import * as S from "./styles";
 
 export const LanguageSelector: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
   const { currentLanguage, texts } = useSelector(selectLanguage);
 
   const handleChangeLanguage = (newLanguage: LanguageOptions) => {
-    dispatch(changeLanguage(newLanguage));
+    dispatch(changeLanguageWithThunk(newLanguage));
   };
 
   const getFlag = () => {

@@ -1,5 +1,6 @@
 import * as constants from "./constants";
 import {
+  adaptMachineLanguage,
   createNewRecorder,
   generateTheoreticalMachine,
   markRecorderFunctionality,
@@ -48,6 +49,13 @@ export default function reducer(state = defaultState, action: RecorderActions) {
       );
 
       return { ...state, recorders: newRecorders, machineIsGenerated: false };
+    }
+
+    case constants.CHANGE_LANGUAGE: {
+      console.log("CHANGE_LANGUAGE");
+
+      const recordersTranslated = adaptMachineLanguage(state.recorders, action.texts);
+      return { ...state, recorders: recordersTranslated, machineIsGenerated: false };
     }
 
     case constants.GENERATE_RANDOM_MACHINE: {

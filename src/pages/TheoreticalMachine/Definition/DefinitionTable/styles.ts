@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-import { getWhatTheFGLMachineIsAbleToDo } from "../constants";
+import { getWhatTheFESMachineIsAbleToDo } from "../constants";
 
-const tableLength = getWhatTheFGLMachineIsAbleToDo().length + 1;
+const tableLength = getWhatTheFESMachineIsAbleToDo().length + 1;
 
 const basicItem = css`
   width: calc(100% / ${tableLength});

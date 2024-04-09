@@ -11,7 +11,6 @@ const defaultAlert = {
 export default function reducer(state = defaultAlert, action: RecorderActions) {
   switch (action.type) {
     case CHANGE_LANGUAGE: {
-      action;
       return {
         ...state,
         currentLanguage: action.newLanguage,

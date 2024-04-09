@@ -14,7 +14,7 @@ export const getMachineDefinition = (texts: LanguageType = languages.BR) =>
   texts.theoreticalMachine.definitionStep.definition;
 
 /* Objeto que identifica quais as funcionalidades possíveis para cada registrador */
-export const getWhatTheFGLMachineIsAbleToDo = (
+export const getWhatTheFESMachineIsAbleToDo = (
   texts: LanguageType = languages.BR,
 ): TheoreticalMachineFunctionalityProps[] => [
   {
