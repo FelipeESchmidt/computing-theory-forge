@@ -1,5 +1,12 @@
-import { TheoreticalMachineFunctionalityProps } from "@globalTypes/theoreticalMachine";
-import { machineDefinition } from "@pages/TheoreticalMachine/Definition/constants";
+import { LanguageType } from "@assets/languages";
+import {
+  TheoreticalMachineFunctionalityIds,
+  TheoreticalMachineFunctionalityProps,
+} from "@globalTypes/theoreticalMachine";
+import {
+  getMachineDefinition,
+  getWhatTheFESMachineIsAbleToDo,
+} from "@pages/TheoreticalMachine/Definition/constants";
 import { getValueFromObject } from "@utils/index";
 
 import { getLengthValue, replaceableParts } from "./constants";
@@ -33,6 +40,30 @@ export const createNewRecorder = (
   };
 };
 
+export const adaptMachineLanguage = (
+  recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
+) => {
+  const whatTheFESMachineIsAbleToDo = getWhatTheFESMachineIsAbleToDo(texts);
+
+  const getFunctionality = (functionalityId: TheoreticalMachineFunctionalityIds) =>
+    whatTheFESMachineIsAbleToDo.find(
+      (functionality) => functionality.functionalityId === functionalityId,
+    )!;
+
+  const recordersTranslated: TheoreticalMachineRecorderProps[] = recorders.map(
+    (recorder) => ({
+      name: recorder.name,
+      functionalities: recorder.functionalities.map((func) => ({
+        marked: func.marked,
+        ...getFunctionality(func.functionalityId),
+      })),
+    }),
+  );
+
+  return recordersTranslated;
+};
+
 /* Seleciona funcionalidade para um registrador */
 export const markRecorderFunctionality = (
   recorderId: number,
@@ -53,7 +84,10 @@ const replaceInfo = (string: string, search: string, value: string) =>
 
 const normalizeFuncs =
   (recorder: TheoreticalMachineRecorderProps, type: string) =>
-  (func: TheoreticalMachineRecorderFunctionalityProps) => ({
+  (
+    func: TheoreticalMachineRecorderFunctionalityProps,
+  ): TheoreticalMachineFunctionalityDefinitionProps => ({
+    id: func.functionalityId,
     type,
     recorder: recorder.name,
     definition: replaceInfo(func.definitionString, "{recorder}", recorder.name),
@@ -77,7 +111,7 @@ const normalizeDefinition = (
     allRecordersPlus: betterAll(name, allRecordersJoined, `${name}+1`),
     allRecordersLess: betterAll(name, allRecordersJoined, `${name}-1`),
     allRecordersZero: betterAll(name, allRecordersJoined, "0"),
-    allRecordersExp: betterAll(name, allRecordersJoined, `${name}^2`),
+    allRecordersExponential: betterAll(name, allRecordersJoined, `${name}^2`),
   };
   replaceableParts.forEach((replaceable) => {
     if (Object.keys(replaceableObj).includes(replaceable.for))
@@ -108,8 +142,11 @@ const generateMachineDefinition = (recorders: TheoreticalMachineRecorderProps[])
   return normalizedDefinitions.join("\n");
 };
 
-const generateMainDefinition = (recorders: TheoreticalMachineRecorderProps[]) => {
-  let mainDefinition = machineDefinition;
+const generateMainDefinition = (
+  recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
+) => {
+  let mainDefinition = getMachineDefinition(texts);
   const definitions: string[] = [];
   const inputs: TheoreticalMachineRecorderFunctionalityProps[] = [];
   const outputs: TheoreticalMachineRecorderFunctionalityProps[] = [];
@@ -153,6 +190,7 @@ export const getRecordersFilteredBy = (
 
 export const generateTheoreticalMachine = (
   recorders: TheoreticalMachineRecorderProps[],
+  texts: LanguageType,
 ) => {
   const inputs: TheoreticalMachineFunctionalityDefinitionProps[] = [];
   const outputs: TheoreticalMachineFunctionalityDefinitionProps[] = [];
@@ -171,7 +209,7 @@ export const generateTheoreticalMachine = (
   });
   functions.sort();
   comparators.sort();
-  const mainDefinition = generateMainDefinition(recorders);
+  const mainDefinition = generateMainDefinition(recorders, texts);
   const funcsDefinition = generateMachineDefinition(recorders);
   return {
     inputs,

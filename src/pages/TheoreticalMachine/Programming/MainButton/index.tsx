@@ -1,21 +1,24 @@
 import { Button } from "@components/Button";
 import { useHeaderController } from "@contexts/HeaderProvider";
 import { newMessage } from "@redux/AlertMessage/actions";
-import { validateLines } from "@redux/TMProgramming/actions";
+import { selectLanguage } from "@redux/Language/selectors";
+import { validateLinesWithThunk } from "@redux/TMProgramming/actions";
 import { TMProgrammingSelector } from "@redux/TMProgramming/selectors";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 
 export const MainButton: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
 
   const { nextStep, updateStepToError, updateStepToDefault } = useHeaderController();
   const [showMessage, setShowMessage] = useState(false);
 
+  const { texts } = useSelector(selectLanguage);
   const { isValid, error } = useSelector(TMProgrammingSelector);
 
   const validateProgramming = () => {
-    dispatch(validateLines());
+    dispatch(validateLinesWithThunk());
     setShowMessage(true);
   };
 
@@ -29,7 +32,9 @@ export const MainButton: React.FC = () => {
         setShowMessage(false);
         updateStepToError();
       } else {
-        dispatch(newMessage("Programação válida", "success"));
+        dispatch(
+          newMessage(texts.theoreticalMachine.programmingStep.validProgram, "success"),
+        );
         setShowMessage(false);
         updateStepToDefault();
       }
@@ -37,11 +42,15 @@ export const MainButton: React.FC = () => {
   }, [showMessage, error, dispatch]);
 
   const renderNextStepButton = () => (
-    <Button text="Próximo passo" onClick={handleGoNext} variant="contained" />
+    <Button text={texts.basic.nextStep} onClick={handleGoNext} variant="contained" />
   );
 
   const renderValidateButton = () => (
-    <Button text="Validar e Gerar" onClick={validateProgramming} variant="contained" />
+    <Button
+      text={texts.theoreticalMachine.programmingStep.validateProgram}
+      onClick={validateProgramming}
+      variant="contained"
+    />
   );
 
   return isValid ? renderNextStepButton() : renderValidateButton();

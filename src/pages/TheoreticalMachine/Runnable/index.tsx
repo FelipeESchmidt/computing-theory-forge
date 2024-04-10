@@ -3,18 +3,24 @@ import { Container } from "@components/Container";
 import { TextArea } from "@components/TextArea";
 import { useHeaderController } from "@contexts/HeaderProvider";
 import { newMessage } from "@redux/AlertMessage/actions";
+import { selectLanguage } from "@redux/Language/selectors";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { TMProgrammingSelector } from "@redux/TMProgramming/selectors";
-import { generateCode, resetCode, startInitialValues } from "@redux/TMRunnable/actions";
+import {
+  generateCodeWithThunk,
+  resetCode,
+  startInitialValues,
+} from "@redux/TMRunnable/actions";
 import { TMRunnableSelector } from "@redux/TMRunnable/selectors";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 
 import InitialValues from "./InitialValues";
 import * as S from "./styles";
 
-export const Runnable = () => {
-  const dispatch = useDispatch();
+export const Runnable: React.FC = () => {
+  const dispatch: Dispatch<any> = useDispatch();
 
   const { updateStepToSuccess, updateStepToDefault } = useHeaderController();
   const { code } = useSelector(TMRunnableSelector);
@@ -22,12 +28,13 @@ export const Runnable = () => {
     recorders,
     machine: { inputs, outputs },
   } = useSelector(TMDefinitionSelector);
+  const { texts } = useSelector(selectLanguage);
   const { lines } = useSelector(TMProgrammingSelector);
 
   /* Gera código do programa escrito */
   const handleGenerateCode = () => {
-    dispatch(generateCode(recorders, lines, outputs));
-    dispatch(newMessage("Código gerado com sucesso!", "success"));
+    dispatch(generateCodeWithThunk(recorders, lines, outputs));
+    dispatch(newMessage(texts.theoreticalMachine.runnableStep.codeGenerated, "success"));
     updateStepToSuccess();
   };
 
@@ -60,13 +67,19 @@ export const Runnable = () => {
     <Container>
       <S.CodeRunner>
         <S.TopWrapper>
-          <S.DefinitionTitle>Executável</S.DefinitionTitle>
+          <S.DefinitionTitle>
+            {texts.theoreticalMachine.runnableStep.title}
+          </S.DefinitionTitle>
           {code ? (
-            <Button onClick={runCode} text="Rodar Código" variant="contained" />
+            <Button
+              onClick={runCode}
+              text={texts.theoreticalMachine.runnableStep.runCode}
+              variant="contained"
+            />
           ) : (
             <Button
               onClick={handleGenerateCode}
-              text="Gerar Código"
+              text={texts.theoreticalMachine.runnableStep.generateCode}
               variant="contained"
             />
           )}

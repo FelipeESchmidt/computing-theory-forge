@@ -1,30 +1,39 @@
+import { languages, LanguageType } from "@assets/languages";
+
 import { LineTypeObject } from "./types";
 
 /* Objeto que identifica o que cada linha pode ser de acordo com 'if' ou 'function' */
-export const lineTypes: LineTypeObject = {
+export const getLineTypes = (texts: LanguageType = languages.BR): LineTypeObject => ({
   condition: {
-    selectText: "Condição",
-    text: "se",
+    selectText: texts.theoreticalMachine.programmingStep.condition.selectText,
+    text: texts.theoreticalMachine.programmingStep.condition.text,
     items: [
       { select: "comparators", text: "", color: "info" },
-      { text: "então vá_para", color: "warning" },
+      {
+        text: texts.theoreticalMachine.programmingStep.condition.thenGoTo,
+        color: "warning",
+      },
       { select: "lines", text: "", color: "success" },
-      { text: "senão vá_para", color: "warning" },
+      {
+        text: texts.theoreticalMachine.programmingStep.condition.elseGoTo,
+        color: "warning",
+      },
       { select: "lines", text: "", color: "success" },
     ],
   },
   function: {
-    selectText: "Função",
-    text: "faça",
+    selectText: texts.theoreticalMachine.programmingStep.function.selectText,
+    text: texts.theoreticalMachine.programmingStep.function.text,
     items: [
       { select: "functions", text: "", color: "info" },
-      { text: "vá_para", color: "warning" },
+      { text: texts.theoreticalMachine.programmingStep.function.goTo, color: "warning" },
       { select: "lines", text: "", color: "success" },
     ],
   },
-};
+});
 
-export const lineOptions = Object.entries(lineTypes).map(([option, { selectText }]) => ({
-  value: option,
-  label: selectText,
-}));
+export const getLineOptions = (texts: LanguageType) =>
+  Object.entries(getLineTypes(texts)).map(([option, { selectText }]) => ({
+    value: option,
+    label: selectText,
+  }));

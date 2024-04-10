@@ -5,7 +5,7 @@ export const StyledTooltip = styled.div``;
 export const StyledTooltipIcon = styled.div`
   font-size: 16px;
 
-  > svg {
+  > * {
     color: ${({ theme }) => theme.principal.text};
     transition: color 0.3s;
     cursor: pointer;

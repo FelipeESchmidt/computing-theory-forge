@@ -1,5 +1,7 @@
+import { TheoreticalMachineFunctionalityIds } from "@globalTypes/theoreticalMachine";
+
 import * as constants from "./constants";
-import { validadePossibleErrors } from "./functions";
+import { adaptProgrammingLinesLanguage, validadePossibleErrors } from "./functions";
 import { LineProps, RecorderActions } from "./types";
 
 const defaultState = {
@@ -20,6 +22,11 @@ export default function reducer(state = defaultState, action: RecorderActions) {
       return { ...state, lines: newLines, isValid: false };
     }
 
+    case constants.TRANSLATE_PROGRAM: {
+      const linesTranslated = adaptProgrammingLinesLanguage(state.lines, action.texts);
+      return { ...state, lines: linesTranslated };
+    }
+
     case constants.SET_LINE_TYPE: {
       const lines = [...state.lines];
       lines[action.lineIndex] = {
@@ -31,15 +38,20 @@ export default function reducer(state = defaultState, action: RecorderActions) {
 
     case constants.SET_LINE_SELECTION: {
       const lines = [...state.lines];
+      const [text, id] = action.value.split("/") as [
+        string,
+        TheoreticalMachineFunctionalityIds?,
+      ];
       lines[action.lineIndex].items[action.itemIndex] = {
         ...action.lineItem,
-        text: action.value,
+        text,
+        id,
       };
       return { ...state, lines };
     }
 
     case constants.VALIDATE_LINES: {
-      const error = validadePossibleErrors([...state.lines]);
+      const error = validadePossibleErrors([...state.lines], action.texts);
       return { ...state, error, isValid: !error };
     }
 

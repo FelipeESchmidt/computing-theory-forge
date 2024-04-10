@@ -1,4 +1,5 @@
 import { Container } from "@components/Container";
+import { LanguageSelector } from "@components/LanguageSelector";
 import { Stepper } from "@components/Stepper";
 import { ThemeSwitch } from "@components/ThemeSwitch";
 import { useHeaderController } from "@contexts/HeaderProvider";
@@ -32,6 +33,7 @@ export const Header: React.FC = () => {
           <S.StyledHandlersContainer>
             {stepperMemoized}
             <ThemeSwitch />
+            <LanguageSelector />
           </S.StyledHandlersContainer>
         </S.StyledHeaderContainer>
       </Container>

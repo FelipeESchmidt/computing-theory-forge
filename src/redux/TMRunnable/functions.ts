@@ -1,3 +1,5 @@
+import { LanguageType } from "@assets/languages";
+import { TheoreticalMachineFunctionsIds } from "@globalTypes/theoreticalMachine";
 import { LineItemsProps } from "@pages/TheoreticalMachine/Programming/types";
 import {
   TheoreticalMachineFunctionalityDefinitionProps,
@@ -5,8 +7,8 @@ import {
 } from "@redux/TMDefinition/types";
 import { LineProps } from "@redux/TMProgramming/types";
 
-import { firstCompLine, ifComps, realFunction } from "./constants";
-import { FunctionType, InitialValueObject } from "./types";
+import { getFirstCompLine, ifComps, realFunction } from "./constants";
+import { InitialValueObject } from "./types";
 
 /* Inicio do script */
 const codeStart = "(() => {\n\nlet programOut = ''\n";
@@ -24,7 +26,8 @@ const codeStart = "(() => {\n\nlet programOut = ''\n";
           return true;
         }
 */
-const codeVerifyInfiniteLoop = `\nlet linesRunned = 0;\nconst verifyMax = 200;\nconst verify = () => {linesRunned += 1;if(linesRunned > verifyMax){linesRunned = 0;return confirm('Seu programa pode estar em loop infinito! Deseja continuar?')}return true;}\n`;
+const getCodeVerifyInfiniteLoop = (texts: LanguageType) =>
+  `\nlet linesRunned = 0;\nconst verifyMax = 200;\nconst verify = () => {linesRunned += 1;if(linesRunned > verifyMax){linesRunned = 0;return confirm('${texts.theoreticalMachine.runnableStep.programTexts.programCouldBeInLoop}')}return true;}\n`;
 
 /* Fim do script */
 const codeEnd = "\n})();";
@@ -35,13 +38,14 @@ const generateLogger = () => `const log = (str) => programOut += str + '\\n';\n`
 /* Função de Return do código, que printa valores dos outputs da máquina */
 const generateReturn = (
   machineOutputs: TheoreticalMachineFunctionalityDefinitionProps[],
+  texts: LanguageType,
 ) =>
   `const lineReturnFunction = () => {log('');${machineOutputs
     .map(
       (v) =>
-        `log('Valor final Registrador ${v.recorder} -> ' + ${getRecorderName(
-          v.recorder,
-        )})`,
+        `log('${texts.theoreticalMachine.runnableStep.programTexts.finalRecorderValue} ${
+          v.recorder
+        } -> ' + ${getRecorderName(v.recorder)})`,
     )
     .join(";\n")}}\n`;
 
@@ -56,12 +60,6 @@ const normalizeLine = (line: string) => {
 */
 const normalizeRecorderName = (definitionString: string) =>
   (definitionString.split("_").pop() || "").toUpperCase();
-
-/* Normaliza funcionalidade do Programa
-   normalizeFunction('funcaoTeste_A') retorna 'funcaoTeste'     precisa ser de acordo com realFunction types do arquivo de constantes (Code.constants.js)
-*/
-const normalizeFunction = (definitionString: string): FunctionType =>
-  definitionString.split("_").shift() as FunctionType;
 
 /* Pega nome da função da linha 
    getFunctionName(2) retornda line2Function
@@ -93,7 +91,11 @@ const setInitialRecorderValue = (recorder: string, value: number) =>
           }
         }
 */
-const generateIfFunction = (lineItems: LineItemsProps[], index: number) => {
+const generateIfFunction = (
+  lineItems: LineItemsProps[],
+  index: number,
+  texts: LanguageType,
+) => {
   const recorderName = normalizeRecorderName(lineItems[0].text);
   const trueLine = normalizeLine(lineItems[2].text);
   const falseLine = normalizeLine(lineItems[4].text);
@@ -105,12 +107,14 @@ const generateIfFunction = (lineItems: LineItemsProps[], index: number) => {
     recorderName,
     index,
     trueLine,
+    texts,
   )});${getFunctionName(
     trueLine,
   )}();}else{log(getFullRecordersValues('${falseLine}')+${ifComps.bad(
     recorderName,
     index,
     falseLine,
+    texts,
   )});${getFunctionName(falseLine)}();}}\n`;
 };
 
@@ -122,9 +126,10 @@ const generateIfFunction = (lineItems: LineItemsProps[], index: number) => {
 const mountFunctionByRecorder = (
   recorderName: string,
   variable: string,
-  funcType: FunctionType,
+  funcType: TheoreticalMachineFunctionsIds,
   line: number,
   nextLine: number | "Return",
+  texts: LanguageType,
 ) =>
   `${realFunction[funcType].func(
     variable,
@@ -132,6 +137,7 @@ const mountFunctionByRecorder = (
     recorderName,
     line,
     nextLine,
+    texts,
   )});`;
 
 /* Gera uma função FUNCTION para uma determinada linha
@@ -145,16 +151,22 @@ const mountFunctionByRecorder = (
             line0Function()
           }
 */
-const generateFunctionFunction = (lineItems: LineItemsProps[], index: number) => {
+const generateFunctionFunction = (
+  lineItems: LineItemsProps[],
+  index: number,
+  texts: LanguageType,
+) => {
   const recorderName = normalizeRecorderName(lineItems[0].text);
   const nextLine = normalizeLine(lineItems[2].text);
-  const functionType = normalizeFunction(lineItems[0].text);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const functionType = lineItems[0].id! as TheoreticalMachineFunctionsIds;
   const realFunction = mountFunctionByRecorder(
     recorderName,
     getRecorderName(recorderName),
     functionType,
     index,
     nextLine,
+    texts,
   );
   return `const ${getFunctionName(
     index,
@@ -162,12 +174,12 @@ const generateFunctionFunction = (lineItems: LineItemsProps[], index: number) =>
 };
 
 /* Gera função de acordo com tipo da linha */
-const generateLineFunction = (line: LineProps, index: number) => {
+const generateLineFunction = (line: LineProps, index: number, texts: LanguageType) => {
   if (line.type === "condition") {
-    return generateIfFunction(line.items, index);
+    return generateIfFunction(line.items, index, texts);
   }
   if (line.type === "function") {
-    return generateFunctionFunction(line.items, index);
+    return generateFunctionFunction(line.items, index, texts);
   }
 };
 
@@ -194,8 +206,10 @@ const generateFullRecordersLog = () => {
 };
 
 /* Roda o primeiro log e chama a função inicial do código escrito */
-const runCode = () =>
-  `log(getFullRecordersValues('0')+${firstCompLine})\n${getFunctionName(0)}()\n`;
+const runCode = (texts: LanguageType) =>
+  `log(getFullRecordersValues('0')+${getFirstCompLine(texts)})\n${getFunctionName(
+    0,
+  )}()\n`;
 
 /* Printa resultado dentro do textarea da tela */
 const printResult = () => `document.getElementById('traceTable').value = programOut;\n`;
@@ -206,12 +220,13 @@ export const generate = (
   lines: LineProps[],
   initialValues: InitialValueObject,
   machineOutputs: TheoreticalMachineFunctionalityDefinitionProps[],
+  texts: LanguageType,
 ) => {
   let fullCode = codeStart;
-  fullCode += codeVerifyInfiniteLoop;
+  fullCode += getCodeVerifyInfiniteLoop(texts);
 
   fullCode += generateLogger();
-  fullCode += generateReturn(machineOutputs);
+  fullCode += generateReturn(machineOutputs, texts);
 
   /* Inicializa todas as variáveis como 0 */
   recorders.forEach(
@@ -226,9 +241,9 @@ export const generate = (
   fullCode += generateRecordersLog(recorders);
   fullCode += generateFullRecordersLog();
 
-  lines.forEach((line, index) => (fullCode += generateLineFunction(line, index)));
+  lines.forEach((line, index) => (fullCode += generateLineFunction(line, index, texts)));
 
-  fullCode += runCode();
+  fullCode += runCode(texts);
   fullCode += printResult();
 
   return fullCode + codeEnd;

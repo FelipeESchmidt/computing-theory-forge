@@ -6,9 +6,10 @@ import * as S from "./styles";
 
 export interface TooltipProps {
   children: React.ReactNode;
+  customIcon?: React.ReactNode;
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({ children }) => {
+export const Tooltip: React.FC<TooltipProps> = ({ children, customIcon }) => {
   const childrenRef = useRef(null);
   const [show, setShow] = useState(false);
 
@@ -16,8 +17,8 @@ export const Tooltip: React.FC<TooltipProps> = ({ children }) => {
 
   return (
     <S.StyledTooltip>
-      <S.StyledTooltipIcon>
-        <AiOutlineQuestionCircle onClick={() => setShow(!show)} />
+      <S.StyledTooltipIcon onClick={() => setShow(!show)}>
+        {customIcon ? customIcon : <AiOutlineQuestionCircle />}
       </S.StyledTooltipIcon>
       <S.StyledTooltipContentWrapper show={show ? 1 : 0}>
         <S.StyledTooltipContent ref={childrenRef}>

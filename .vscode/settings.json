@@ -30,8 +30,10 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "cSpell.language": "en,pt,pt_BR",
   "cSpell.words": [
+    "exponencializa",
     "Exponencializa",
-    "exponencializa"
+    "exponentialize",
+    "exponentialized"
   ],
   "files.eol": "auto",
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
