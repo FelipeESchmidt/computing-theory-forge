@@ -52,8 +52,6 @@ export default function reducer(state = defaultState, action: RecorderActions) {
     }
 
     case constants.CHANGE_LANGUAGE: {
-      console.log("CHANGE_LANGUAGE");
-
       const recordersTranslated = adaptMachineLanguage(state.recorders, action.texts);
       return { ...state, recorders: recordersTranslated, machineIsGenerated: false };
     }

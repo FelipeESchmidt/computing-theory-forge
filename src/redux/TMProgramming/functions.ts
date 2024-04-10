@@ -83,10 +83,12 @@ export const adaptProgrammingLinesLanguage = (
   const translateCondition = (items: LineItemsProps[]) => {
     const newItems = [...conditionType.items];
 
+    const conditionId = items[0].id;
     const comparatorsSelection = translateFunctionality(items[0]);
     const toGoLineSelection = items[2].text;
     const elseGoLineSelection = items[4].text;
 
+    newItems[0].id = conditionId;
     newItems[0].text = comparatorsSelection;
     newItems[2].text = toGoLineSelection;
     newItems[4].text = elseGoLineSelection;
@@ -96,9 +98,11 @@ export const adaptProgrammingLinesLanguage = (
   const translateFunction = (items: LineItemsProps[]) => {
     const newItems = [...functionType.items];
 
+    const functionId = items[0].id;
     const functionSelection = translateFunctionality(items[0]);
     const goToLineSelection = items[2].text;
 
+    newItems[0].id = functionId;
     newItems[0].text = functionSelection;
     newItems[2].text = goToLineSelection;
     return [...functionType.items];
