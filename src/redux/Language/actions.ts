@@ -1,6 +1,7 @@
 import { LanguageOptions } from "@assets/languages";
 import { IRootState } from "@redux/store";
 import { changeMachineLanguage } from "@redux/TMDefinition/actions";
+import { translateProgram } from "@redux/TMProgramming/actions";
 import { UnknownAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
@@ -21,5 +22,6 @@ export const changeLanguageWithThunk = (
     // ACTIONS THAT MUST BE CALLED AFTER CHANGING THE LANGUAGE
     const texts = getState().Language.texts;
     dispatch(changeMachineLanguage(texts));
+    dispatch(translateProgram(texts));
   };
 };

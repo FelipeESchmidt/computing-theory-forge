@@ -1,7 +1,7 @@
 import { TheoreticalMachineFunctionalityIds } from "@globalTypes/theoreticalMachine";
 
 import * as constants from "./constants";
-import { validadePossibleErrors } from "./functions";
+import { adaptProgrammingLinesLanguage, validadePossibleErrors } from "./functions";
 import { LineProps, RecorderActions } from "./types";
 
 const defaultState = {
@@ -20,6 +20,11 @@ export default function reducer(state = defaultState, action: RecorderActions) {
       const newLines = [...state.lines];
       newLines.splice(action.lineIndex, 1);
       return { ...state, lines: newLines, isValid: false };
+    }
+
+    case constants.TRANSLATE_PROGRAM: {
+      const linesTranslated = adaptProgrammingLinesLanguage(state.lines, action.texts);
+      return { ...state, lines: linesTranslated };
     }
 
     case constants.SET_LINE_TYPE: {

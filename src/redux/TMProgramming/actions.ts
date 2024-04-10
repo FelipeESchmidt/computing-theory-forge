@@ -64,3 +64,9 @@ export const validateLines = (texts: LanguageType) =>
     type: constants.VALIDATE_LINES,
     texts,
   } as const);
+
+export const translateProgram = (texts: LanguageType) =>
+  ({
+    type: constants.TRANSLATE_PROGRAM,
+    texts,
+  } as const);

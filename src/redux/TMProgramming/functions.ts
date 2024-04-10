@@ -1,4 +1,6 @@
 import { LanguageType } from "@assets/languages";
+import { getLineTypes } from "@pages/TheoreticalMachine/Programming/constants";
+import { LineItemsProps } from "@pages/TheoreticalMachine/Programming/types";
 
 import { LineProps } from "./types";
 
@@ -59,4 +61,62 @@ export const validadePossibleErrors = (lines: LineProps[], texts: LanguageType) 
     return !e;
   });
   return error;
+};
+
+export const adaptProgrammingLinesLanguage = (
+  lines: LineProps[],
+  texts: LanguageType,
+) => {
+  const { condition: conditionType, function: functionType } = getLineTypes(texts);
+
+  const translateFunctionality = (lineItem: LineItemsProps) => {
+    if (!lineItem.text || !lineItem.id) return "";
+
+    const functionalitySplitted = lineItem.text.split("_");
+    const recorderName = functionalitySplitted[functionalitySplitted.length - 1];
+
+    const definition =
+      texts.theoreticalMachine.definitionStep.functionalities[lineItem.id].definition;
+    return definition.replace(/{recorder}/g, recorderName);
+  };
+
+  const translateCondition = (items: LineItemsProps[]) => {
+    const newItems = [...conditionType.items];
+
+    const comparatorsSelection = translateFunctionality(items[0]);
+    const toGoLineSelection = items[2].text;
+    const elseGoLineSelection = items[4].text;
+
+    newItems[0].text = comparatorsSelection;
+    newItems[2].text = toGoLineSelection;
+    newItems[4].text = elseGoLineSelection;
+    return [...conditionType.items];
+  };
+
+  const translateFunction = (items: LineItemsProps[]) => {
+    const newItems = [...functionType.items];
+
+    const functionSelection = translateFunctionality(items[0]);
+    const goToLineSelection = items[2].text;
+
+    newItems[0].text = functionSelection;
+    newItems[2].text = goToLineSelection;
+    return [...functionType.items];
+  };
+
+  return lines.map((line) => {
+    if (line.type === "condition") {
+      return {
+        type: line.type,
+        items: translateCondition(line.items),
+      };
+    }
+    if (line.type === "function") {
+      return {
+        type: line.type,
+        items: translateFunction(line.items),
+      };
+    }
+    return line;
+  });
 };
