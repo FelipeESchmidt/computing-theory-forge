@@ -67,9 +67,9 @@ export const IT: LanguageType = {
         },
         compareZero: {
           title: "Confronta 0",
-          definition: "is_zero_{recorder}",
+          definition: "e_zero_{recorder}",
           definitionFull:
-            "is_zero_{recorder}: N{length} -> N tale che, ∀({recorders})∈N{length}, is_zero_{recorder}({recorders}) = 1, se {recorder} = 0; is_zero_{recorder}({recorders}) = 0, se {recorder} ≠ 0",
+            "e_zero_{recorder}: N{length} -> N tale che, ∀({recorders})∈N{length}, e_zero_{recorder}({recorders}) = 1, se {recorder} = 0; e_zero_{recorder}({recorders}) = 0, se {recorder} ≠ 0",
         },
       },
     },
