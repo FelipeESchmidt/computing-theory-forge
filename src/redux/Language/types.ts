@@ -1,3 +1,3 @@
 import { changeLanguage } from "./actions";
 
-export type RecorderActions = ReturnType<typeof changeLanguage>;
+export type LanguageActions = ReturnType<typeof changeLanguage>;
