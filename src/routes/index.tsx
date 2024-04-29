@@ -1,12 +1,22 @@
-import { Home } from "@pages/Home";
-import { TheoreticalMachine } from "@pages/TheoreticalMachine";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-export const Router: React.FC = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/theoretical-machine" element={<TheoreticalMachine />} />
-    </Routes>
-  </BrowserRouter>
-);
+import { selectAuthentication } from "@redux/Authentication/selectors";
+
+import { PrivateRoutes } from "./private";
+import { PublicRoutes } from "./public";
+
+export const Router: React.FC = () => {
+  const { loggedIn } = useSelector(selectAuthentication);
+
+  const getRoutes = () => {
+    if (loggedIn) {
+      return <PrivateRoutes />;
+    }
+
+    return <PublicRoutes />;
+  };
+
+  return <BrowserRouter>{getRoutes()}</BrowserRouter>;
+};
