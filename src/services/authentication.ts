@@ -16,3 +16,22 @@ export const login = async (email: string, password: string) => {
 
   return data.responseObject.token;
 };
+
+export const register = async (
+  name: string,
+  email: string,
+  password: string,
+  passwordConfirmation: string,
+) => {
+  const { data } = await api.post<IResponseDataProps<ILoginResponseObjectProps>>(
+    `/auth/register`,
+    {
+      name,
+      email,
+      password,
+      passwordConfirmation,
+    },
+  );
+
+  return data;
+};

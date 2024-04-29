@@ -1,13 +1,40 @@
-import { Input, InputPassword } from "@components/Input";
-import * as S from "./styles";
 import { Button } from "@components/Button";
+import { Input, InputPassword } from "@components/Input";
 import { ThemeSwitch } from "@components/ThemeSwitch";
+import { register } from "@services/authentication";
+import React from "react";
+
+import * as S from "./styles";
 
 interface SignInProps {
   onLoginClick: () => void;
 }
 
 export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
+  const [values, setValues] = React.useState({
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+  });
+
+  const handleChangeInput = (value: string, id: string) => {
+    setValues({ ...values, [id]: value });
+  };
+
+  const handleRegister = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    const name = values.name;
+    const email = values.email;
+    const password = values.password;
+    const passwordConfirmation = values.passwordConfirmation;
+    try {
+      await register(name, email, password, passwordConfirmation);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <S.FormContainer>
       <S.SwitchThemeContainer>
@@ -15,17 +42,27 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
       </S.SwitchThemeContainer>
       <S.Title>Cadastrar-se</S.Title>
       <S.Form>
-        <Input id="name" label="Name" value="" onChange={() => {}} />
-        <Input id="email" label="Email" value="" onChange={() => {}} />
-        <InputPassword id="password" label="Senha" value="" onChange={() => {}} />
+        <Input id="name" label="Name" value={values.name} onChange={handleChangeInput} />
+        <Input
+          id="email"
+          label="Email"
+          value={values.email}
+          onChange={handleChangeInput}
+        />
         <InputPassword
-          id="password-confirmation"
+          id="password"
+          label="Senha"
+          value={values.password}
+          onChange={handleChangeInput}
+        />
+        <InputPassword
+          id="passwordConfirmation"
           label="Confirmação de senha"
-          value=""
-          onChange={() => {}}
+          value={values.passwordConfirmation}
+          onChange={handleChangeInput}
         />
         <S.ButtonContainer>
-          <Button onClick={() => null} text="Cadastrar-se" variant="contained" />
+          <Button onClick={handleRegister} text="Cadastrar-se" variant="contained" />
         </S.ButtonContainer>
       </S.Form>
       <S.BottomContainer>
