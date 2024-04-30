@@ -1,8 +1,10 @@
 import { Button } from "@components/Button";
 import { Input, InputPassword } from "@components/Input";
 import { ThemeSwitch } from "@components/ThemeSwitch";
+import { newMessage } from "@redux/AlertMessage/actions";
 import { register } from "@services/authentication";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import * as S from "./styles";
 
@@ -11,6 +13,8 @@ interface SignInProps {
 }
 
 export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
+  const dispatch = useDispatch();
+
   const [values, setValues] = React.useState({
     name: "",
     email: "",
@@ -30,8 +34,12 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
     const passwordConfirmation = values.passwordConfirmation;
     try {
       await register(name, email, password, passwordConfirmation);
+      onLoginClick();
     } catch (error) {
-      console.error(error);
+      if (typeof error === "string") {
+        dispatch(newMessage(error, "danger"));
+        return;
+      }
     }
   };
 

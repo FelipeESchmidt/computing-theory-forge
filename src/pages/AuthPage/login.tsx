@@ -1,11 +1,11 @@
+import { Button } from "@components/Button";
+import { Input, InputPassword } from "@components/Input";
+import { ThemeSwitch } from "@components/ThemeSwitch";
+import { newMessage } from "@redux/AlertMessage/actions";
+import { updateToken } from "@redux/Authentication/actions";
+import { login } from "@services/authentication";
 import React from "react";
 import { useDispatch } from "react-redux";
-
-import { updateToken } from "@redux/Authentication/actions";
-import { Input, InputPassword } from "@components/Input";
-import { Button } from "@components/Button";
-import { ThemeSwitch } from "@components/ThemeSwitch";
-import { login } from "@services/authentication";
 
 import * as S from "./styles";
 
@@ -30,10 +30,14 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
     const email = values.email;
     const password = values.password;
     try {
-      const token = await login(email, password);
-      dispatch(updateToken(token));
+      const response = await login(email, password);
+      dispatch(updateToken(response.responseObject.token));
+      dispatch(newMessage(response.message, "success"));
     } catch (error) {
-      console.error(error);
+      if (typeof error === "string") {
+        dispatch(newMessage(error, "danger"));
+        return;
+      }
     }
   };
 
