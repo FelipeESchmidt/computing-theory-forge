@@ -22,10 +22,10 @@ api.interceptors.response.use(
     }
     return response;
   },
-  (error: AxiosError<{ error: string }>) => {
+  (error: AxiosError<{ message: string }>) => {
     if (error.response) {
-      const errorMessage = error.response.data.error;
-      return Promise.reject(`Erro na resposta: ${errorMessage}`);
+      const errorMessage = error.response.data.message;
+      return Promise.reject(errorMessage);
     }
     if (error.request) {
       return Promise.reject("Não foi possível obter resposta do servidor.");
