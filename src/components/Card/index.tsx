@@ -3,15 +3,10 @@ import React from "react";
 import * as S from "./styles";
 
 export interface CardProps {
-  title: string;
-  description: string;
+  children: React.ReactNode;
+  onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ description, title }) => {
-  return (
-    <S.StyledCard>
-      <S.StyledCardTitle>{title}</S.StyledCardTitle>
-      <S.StyledCardDescription>{description}</S.StyledCardDescription>
-    </S.StyledCard>
-  );
+export const Card: React.FC<CardProps> = ({ children, onClick }) => {
+  return <S.StyledCard onClick={onClick}>{children}</S.StyledCard>;
 };
