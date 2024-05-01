@@ -1,4 +1,5 @@
 import { IRootState } from "@redux/store";
+import { tokenIsValid } from "@utils/token";
 import { UnknownAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
@@ -29,7 +30,7 @@ export const validateAlreadyLoggedIn = (): ThunkAction<
   return (dispatch) => {
     const token = localStorage.getItem("token");
 
-    if (token) {
+    if (token && tokenIsValid(token)) {
       dispatch(updateToken(token));
     }
   };
