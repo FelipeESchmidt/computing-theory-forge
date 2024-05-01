@@ -2,9 +2,10 @@ import { Button } from "@components/Button";
 import { Input, InputPassword } from "@components/Input";
 import { ThemeSwitch } from "@components/ThemeSwitch";
 import { newMessage } from "@redux/AlertMessage/actions";
+import { selectLanguage } from "@redux/Language/selectors";
 import { register } from "@services/authentication";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as S from "./styles";
 
@@ -14,6 +15,8 @@ interface SignInProps {
 
 export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
   const dispatch = useDispatch();
+
+  const { texts } = useSelector(selectLanguage);
 
   const [values, setValues] = React.useState({
     name: "",
@@ -48,34 +51,43 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
       <S.SwitchThemeContainer>
         <ThemeSwitch />
       </S.SwitchThemeContainer>
-      <S.Title>Cadastrar-se</S.Title>
+      <S.Title>{texts.auth.register.title}</S.Title>
       <S.Form>
-        <Input id="name" label="Name" value={values.name} onChange={handleChangeInput} />
+        <Input
+          id="name"
+          label={texts.auth.register.name}
+          value={values.name}
+          onChange={handleChangeInput}
+        />
         <Input
           id="email"
-          label="Email"
+          label={texts.auth.register.email}
           value={values.email}
           onChange={handleChangeInput}
         />
         <InputPassword
           id="password"
-          label="Senha"
+          label={texts.auth.register.password}
           value={values.password}
           onChange={handleChangeInput}
         />
         <InputPassword
           id="passwordConfirmation"
-          label="Confirmação de senha"
+          label={texts.auth.register.passwordConfirmation}
           value={values.passwordConfirmation}
           onChange={handleChangeInput}
         />
         <S.ButtonContainer>
-          <Button onClick={handleRegister} text="Cadastrar-se" variant="contained" />
+          <Button
+            onClick={handleRegister}
+            text={texts.auth.register.button}
+            variant="contained"
+          />
         </S.ButtonContainer>
       </S.Form>
       <S.BottomContainer>
-        <S.Text>Já possui uma conta?</S.Text>
-        <S.Link onClick={onLoginClick}>Login</S.Link>
+        <S.Text>{texts.auth.register.alreadyUser}</S.Text>
+        <S.Link onClick={onLoginClick}>{texts.auth.login.title}</S.Link>
       </S.BottomContainer>
     </S.FormContainer>
   );

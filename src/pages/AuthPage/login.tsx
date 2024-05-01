@@ -3,9 +3,10 @@ import { Input, InputPassword } from "@components/Input";
 import { ThemeSwitch } from "@components/ThemeSwitch";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { updateToken } from "@redux/Authentication/actions";
+import { selectLanguage } from "@redux/Language/selectors";
 import { login } from "@services/authentication";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as S from "./styles";
 
@@ -15,6 +16,8 @@ interface LoginProps {
 
 export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
   const dispatch = useDispatch();
+
+  const { texts } = useSelector(selectLanguage);
 
   const [values, setValues] = React.useState({
     email: "",
@@ -46,27 +49,31 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
       <S.SwitchThemeContainer>
         <ThemeSwitch />
       </S.SwitchThemeContainer>
-      <S.Title>Entrar</S.Title>
+      <S.Title>{texts.auth.login.title}</S.Title>
       <S.Form>
         <Input
           id="email"
-          label="Email"
+          label={texts.auth.login.email}
           value={values.email}
           onChange={handleChangeInput}
         />
         <InputPassword
           id="password"
-          label="Senha"
+          label={texts.auth.login.password}
           value={values.password}
           onChange={handleChangeInput}
         />
         <S.ButtonContainer>
-          <Button onClick={handleLogin} text="Entrar" variant="contained" />
+          <Button
+            onClick={handleLogin}
+            text={texts.auth.login.button}
+            variant="contained"
+          />
         </S.ButtonContainer>
       </S.Form>
       <S.BottomContainer>
-        <S.Text>Não possui conta ainda?</S.Text>
-        <S.Link onClick={onRegisterClick}>Cadastrar-se</S.Link>
+        <S.Text>{texts.auth.login.notUserYet}</S.Text>
+        <S.Link onClick={onRegisterClick}>{texts.auth.register.title}</S.Link>
       </S.BottomContainer>
     </S.FormContainer>
   );

@@ -9,6 +9,24 @@ export const BR = {
   basic: {
     nextStep: "Próximo Passo",
   },
+  auth: {
+    login: {
+      title: "Entrar",
+      email: "E-mail",
+      password: "Senha",
+      button: "Entrar",
+      notUserYet: "Não possui conta ainda?",
+    },
+    register: {
+      title: "Cadastrar-se",
+      name: "Nome",
+      email: "E-mail",
+      password: "Senha",
+      passwordConfirmation: "Confirmação de Senha",
+      button: "Cadastrar-se",
+      alreadyUser: "Já possui conta?",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "Definição",
