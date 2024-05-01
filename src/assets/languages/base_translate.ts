@@ -47,6 +47,7 @@ export const Base_Translate: LanguageType = {
       password: "Password",
       button: "Login",
       notUserYet: "Don't have an account yet?",
+      logout: "Logout",
     },
     register: {
       title: "Register",

@@ -16,6 +16,7 @@ export const BR = {
       password: "Senha",
       button: "Entrar",
       notUserYet: "Não possui conta ainda?",
+      logout: "Sair",
     },
     register: {
       title: "Cadastrar-se",
