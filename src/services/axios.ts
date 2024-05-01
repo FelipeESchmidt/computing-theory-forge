@@ -1,5 +1,3 @@
-"use client";
-
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 import { IResponseDataProps } from "./types";

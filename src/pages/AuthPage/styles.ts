@@ -1,4 +1,4 @@
-import { styled, keyframes } from "styled-components";
+import { keyframes, styled } from "styled-components";
 
 export const flip = keyframes`
   0% {

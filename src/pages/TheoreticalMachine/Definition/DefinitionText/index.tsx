@@ -3,7 +3,7 @@ import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import React from "react";
 import { useSelector } from "react-redux";
 
-export const DefinitionText = () => {
+export const DefinitionText: React.FC = () => {
   const { machine } = useSelector(TMDefinitionSelector);
 
   return <TextArea readOnly value={machine.definitionText} />;

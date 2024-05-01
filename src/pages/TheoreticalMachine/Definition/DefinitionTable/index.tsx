@@ -11,7 +11,6 @@ import React, { useMemo } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { FiPlusCircle, FiTrash } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "redux";
 
 import { getWhatTheFESMachineIsAbleToDo } from "../constants";
 import * as S from "./styles";
