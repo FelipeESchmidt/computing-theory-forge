@@ -8,3 +8,12 @@ export const tokenIsValid = (token: string): boolean => {
     return false;
   }
 };
+
+export const getTokenEmail = (token: string): string => {
+  try {
+    const decoded = jwtDecode(token) as { email: string };
+    return decoded.email;
+  } catch (e) {
+    return "";
+  }
+};
