@@ -2,11 +2,12 @@ import { Button } from "@components/Button";
 import { Input, InputPassword } from "@components/Input";
 import { ThemeSwitch } from "@components/ThemeSwitch";
 import { newMessage } from "@redux/AlertMessage/actions";
-import { updateToken } from "@redux/Authentication/actions";
+import { updateTokenAndSave } from "@redux/Authentication/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import { login } from "@services/authentication";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 
 import * as S from "./styles";
 
@@ -15,7 +16,7 @@ interface LoginProps {
 }
 
 export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
 
   const { texts } = useSelector(selectLanguage);
 
@@ -34,7 +35,7 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
     const password = values.password;
     try {
       const response = await login(email, password);
-      dispatch(updateToken(response.responseObject.token));
+      dispatch(updateTokenAndSave(response.responseObject.token));
       dispatch(newMessage(response.message, "success"));
     } catch (error) {
       if (typeof error === "string") {
