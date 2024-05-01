@@ -1,6 +1,5 @@
 import { Button } from "@components/Button";
 import { Input, InputPassword } from "@components/Input";
-import { ThemeSwitch } from "@components/ThemeSwitch";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { updateTokenAndSave } from "@redux/Authentication/actions";
 import { selectLanguage } from "@redux/Language/selectors";
@@ -47,9 +46,6 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
 
   return (
     <S.FormContainer>
-      <S.SwitchThemeContainer>
-        <ThemeSwitch />
-      </S.SwitchThemeContainer>
       <S.Title>{texts.auth.login.title}</S.Title>
       <S.Form>
         <Input

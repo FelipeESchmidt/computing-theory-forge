@@ -18,12 +18,18 @@ export const flip = keyframes`
   }
 `;
 
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
 export const MainContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex: 1;
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.5s;
@@ -45,13 +51,18 @@ export const BaseContainer = styled.div<{ reversed?: 1 | 0 }>`
   backface-visibility: hidden;
   transform: ${({ reversed }) => (reversed ? "rotateY(180deg)" : "rotateY(0deg)")};
   color: ${({ theme }) => theme.principal.text};
-`;
 
-export const SwitchThemeContainer = styled.div`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
+  @media (max-width: 1024px) {
+    width: 60vw;
+  }
+
+  @media (max-width: 768px) {
+    width: 70vw;
+  }
+
+  @media (max-width: 420px) {
+    width: 85vw;
+  }
 `;
 
 export const FormContainer = styled.div`
