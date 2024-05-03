@@ -11,6 +11,25 @@ export const CN: LanguageType = {
   basic: {
     nextStep: "下一步",
   },
+  auth: {
+    login: {
+      title: "登录",
+      email: "电子邮件",
+      password: "密码",
+      button: "登录",
+      notUserYet: "还没有账户？",
+      logout: "退出登录",
+    },
+    register: {
+      title: "注册",
+      name: "姓名",
+      email: "电子邮件",
+      password: "密码",
+      passwordConfirmation: "确认密码",
+      button: "注册",
+      alreadyUser: "已经有账户？",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "定义",

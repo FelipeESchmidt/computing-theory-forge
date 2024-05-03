@@ -11,6 +11,25 @@ export const NO: LanguageType = {
   basic: {
     nextStep: "Neste steg",
   },
+  auth: {
+    login: {
+      title: "Logg inn",
+      email: "E-post",
+      password: "Passord",
+      button: "Logg inn",
+      notUserYet: "Har du ikke en konto ennå?",
+      logout: "Logg ut",
+    },
+    register: {
+      title: "Registrer",
+      name: "Navn",
+      email: "E-post",
+      password: "Passord",
+      passwordConfirmation: "Bekreft passord",
+      button: "Registrer",
+      alreadyUser: "Har du allerede en konto?",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "Definisjon",

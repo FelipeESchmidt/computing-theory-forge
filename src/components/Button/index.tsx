@@ -7,7 +7,7 @@ export interface ButtonProps {
   variant: "contained" | "outlined";
   disabled?: boolean;
   icon?: React.ReactNode;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent) => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({

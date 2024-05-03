@@ -11,6 +11,25 @@ export const KR: LanguageType = {
   basic: {
     nextStep: "다음 단계",
   },
+  auth: {
+    login: {
+      title: "로그인",
+      email: "이메일",
+      password: "비밀번호",
+      button: "로그인",
+      notUserYet: "아직 계정이 없으신가요?",
+      logout: "로그아웃",
+    },
+    register: {
+      title: "회원가입",
+      name: "이름",
+      email: "이메일",
+      password: "비밀번호",
+      passwordConfirmation: "비밀번호 확인",
+      button: "회원가입",
+      alreadyUser: "이미 계정이 있으신가요?",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "정의",

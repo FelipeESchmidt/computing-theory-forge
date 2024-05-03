@@ -9,6 +9,7 @@ const alias = [
   "contexts",
   "pages",
   "redux",
+  "services",
   "utils",
   "globalTypes",
 ];

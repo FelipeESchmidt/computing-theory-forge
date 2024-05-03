@@ -11,6 +11,25 @@ export const UA: LanguageType = {
   basic: {
     nextStep: "Наступний Крок",
   },
+  auth: {
+    login: {
+      title: "Увійти",
+      email: "Електронна пошта",
+      password: "Пароль",
+      button: "Увійти",
+      notUserYet: "Ще немає облікового запису?",
+      logout: "Вийти",
+    },
+    register: {
+      title: "Реєстрація",
+      name: "Ім'я",
+      email: "Електронна пошта",
+      password: "Пароль",
+      passwordConfirmation: "Підтвердження пароля",
+      button: "Зареєструватися",
+      alreadyUser: "Вже є обліковий запис?",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "Визначення",

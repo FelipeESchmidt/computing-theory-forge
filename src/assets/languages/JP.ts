@@ -11,6 +11,25 @@ export const JP: LanguageType = {
   basic: {
     nextStep: "次のステップ",
   },
+  auth: {
+    login: {
+      title: "ログイン",
+      email: "メールアドレス",
+      password: "パスワード",
+      button: "ログイン",
+      notUserYet: "まだアカウントを持っていませんか？",
+      logout: "ログアウト",
+    },
+    register: {
+      title: "登録",
+      name: "名前",
+      email: "メールアドレス",
+      password: "パスワード",
+      passwordConfirmation: "パスワードの確認",
+      button: "登録",
+      alreadyUser: "すでにアカウントをお持ちですか？",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "定義",

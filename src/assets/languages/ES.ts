@@ -11,6 +11,25 @@ export const ES: LanguageType = {
   basic: {
     nextStep: "Siguiente Paso",
   },
+  auth: {
+    login: {
+      title: "Inicio de sesión",
+      email: "Correo electrónico",
+      password: "Contraseña",
+      button: "Iniciar sesión",
+      notUserYet: "¿Todavía no tienes una cuenta?",
+      logout: "Cerrar sesión",
+    },
+    register: {
+      title: "Registro",
+      name: "Nombre",
+      email: "Correo electrónico",
+      password: "Contraseña",
+      passwordConfirmation: "Confirmación de contraseña",
+      button: "Registrarse",
+      alreadyUser: "¿Ya tienes una cuenta?",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "Definición",

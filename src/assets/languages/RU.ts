@@ -11,6 +11,25 @@ export const RU: LanguageType = {
   basic: {
     nextStep: "Следующий шаг",
   },
+  auth: {
+    login: {
+      title: "Вход",
+      email: "Электронная почта",
+      password: "Пароль",
+      button: "Войти",
+      notUserYet: "Еще нет аккаунта?",
+      logout: "Выйти",
+    },
+    register: {
+      title: "Регистрация",
+      name: "Имя",
+      email: "Электронная почта",
+      password: "Пароль",
+      passwordConfirmation: "Подтверждение пароля",
+      button: "Зарегистрироваться",
+      alreadyUser: "Уже есть аккаунт?",
+    },
+  },
   theoreticalMachine: {
     definitionStep: {
       stepTitle: "Определение",

@@ -7,7 +7,7 @@ export interface InputProps {
   id: string;
   label: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: string, id: string) => void;
   rightIcon?: React.ReactNode;
   type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
 }
@@ -21,7 +21,7 @@ export const Input: React.FC<InputProps> = ({
   type = "text",
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    onChange(e.target.value, id);
   };
 
   return (

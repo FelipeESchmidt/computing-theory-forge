@@ -23,6 +23,7 @@
       "@contexts/*": ["contexts/*"],
       "@pages/*": ["pages/*"],
       "@redux/*": ["redux/*"],
+      "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
       "@globalTypes/*": ["types/*"]
     }

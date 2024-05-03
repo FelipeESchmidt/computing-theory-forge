@@ -2,6 +2,7 @@ import { Container } from "@components/Container";
 import { LanguageSelector } from "@components/LanguageSelector";
 import { Stepper } from "@components/Stepper";
 import { ThemeSwitch } from "@components/ThemeSwitch";
+import { UserSettings } from "@components/UserSettings";
 import { useHeaderController } from "@contexts/HeaderProvider";
 import React, { useMemo } from "react";
 import { useTheme } from "styled-components";
@@ -34,6 +35,7 @@ export const Header: React.FC = () => {
             {stepperMemoized}
             <ThemeSwitch />
             <LanguageSelector />
+            <UserSettings />
           </S.StyledHandlersContainer>
         </S.StyledHeaderContainer>
       </Container>
