@@ -20,6 +20,10 @@ export const StyledProductContainer = styled.div`
 `;
 
 export const StyledProductTitle = styled.h3`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
   color: ${({ theme }) => theme.principal.text};
 `;
 
@@ -35,6 +39,7 @@ export const StyledProductCards = styled.div`
 `;
 
 export const StyledCardContainer = styled.div<{ vertical?: 1 }>`
+  height: 100%;
   display: flex;
   flex-direction: ${({ vertical }) => (vertical ? "column" : "row")};
   align-items: ${({ vertical }) => (vertical ? "flex-start" : "center")};
