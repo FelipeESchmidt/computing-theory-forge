@@ -29,6 +29,14 @@ export const RU: LanguageType = {
       button: "Зарегистрироваться",
       alreadyUser: "Уже есть аккаунт?",
     },
+    update: {
+      name: "Имя",
+      email: "Электронная почта",
+      password: "Старый пароль",
+      newPassword: "Новый пароль",
+      newPasswordConfirmation: "Подтверждение нового пароля",
+      button: "Обновить",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

@@ -58,6 +58,14 @@ export const Base_Translate: LanguageType = {
       button: "Register",
       alreadyUser: "Already have an account?",
     },
+    update: {
+      name: "Name",
+      email: "E-mail",
+      password: "Old Password",
+      newPassword: "New Password",
+      newPasswordConfirmation: "New Password Confirmation",
+      button: "Update",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

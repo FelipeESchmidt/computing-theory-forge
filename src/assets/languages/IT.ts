@@ -29,6 +29,14 @@ export const IT: LanguageType = {
       button: "Registrati",
       alreadyUser: "Hai già un account?",
     },
+    update: {
+      name: "Nome",
+      email: "E-mail",
+      password: "Password Vecchia",
+      newPassword: "Nuova Password",
+      newPasswordConfirmation: "Conferma Nuova Password",
+      button: "Aggiornare",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

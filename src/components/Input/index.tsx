@@ -10,6 +10,7 @@ export interface InputProps {
   onChange: (value: string, id: string) => void;
   rightIcon?: React.ReactNode;
   type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
+  disabled?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -18,6 +19,7 @@ export const Input: React.FC<InputProps> = ({
   value,
   onChange,
   rightIcon,
+  disabled = false,
   type = "text",
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +35,7 @@ export const Input: React.FC<InputProps> = ({
         value={value}
         onChange={handleChange}
         data-value={value}
+        disabled={disabled}
       />
       <S.Label htmlFor={id}>{label}</S.Label>
     </S.InputContainer>

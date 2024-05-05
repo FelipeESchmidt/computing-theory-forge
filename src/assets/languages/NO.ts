@@ -29,6 +29,14 @@ export const NO: LanguageType = {
       button: "Registrer",
       alreadyUser: "Har du allerede en konto?",
     },
+    update: {
+      name: "Navn",
+      email: "E-post",
+      password: "Gammelt Passord",
+      newPassword: "Nytt Passord",
+      newPasswordConfirmation: "Bekreft Nytt Passord",
+      button: "Oppdater",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

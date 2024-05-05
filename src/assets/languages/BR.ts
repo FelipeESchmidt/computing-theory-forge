@@ -27,6 +27,14 @@ export const BR = {
       button: "Cadastrar-se",
       alreadyUser: "Já possui conta?",
     },
+    update: {
+      name: "Nome",
+      email: "E-mail",
+      password: "Senha Antiga",
+      newPassword: "Nova Senha",
+      newPasswordConfirmation: "Confirmação de Nova Senha",
+      button: "Atualizar",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

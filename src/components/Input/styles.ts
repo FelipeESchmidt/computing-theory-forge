@@ -54,6 +54,10 @@ export const Input = styled.input`
     transform: translate(2px, -20px) scale(0.85);
     transform-origin: 0 0;
   }
+  &:disabled {
+    color: ${({ theme }) => theme.principal.text}80;
+    cursor: not-allowed;
+  }
 `;
 
 export const StyledIcon = styled.div`

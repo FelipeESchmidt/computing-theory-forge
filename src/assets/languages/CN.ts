@@ -29,6 +29,14 @@ export const CN: LanguageType = {
       button: "注册",
       alreadyUser: "已经有账户？",
     },
+    update: {
+      name: "姓名",
+      email: "电子邮件",
+      password: "旧密码",
+      newPassword: "新密码",
+      newPasswordConfirmation: "确认新密码",
+      button: "更新",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

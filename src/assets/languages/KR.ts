@@ -29,6 +29,14 @@ export const KR: LanguageType = {
       button: "회원가입",
       alreadyUser: "이미 계정이 있으신가요?",
     },
+    update: {
+      name: "이름",
+      email: "이메일",
+      password: "기존 비밀번호",
+      newPassword: "새 비밀번호",
+      newPasswordConfirmation: "새 비밀번호 확인",
+      button: "업데이트",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

@@ -29,6 +29,14 @@ export const UA: LanguageType = {
       button: "Зареєструватися",
       alreadyUser: "Вже є обліковий запис?",
     },
+    update: {
+      name: "Ім'я",
+      email: "Електронна пошта",
+      password: "Старий пароль",
+      newPassword: "Новий пароль",
+      newPasswordConfirmation: "Підтвердження нового пароля",
+      button: "Оновити",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

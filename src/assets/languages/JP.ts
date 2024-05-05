@@ -29,6 +29,14 @@ export const JP: LanguageType = {
       button: "登録",
       alreadyUser: "すでにアカウントをお持ちですか？",
     },
+    update: {
+      name: "名前",
+      email: "メールアドレス",
+      password: "古いパスワード",
+      newPassword: "新しいパスワード",
+      newPasswordConfirmation: "新しいパスワードの確認",
+      button: "更新",
+    },
   },
   theoreticalMachine: {
     definitionStep: {

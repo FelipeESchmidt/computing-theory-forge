@@ -28,3 +28,40 @@ export const StyledIcon = styled.span`
     color: ${({ theme }) => theme.principal.text};
   }
 `;
+
+export const UserSettingsTooltipContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+`;
+
+export const TopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const UserName = styled.h3`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.principal.text};
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+`;
