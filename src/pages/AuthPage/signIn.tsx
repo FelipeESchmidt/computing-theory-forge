@@ -72,6 +72,13 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
           label={texts.auth.register.passwordConfirmation}
           value={values.passwordConfirmation}
           onChange={handleChangeInput}
+          additionalValidations={[
+            {
+              id: "passwordMatch",
+              label: "Passwords must match",
+              validation: (password) => password === values.password,
+            },
+          ]}
         />
         <S.ButtonContainer>
           <Button

@@ -59,6 +59,7 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
           label={texts.auth.login.password}
           value={values.password}
           onChange={handleChangeInput}
+          hideValidations
         />
         <S.ButtonContainer>
           <Button
