@@ -1,4 +1,4 @@
-import { css, styled } from "styled-components";
+import { css, DefaultTheme, styled } from "styled-components";
 
 export const InputContainer = styled.div`
   position: relative;
@@ -81,4 +81,26 @@ export const InputPasswordIcon = styled.div`
       color: ${({ theme }) => theme.brand.light};
     }
   }
+`;
+
+export const InputPasswordValidations = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+`;
+
+export const InputPasswordContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const getValidationColor = (valid: 1 | 0, hasValue: 1 | 0, theme: DefaultTheme) => {
+  if (!hasValue) return theme.principal.text;
+  return valid ? theme.indicators.success : theme.indicators.danger;
+};
+export const ValidationText = styled.p<{ hasValue: 1 | 0; valid: 1 | 0 }>`
+  color: ${({ valid, hasValue, theme }) => getValidationColor(valid, hasValue, theme)};
+  font-size: 0.75rem;
+  transition: color 0.25s ease-out;
 `;
