@@ -19,6 +19,7 @@ export const UserSettingsContainer = styled.div`
 `;
 
 export const StyledIcon = styled.span`
+  display: flex;
   width: 16px;
   height: 16px;
   font-size: 16px;

@@ -8,7 +8,7 @@ import { selectLanguage } from "@redux/Language/selectors";
 import { updateUser } from "@services/authentication";
 import { getTokenEmail, getTokenName } from "@utils/token";
 import React, { useEffect } from "react";
-import { FaUser } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 
@@ -78,10 +78,10 @@ export const UserSettings: React.FC = () => {
   return (
     <S.UserSettingsContainer>
       <Tooltip
-        switchClose={show}
+        forceHide={show}
         customIcon={
           <S.StyledIcon>
-            <FaUser />
+            <FiUser />
           </S.StyledIcon>
         }
       >

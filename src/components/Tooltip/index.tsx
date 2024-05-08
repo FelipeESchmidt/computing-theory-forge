@@ -6,14 +6,16 @@ import * as S from "./styles";
 
 export interface TooltipProps {
   children: React.ReactNode;
+  disabled?: boolean;
   customIcon?: React.ReactNode;
-  switchClose?: boolean;
+  forceHide?: boolean;
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
   customIcon,
-  switchClose,
+  forceHide,
+  disabled = false,
 }) => {
   const childrenRef = useRef(null);
   const [firstRender, setFirstRender] = useState(true);
@@ -21,17 +23,22 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   useClickOutside(childrenRef, () => setShow(false));
 
+  const handleTooltipClick = () => {
+    if (disabled) return;
+    setShow(!show);
+  };
+
   useEffect(() => {
     if (firstRender) {
       setFirstRender(false);
       return;
     }
-    setShow(!show);
-  }, [switchClose]);
+    setShow(false);
+  }, [forceHide]);
 
   return (
-    <S.StyledTooltip>
-      <S.StyledTooltipIcon onClick={() => setShow(!show)}>
+    <S.StyledTooltip disabled={disabled ? 1 : 0}>
+      <S.StyledTooltipIcon onClick={handleTooltipClick}>
         {customIcon ? customIcon : <AiOutlineQuestionCircle />}
       </S.StyledTooltipIcon>
       <S.StyledTooltipContentWrapper show={show ? 1 : 0}>
