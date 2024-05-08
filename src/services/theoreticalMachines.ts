@@ -17,3 +17,15 @@ export const getAllMachines = async (): Promise<ISavedTheoreticalMachineProps[]>
 
   return data.responseObject;
 };
+
+export const saveMachine = async (
+  name: string,
+  machine: IMinifiedMachine,
+): Promise<IResponseDataProps<ISavedTheoreticalMachineProps>> => {
+  const { data } = await api.post<IResponseDataProps<ISavedTheoreticalMachineProps>>(
+    `/theoretical-machineService/save-machine`,
+    { name, machine },
+  );
+
+  return data;
+};

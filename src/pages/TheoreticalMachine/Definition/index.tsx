@@ -18,6 +18,7 @@ import { Dispatch } from "redux";
 import { getWhatTheFESMachineIsAbleToDo, recorderLimits } from "./constants";
 import { DefinitionTable } from "./DefinitionTable";
 import DefinitionText from "./DefinitionText";
+import { SaveTooltip } from "./SaveTooltip";
 import * as S from "./styles";
 
 export const Definition: React.FC = () => {
@@ -121,7 +122,10 @@ export const Definition: React.FC = () => {
           <S.DefinitionTitle>
             {texts.theoreticalMachine.definitionStep.title}
           </S.DefinitionTitle>
-          {renderSecondaryButton()}
+          <S.RightHandlersContainer>
+            {renderSecondaryButton()}
+            <SaveTooltip />
+          </S.RightHandlersContainer>
         </S.TopWrapper>
         <S.DefinitionWrapper>
           <DefinitionTable onSelectFunctionality={onSelectFunctionality} />

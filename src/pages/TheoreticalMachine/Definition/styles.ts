@@ -40,3 +40,9 @@ export const DefinitionWrapper = styled.div`
   gap: 16px;
   margin-bottom: 32px;
 `;
+
+export const RightHandlersContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: center;
+`;
