@@ -5,14 +5,20 @@ import { ThemeSwitch } from "@components/ThemeSwitch";
 import { UserSettings } from "@components/UserSettings";
 import { useHeaderController } from "@contexts/HeaderProvider";
 import React, { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 import * as S from "./styles";
 
 export const Header: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const { steps, activeStep, jumpToStep } = useHeaderController();
+
+  const handleGoToHome = () => {
+    navigate("/");
+  };
 
   const stepperMemoized = useMemo(
     () => (
@@ -30,7 +36,7 @@ export const Header: React.FC = () => {
     <S.StyledHeader>
       <Container>
         <S.StyledHeaderContainer>
-          <S.StyledTitle>Computing Theory Forge</S.StyledTitle>
+          <S.StyledTitle onClick={handleGoToHome}>Computing Theory Forge</S.StyledTitle>
           <S.StyledHandlersContainer>
             {stepperMemoized}
             <ThemeSwitch />
