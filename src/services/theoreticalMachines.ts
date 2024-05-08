@@ -29,3 +29,11 @@ export const saveMachine = async (
 
   return data;
 };
+
+export const deleteMachine = async (id: number): Promise<IResponseDataProps<null>> => {
+  const { data } = await api.delete<IResponseDataProps<null>>(
+    `/theoretical-machineService/delete-machine/${id}`,
+  );
+
+  return data;
+};

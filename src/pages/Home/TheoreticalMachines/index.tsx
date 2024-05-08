@@ -3,6 +3,7 @@ import { newMessage } from "@redux/AlertMessage/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import { createTheoreticalMachine } from "@redux/TMDefinition/actions";
 import {
+  deleteMachine,
   getAllMachines,
   ISavedTheoreticalMachineProps,
 } from "@services/theoreticalMachines";
@@ -40,6 +41,23 @@ export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ produc
     handleGoToMachineDefinition();
   };
 
+  const handleRemoveMachine = async (
+    machine: ISavedTheoreticalMachineProps,
+    event: React.MouseEvent,
+  ) => {
+    event.stopPropagation();
+    try {
+      const response = await deleteMachine(machine.id);
+      dispatch(newMessage(response.message, "success"));
+      setSavedMachines((prev) => prev.filter((m) => m.id !== machine.id));
+    } catch (error) {
+      if (typeof error === "string") {
+        dispatch(newMessage(error, "danger"));
+        return;
+      }
+    }
+  };
+
   React.useEffect(() => {
     (async () => {
       try {
@@ -64,6 +82,7 @@ export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ produc
           key={machine.id}
           title={machine.name}
           onClick={() => handleSavedCardClick(machine)}
+          onRemove={(event) => handleRemoveMachine(machine, event)}
         />
       ))}
       {isLoading && <Skeleton />}

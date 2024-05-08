@@ -39,6 +39,7 @@ export const StyledProductCards = styled.div`
 `;
 
 export const StyledCardContainer = styled.div<{ vertical?: 1 }>`
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: ${({ vertical }) => (vertical ? "column" : "row")};
@@ -51,4 +52,20 @@ export const StyledNewIcon = styled.div`
   height: 20px;
   font-size: 20px;
   color: ${({ theme }) => theme.principal.text};
+`;
+
+export const StyledRemoveMachine = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  > svg {
+    cursor: pointer;
+    font-size: 18px;
+    color: ${({ theme }) => theme.principal.text};
+  }
+  &:hover {
+    > svg {
+      color: ${({ theme }) => theme.indicators.danger};
+    }
+  }
 `;
