@@ -46,6 +46,9 @@ export const KR: LanguageType = {
       title: "생성된 기계 저장",
       name: "기계 이름",
       button: "저장",
+      titleUpdate: "기계 업데이트 또는 저장",
+      buttonUpdate: "업데이트",
+      buttonSaveNew: "새로 저장",
     },
     definitionStep: {
       stepTitle: "정의",

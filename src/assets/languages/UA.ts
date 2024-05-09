@@ -47,6 +47,9 @@ export const UA: LanguageType = {
       title: "Збережіть створену машину",
       name: "Ім'я Машини",
       button: "Зберегти",
+      titleUpdate: "Оновити або зберегти вашу машину",
+      buttonUpdate: "Оновити",
+      buttonSaveNew: "Зберегти як новий файл",
     },
     definitionStep: {
       stepTitle: "Визначення",

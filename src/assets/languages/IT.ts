@@ -47,6 +47,9 @@ export const IT: LanguageType = {
       title: "Salva la tua macchina creata",
       name: "Nome della Macchina",
       button: "Salva",
+      titleUpdate: "Aggiorna o salva la tua macchina",
+      buttonUpdate: "Aggiornare",
+      buttonSaveNew: "Salva come nuova",
     },
     definitionStep: {
       stepTitle: "Definizione",

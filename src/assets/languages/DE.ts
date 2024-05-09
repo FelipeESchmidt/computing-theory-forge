@@ -47,6 +47,9 @@ export const DE: LanguageType = {
       title: "Speichern Sie Ihre erstellte Maschine",
       name: "Maschinenname",
       button: "Speichern",
+      titleUpdate: "Aktualisieren oder speichern Sie Ihre Maschine",
+      buttonUpdate: "Aktualisieren",
+      buttonSaveNew: "Als neu speichern",
     },
     definitionStep: {
       stepTitle: "Definition",

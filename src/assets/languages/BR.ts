@@ -45,6 +45,9 @@ export const BR = {
       title: "Salve sua máquina criada",
       name: "Nome da Máquina",
       button: "Salvar",
+      titleUpdate: "Atualize ou salve sua máquina",
+      buttonUpdate: "Atualizar",
+      buttonSaveNew: "Salvar como nova",
     },
     definitionStep: {
       stepTitle: "Definição",

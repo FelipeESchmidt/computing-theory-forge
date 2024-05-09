@@ -47,6 +47,9 @@ export const ES: LanguageType = {
       title: "Guarda tu máquina creada",
       name: "Nombre de la Máquina",
       button: "Guardar",
+      titleUpdate: "Actualiza o guarda tu máquina",
+      buttonUpdate: "Actualizar",
+      buttonSaveNew: "Guardar como nueva",
     },
     definitionStep: {
       stepTitle: "Definición",

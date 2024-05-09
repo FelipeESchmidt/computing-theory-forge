@@ -47,6 +47,9 @@ export const NO: LanguageType = {
       title: "Lagre din opprettede maskin",
       name: "Maskinnavn",
       button: "Lagre",
+      titleUpdate: "Oppdater eller lagre maskinen din",
+      buttonUpdate: "Oppdater",
+      buttonSaveNew: "Lagre som ny",
     },
     definitionStep: {
       stepTitle: "Definisjon",

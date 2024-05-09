@@ -74,8 +74,16 @@ export const SaveTooltip: React.FC = () => {
     if (hasMachineSaved) {
       return (
         <S.ButtonsContainer>
-          <Button text="Update" onClick={handleUpdateMachine} variant="contained" />
-          <Button text="Save as new" onClick={handleSaveMachine} variant="outlined" />
+          <Button
+            text={texts.theoreticalMachine.save.buttonUpdate}
+            onClick={handleUpdateMachine}
+            variant="contained"
+          />
+          <Button
+            text={texts.theoreticalMachine.save.buttonSaveNew}
+            onClick={handleSaveMachine}
+            variant="outlined"
+          />
         </S.ButtonsContainer>
       );
     }
@@ -109,7 +117,11 @@ export const SaveTooltip: React.FC = () => {
       >
         <S.SaveTooltipTooltipContainer>
           <S.TopContainer>
-            <S.Title>{texts.theoreticalMachine.save.title}</S.Title>
+            <S.Title>
+              {hasMachineSaved
+                ? texts.theoreticalMachine.save.titleUpdate
+                : texts.theoreticalMachine.save.title}
+            </S.Title>
           </S.TopContainer>
           <S.Form>
             <S.FormContainer>

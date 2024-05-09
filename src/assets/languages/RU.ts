@@ -47,6 +47,9 @@ export const RU: LanguageType = {
       title: "Сохраните созданную машину",
       name: "Имя Машины",
       button: "Сохранить",
+      titleUpdate: "Обновить или сохранить вашу машину",
+      buttonUpdate: "Обновить",
+      buttonSaveNew: "Сохранить как новую",
     },
     definitionStep: {
       stepTitle: "Определение",

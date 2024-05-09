@@ -76,6 +76,9 @@ export const Base_Translate: LanguageType = {
       title: "Save your created machine",
       name: "Machine Name",
       button: "Save",
+      titleUpdate: "Update or save your machine",
+      buttonUpdate: "Update",
+      buttonSaveNew: "Save as new",
     },
     definitionStep: {
       stepTitle: "Definition",

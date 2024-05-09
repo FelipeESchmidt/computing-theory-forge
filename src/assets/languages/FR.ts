@@ -47,6 +47,9 @@ export const FR: LanguageType = {
       title: "Enregistrez votre machine créée",
       name: "Nom de la Machine",
       button: "Enregistrer",
+      titleUpdate: "Mettre à jour ou enregistrer votre machin",
+      buttonUpdate: "Mettre à jour",
+      buttonSaveNew: "Enregistrer comme nouveau",
     },
     definitionStep: {
       stepTitle: "Définition",

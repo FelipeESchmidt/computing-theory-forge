@@ -46,6 +46,9 @@ export const CN: LanguageType = {
       title: "保存您创建的机器",
       name: "机器名称",
       button: "保存",
+      titleUpdate: "更新或保存您的机器",
+      buttonUpdate: "更新",
+      buttonSaveNew: "另存为新文件",
     },
     definitionStep: {
       stepTitle: "定义",

@@ -46,6 +46,9 @@ export const JP: LanguageType = {
       title: "作成したマシンを保存",
       name: "マシン名",
       button: "保存",
+      titleUpdate: "マシンを更新または保存",
+      buttonUpdate: "更新",
+      buttonSaveNew: "新しいものとして保存",
     },
     definitionStep: {
       stepTitle: "定義",
