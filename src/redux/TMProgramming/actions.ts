@@ -70,3 +70,8 @@ export const translateProgram = (texts: LanguageType) =>
     type: constants.TRANSLATE_PROGRAM,
     texts,
   } as const);
+
+export const clearProgram = () =>
+  ({
+    type: constants.CLEAR_PROGRAM,
+  } as const);

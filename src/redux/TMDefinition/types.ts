@@ -6,6 +6,7 @@ import {
 import {
   addRecorder,
   changeMachineLanguage,
+  clearMachine,
   createTheoreticalMachine,
   markFunctionality,
   randomMachine,
@@ -36,4 +37,5 @@ export type RecorderActions = ReturnType<
   | typeof randomMachine
   | typeof changeMachineLanguage
   | typeof createTheoreticalMachine
+  | typeof clearMachine
 >;

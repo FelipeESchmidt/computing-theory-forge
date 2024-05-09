@@ -1,7 +1,10 @@
 import { Skeleton } from "@components/Skeleton";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { selectLanguage } from "@redux/Language/selectors";
-import { createTheoreticalMachine } from "@redux/TMDefinition/actions";
+import {
+  clearMachineWithThunk,
+  createTheoreticalMachine,
+} from "@redux/TMDefinition/actions";
 import {
   deleteMachine,
   getAllMachines,
@@ -11,6 +14,7 @@ import { increaseMachine } from "@utils/theoreticalMachine";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Dispatch } from "redux";
 
 import { Product } from "../constants";
 import * as S from "../styles";
@@ -21,7 +25,7 @@ interface TheoreticalMachinesProps {
 }
 
 export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ product }) => {
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
   const navigate = useNavigate();
 
   const { texts } = useSelector(selectLanguage);
@@ -33,6 +37,11 @@ export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ produc
 
   const handleGoToMachineDefinition = () => {
     navigate(product.path);
+  };
+
+  const handleNewMachineClick = () => {
+    dispatch(clearMachineWithThunk());
+    handleGoToMachineDefinition();
   };
 
   const handleSavedCardClick = (machine: ISavedTheoreticalMachineProps) => {
@@ -76,7 +85,7 @@ export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ produc
 
   return (
     <S.StyledProductCards>
-      <TheoreticalMachineCard isNew onClick={handleGoToMachineDefinition} />
+      <TheoreticalMachineCard isNew onClick={handleNewMachineClick} />
       {savedMachines.map((machine) => (
         <TheoreticalMachineCard
           key={machine.id}

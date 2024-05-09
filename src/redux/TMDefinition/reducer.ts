@@ -76,6 +76,10 @@ export default function reducer(state = defaultState, action: RecorderActions) {
       };
     }
 
+    case constants.CLEAR_MACHINE: {
+      return { ...state, recorders: [], machineIsGenerated: false };
+    }
+
     default: {
       return state;
     }

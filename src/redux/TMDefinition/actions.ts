@@ -4,6 +4,7 @@ import {
   TheoreticalMachineRecorderLimits,
 } from "@globalTypes/theoreticalMachine";
 import { IRootState } from "@redux/store";
+import { clearProgram } from "@redux/TMProgramming/actions";
 import { UnknownAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
@@ -60,4 +61,21 @@ export const createTheoreticalMachine = (
     type: constants.CREATE_THEORETICAL_MACHINE,
     recorders,
     texts,
+  } as const);
+
+export const clearMachineWithThunk = (): ThunkAction<
+  void,
+  IRootState,
+  unknown,
+  UnknownAction
+> => {
+  return (dispatch) => {
+    dispatch(clearMachine());
+    dispatch(clearProgram());
+  };
+};
+
+export const clearMachine = () =>
+  ({
+    type: constants.CLEAR_MACHINE,
   } as const);

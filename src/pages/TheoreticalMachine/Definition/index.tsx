@@ -115,6 +115,10 @@ export const Definition: React.FC = () => {
     }
   }, [machineIsGenerated]);
 
+  useEffect(() => {
+    setAbleToGoNext(machineIsGenerated);
+  }, []);
+
   return (
     <Container>
       <S.Definition>
@@ -133,7 +137,7 @@ export const Definition: React.FC = () => {
             <Notice text={texts.theoreticalMachine.definitionStep.notice} type="info" />
           )}
         </S.DefinitionWrapper>
-        {ableToGoNext && (
+        {ableToGoNext && machineIsGenerated && (
           <S.DefinitionWrapper>
             <DefinitionText />
           </S.DefinitionWrapper>
