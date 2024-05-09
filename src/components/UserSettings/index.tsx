@@ -20,7 +20,7 @@ export const UserSettings: React.FC = () => {
   const { loggedIn, token } = useSelector(selectAuthentication);
   const { texts } = useSelector(selectLanguage);
 
-  const [show, setShow] = React.useState(false);
+  const [forceHide, setForceHide] = React.useState(false);
 
   const [values, setValues] = React.useState({
     name: getTokenName(token),
@@ -44,6 +44,21 @@ export const UserSettings: React.FC = () => {
     setValues({ ...values, [id]: value });
   };
 
+  const handleClear = () => {
+    setValues({
+      name: getTokenName(token),
+      email: getTokenEmail(token),
+      password: "",
+      newPassword: "",
+      newPasswordConfirmation: "",
+    });
+    setValidValues({
+      password: false,
+      newPassword: false,
+      newPasswordConfirmation: false,
+    });
+  };
+
   const handleUpdate = async (event: React.MouseEvent) => {
     event.preventDefault();
     const name = values.name;
@@ -58,7 +73,8 @@ export const UserSettings: React.FC = () => {
         newPasswordConfirmation,
       );
       dispatch(newMessage(response.message, "success"));
-      setShow(!show);
+      setForceHide(!forceHide);
+      handleClear();
     } catch (error) {
       if (typeof error === "string") {
         dispatch(newMessage(error, "danger"));
@@ -71,6 +87,12 @@ export const UserSettings: React.FC = () => {
     setValidValues({ ...validValues, password: values.password.length > 0 });
   }, [values.password]);
 
+  useEffect(() => {
+    if (forceHide) {
+      setForceHide(false);
+    }
+  }, [forceHide]);
+
   if (!loggedIn) {
     return <></>;
   }
@@ -78,7 +100,7 @@ export const UserSettings: React.FC = () => {
   return (
     <S.UserSettingsContainer>
       <Tooltip
-        forceHide={show}
+        forceHide={forceHide}
         customIcon={
           <S.StyledIcon>
             <FiUser />
