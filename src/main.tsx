@@ -1,6 +1,7 @@
 import "./index.css";
 
 import AlertMessage from "@components/AlertMessage";
+import { AppSavedProviderProvider } from "@contexts/AppSavedProvider";
 import { HeaderControllerProvider } from "@contexts/HeaderProvider";
 import { ThemeControllerProvider } from "@contexts/ThemeControllerProvider";
 import React from "react";
@@ -19,10 +20,12 @@ const App = () => {
     <ReduxProvider store={store}>
       <ThemeControllerProvider setThemeMode={setThemeMode} themeMode={themeMode}>
         <HeaderControllerProvider>
-          <ThemeProvider theme={theme[themeMode]}>
-            <AlertMessage />
-            <Router />
-          </ThemeProvider>
+          <AppSavedProviderProvider>
+            <ThemeProvider theme={theme[themeMode]}>
+              <AlertMessage />
+              <Router />
+            </ThemeProvider>
+          </AppSavedProviderProvider>
         </HeaderControllerProvider>
       </ThemeControllerProvider>
     </ReduxProvider>

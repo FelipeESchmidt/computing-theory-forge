@@ -51,7 +51,7 @@ export const Form = styled.form`
   width: 100%;
   margin-top: 1.5rem;
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-direction: column;
 `;
 
@@ -60,4 +60,13 @@ export const FormContainer = styled.div`
   height: 100%;
   flex-direction: column;
   justify-content: center;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  button {
+    width: 100%;
+  }
 `;

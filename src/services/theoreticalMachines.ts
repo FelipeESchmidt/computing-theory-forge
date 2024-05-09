@@ -30,6 +30,19 @@ export const saveMachine = async (
   return data;
 };
 
+export const updateMachine = async (
+  id: number,
+  name: string,
+  machine: IMinifiedMachine,
+): Promise<IResponseDataProps<ISavedTheoreticalMachineProps>> => {
+  const { data } = await api.put<IResponseDataProps<ISavedTheoreticalMachineProps>>(
+    `/theoretical-machineService/update-machine/${id}`,
+    { name, machine },
+  );
+
+  return data;
+};
+
 export const deleteMachine = async (id: number): Promise<IResponseDataProps<null>> => {
   const { data } = await api.delete<IResponseDataProps<null>>(
     `/theoretical-machineService/delete-machine/${id}`,

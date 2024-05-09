@@ -1,4 +1,5 @@
 import { Skeleton } from "@components/Skeleton";
+import { useAppSavedProvider } from "@contexts/AppSavedProvider";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import {
@@ -27,6 +28,7 @@ interface TheoreticalMachinesProps {
 export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ product }) => {
   const dispatch: Dispatch<any> = useDispatch();
   const navigate = useNavigate();
+  const { setMachineSaved } = useAppSavedProvider();
 
   const { texts } = useSelector(selectLanguage);
 
@@ -41,12 +43,14 @@ export const TheoreticalMachines: React.FC<TheoreticalMachinesProps> = ({ produc
 
   const handleNewMachineClick = () => {
     dispatch(clearMachineWithThunk());
+    setMachineSaved(undefined);
     handleGoToMachineDefinition();
   };
 
   const handleSavedCardClick = (machine: ISavedTheoreticalMachineProps) => {
     const machineSaved = increaseMachine(machine.machine, texts);
     dispatch(createTheoreticalMachine(machineSaved, texts));
+    setMachineSaved(machine);
     handleGoToMachineDefinition();
   };
 
