@@ -21,6 +21,10 @@ api.interceptors.response.use(
     return response;
   },
   (error: AxiosError<{ message: string }>) => {
+    if (error.response?.status === 403) {
+      localStorage.removeItem("token");
+      window.location.reload();
+    }
     if (error.response) {
       const errorMessage = error.response.data.message;
       return Promise.reject(errorMessage);

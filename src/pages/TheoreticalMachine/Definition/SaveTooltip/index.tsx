@@ -46,20 +46,20 @@ export const SaveTooltip: React.FC = () => {
       >
         <S.SaveTooltipTooltipContainer>
           <S.TopContainer>
-            <S.Title>Save your created machine</S.Title>
+            <S.Title>{texts.theoreticalMachine.save.title}</S.Title>
           </S.TopContainer>
           <S.Form>
             <S.FormContainer>
               <Input
                 id="machine-name"
-                label="Machine name"
+                label={texts.theoreticalMachine.save.name}
                 value={machineName}
                 onChange={(value) => setMachineName(value)}
               />
             </S.FormContainer>
             <Button
               disabled={!machineName}
-              text="Save"
+              text={texts.theoreticalMachine.save.button}
               onClick={handleSaveMachine}
               variant="contained"
             />

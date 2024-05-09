@@ -39,6 +39,14 @@ export const KR: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "이론적 기계",
+    description: "기록기를 기능 및 명령으로 정의하고, 기계를 프로그래밍하고 실행합니다.",
+    newMachine: "새 기계",
+    save: {
+      title: "생성된 기계 저장",
+      name: "기계 이름",
+      button: "저장",
+    },
     definitionStep: {
       stepTitle: "정의",
       title: "기계 정의",

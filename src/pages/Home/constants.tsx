@@ -1,3 +1,5 @@
+import { languages, LanguageType } from "@assets/languages";
+
 import { TheoreticalMachines } from "./TheoreticalMachines";
 
 export interface Product {
@@ -8,12 +10,11 @@ export interface Product {
   cardsRender: (product: Product) => JSX.Element;
 }
 
-export const products: Product[] = [
+export const getProducts = (texts: LanguageType = languages.BR): Product[] => [
   {
     id: 1,
-    name: "Theoretical Machine",
-    description:
-      "A machine that simulates the behavior of a deterministic finite automaton.",
+    name: texts.theoreticalMachine.title,
+    description: texts.theoreticalMachine.description,
     path: "/theoretical-machine",
     cardsRender: (product: Product) => <TheoreticalMachines product={product} />,
   },

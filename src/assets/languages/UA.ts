@@ -39,6 +39,15 @@ export const UA: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Теоретична Машина",
+    description:
+      "Визначте свій реєстратор з функціональністю та інструкціями, програмуйте свою машину та виконайте її.",
+    newMachine: "Нова Машина",
+    save: {
+      title: "Збережіть створену машину",
+      name: "Ім'я Машини",
+      button: "Зберегти",
+    },
     definitionStep: {
       stepTitle: "Визначення",
       title: "Визначення Машини",

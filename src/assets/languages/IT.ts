@@ -39,6 +39,15 @@ export const IT: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Macchine Teoriche",
+    description:
+      "Definisci i tuoi registratori con funzionalità e istruzioni, programma la tua macchina ed eseguila.",
+    newMachine: "Nuova Macchina",
+    save: {
+      title: "Salva la tua macchina creata",
+      name: "Nome della Macchina",
+      button: "Salva",
+    },
     definitionStep: {
       stepTitle: "Definizione",
       title: "Definizione della Macchina",

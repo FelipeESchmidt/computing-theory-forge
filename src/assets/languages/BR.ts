@@ -37,6 +37,15 @@ export const BR = {
     },
   },
   theoreticalMachine: {
+    title: "Máquinas Teóricas",
+    description:
+      "Defina seus registradores com funcionalidades e instruções, programe sua máquina e execute-a.",
+    newMachine: "Nova Máquina",
+    save: {
+      title: "Salve sua máquina criada",
+      name: "Nome da Máquina",
+      button: "Salvar",
+    },
     definitionStep: {
       stepTitle: "Definição",
       title: "Definição da Máquina",

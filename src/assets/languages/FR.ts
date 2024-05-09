@@ -39,6 +39,15 @@ export const FR: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Machines Théoriques",
+    description:
+      "Définissez vos enregistreurs avec des fonctionnalités et des instructions, programmez votre machine et exécutez-la.",
+    newMachine: "Nouvelle Machine",
+    save: {
+      title: "Enregistrez votre machine créée",
+      name: "Nom de la Machine",
+      button: "Enregistrer",
+    },
     definitionStep: {
       stepTitle: "Définition",
       title: "Définition de la Machine",

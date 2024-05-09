@@ -1,7 +1,9 @@
 import { Card, CardProps } from "@components/Card";
+import { selectLanguage } from "@redux/Language/selectors";
 import React from "react";
 import { FaPlusCircle, FaUserCircle } from "react-icons/fa";
 import { FiTrash } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 import * as S from "../../styles";
 
@@ -14,9 +16,11 @@ interface TheoreticalMachineCardProps extends Partial<CardProps> {
 export const TheoreticalMachineCard: React.FC<TheoreticalMachineCardProps> = ({
   onClick,
   onRemove,
-  title = "Nova",
+  title = "",
   isNew = false,
 }) => {
+  const { texts } = useSelector(selectLanguage);
+
   if (isNew) {
     return (
       <Card onClick={onClick}>
@@ -24,7 +28,9 @@ export const TheoreticalMachineCard: React.FC<TheoreticalMachineCardProps> = ({
           <S.StyledNewIcon>
             <FaPlusCircle />
           </S.StyledNewIcon>
-          <S.StyledProductTitle>{title}</S.StyledProductTitle>
+          <S.StyledProductTitle>
+            {texts.theoreticalMachine.newMachine}
+          </S.StyledProductTitle>
         </S.StyledCardContainer>
       </Card>
     );

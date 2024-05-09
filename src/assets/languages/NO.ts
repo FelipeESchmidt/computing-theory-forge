@@ -39,6 +39,15 @@ export const NO: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Teoretisk Maskin",
+    description:
+      "Definer dine opptakere med funksjoner og instruksjoner, programmer maskinen din og kjør den.",
+    newMachine: "Ny Maskin",
+    save: {
+      title: "Lagre din opprettede maskin",
+      name: "Maskinnavn",
+      button: "Lagre",
+    },
     definitionStep: {
       stepTitle: "Definisjon",
       title: "Maskindefinisjon",

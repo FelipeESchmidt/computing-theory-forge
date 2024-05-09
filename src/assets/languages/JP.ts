@@ -39,6 +39,14 @@ export const JP: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "理論的なマシン",
+    description: "レコーダーを機能と命令で定義し、マシンをプログラムして実行します。",
+    newMachine: "新しいマシン",
+    save: {
+      title: "作成したマシンを保存",
+      name: "マシン名",
+      button: "保存",
+    },
     definitionStep: {
       stepTitle: "定義",
       title: "マシンの定義",

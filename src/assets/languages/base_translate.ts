@@ -68,6 +68,15 @@ export const Base_Translate: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Theoretical Machines",
+    description:
+      "Define your recorders with functionalities and instructions, program your machine and execute it.",
+    newMachine: "New Machine",
+    save: {
+      title: "Save your created machine",
+      name: "Machine Name",
+      button: "Save",
+    },
     definitionStep: {
       stepTitle: "Definition",
       title: "Machine Definition",

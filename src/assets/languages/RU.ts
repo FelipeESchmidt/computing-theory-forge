@@ -39,6 +39,15 @@ export const RU: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Теоретическая машина",
+    description:
+      "Определите свой регистратор с функциональностью и инструкциями, программируйте свою машину и выполните ее.",
+    newMachine: "Новая Машина",
+    save: {
+      title: "Сохраните созданную машину",
+      name: "Имя Машины",
+      button: "Сохранить",
+    },
     definitionStep: {
       stepTitle: "Определение",
       title: "Определение Машины",

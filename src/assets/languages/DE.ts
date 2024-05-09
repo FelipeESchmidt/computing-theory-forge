@@ -39,6 +39,15 @@ export const DE: LanguageType = {
     },
   },
   theoreticalMachine: {
+    title: "Theoretische Maschinen",
+    description:
+      "Definieren Sie Ihre Recorder mit Funktionalitäten und Anweisungen, programmieren Sie Ihre Maschine und führen Sie sie aus",
+    newMachine: "Neue Maschine",
+    save: {
+      title: "Speichern Sie Ihre erstellte Maschine",
+      name: "Maschinenname",
+      button: "Speichern",
+    },
     definitionStep: {
       stepTitle: "Definition",
       title: "Maschinendefinition",
