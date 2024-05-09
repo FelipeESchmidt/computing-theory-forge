@@ -31,30 +31,42 @@ export const SaveTooltip: React.FC = () => {
       const machineMinified = minifyMachine(recorders);
       const response = await saveMachine(machineName, machineMinified);
       dispatch(newMessage(response.message, "success"));
+      setMachineSaved({
+        id: response.responseObject.id,
+        machine: machineMinified,
+        name: machineName,
+      });
     } catch (error) {
       if (typeof error === "string") {
         dispatch(newMessage(error, "danger"));
         return;
       }
+    } finally {
+      setForceHide(true);
     }
   };
 
   const handleUpdateMachine = async (event: React.MouseEvent) => {
     event.preventDefault();
+    if (!machineSaved) {
+      return;
+    }
     try {
       const machineMinified = minifyMachine(recorders);
-      const response = await updateMachine(
-        machineSaved!.id,
-        machineName,
-        machineMinified,
-      );
+      const response = await updateMachine(machineSaved.id, machineName, machineMinified);
       dispatch(newMessage(response.message, "success"));
-      setMachineSaved(response.responseObject);
+      setMachineSaved({
+        ...machineSaved,
+        machine: machineMinified,
+        name: machineName,
+      });
     } catch (error) {
       if (typeof error === "string") {
         dispatch(newMessage(error, "danger"));
         return;
       }
+    } finally {
+      setForceHide(true);
     }
   };
 

@@ -21,8 +21,8 @@ export const getAllMachines = async (): Promise<ISavedTheoreticalMachineProps[]>
 export const saveMachine = async (
   name: string,
   machine: IMinifiedMachine,
-): Promise<IResponseDataProps<ISavedTheoreticalMachineProps>> => {
-  const { data } = await api.post<IResponseDataProps<ISavedTheoreticalMachineProps>>(
+): Promise<IResponseDataProps<{ id: number }>> => {
+  const { data } = await api.post<IResponseDataProps<{ id: number }>>(
     `/theoretical-machineService/save-machine`,
     { name, machine },
   );
@@ -34,8 +34,8 @@ export const updateMachine = async (
   id: number,
   name: string,
   machine: IMinifiedMachine,
-): Promise<IResponseDataProps<ISavedTheoreticalMachineProps>> => {
-  const { data } = await api.put<IResponseDataProps<ISavedTheoreticalMachineProps>>(
+): Promise<IResponseDataProps<null>> => {
+  const { data } = await api.put<IResponseDataProps<null>>(
     `/theoretical-machineService/update-machine/${id}`,
     { name, machine },
   );

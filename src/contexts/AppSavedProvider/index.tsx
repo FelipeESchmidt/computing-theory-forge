@@ -1,10 +1,15 @@
 import { ISavedTheoreticalMachineProps } from "@services/theoreticalMachines";
 import React, { createContext, useContext } from "react";
 
+type ISavedTheoreticalMachinePropsWithOutUserId = Omit<
+  ISavedTheoreticalMachineProps,
+  "userId"
+>;
+
 interface AppSavedProviderProps {
-  machineSaved?: ISavedTheoreticalMachineProps;
+  machineSaved?: ISavedTheoreticalMachinePropsWithOutUserId;
   setMachineSaved: React.Dispatch<
-    React.SetStateAction<ISavedTheoreticalMachineProps | undefined>
+    React.SetStateAction<ISavedTheoreticalMachinePropsWithOutUserId | undefined>
   >;
 }
 
@@ -19,7 +24,8 @@ const AppSavedProvider = createContext<AppSavedProviderProps>(
 const AppSavedProviderProvider: React.FC<AppSavedProviderProviderProps> = ({
   children,
 }) => {
-  const [machineSaved, setMachineSaved] = React.useState<ISavedTheoreticalMachineProps>();
+  const [machineSaved, setMachineSaved] =
+    React.useState<ISavedTheoreticalMachinePropsWithOutUserId>();
 
   return (
     <AppSavedProvider.Provider value={{ machineSaved, setMachineSaved }}>
