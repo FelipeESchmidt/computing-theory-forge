@@ -39,7 +39,7 @@ export const updateUser = async (
   newPassword: string,
   newPasswordConfirmation: string,
 ) => {
-  const { data } = await api.post<IResponseDataProps>(`/auth/update`, {
+  const { data } = await api.put<IResponseDataProps>(`/auth/update`, {
     name,
     password,
     newPassword,
