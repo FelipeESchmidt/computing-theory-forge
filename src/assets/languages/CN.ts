@@ -29,8 +29,27 @@ export const CN: LanguageType = {
       button: "注册",
       alreadyUser: "已经有账户？",
     },
+    update: {
+      name: "姓名",
+      email: "电子邮件",
+      password: "旧密码",
+      newPassword: "新密码",
+      newPasswordConfirmation: "确认新密码",
+      button: "更新",
+    },
   },
   theoreticalMachine: {
+    title: "理论机器",
+    description: "定义您的记录器，具有功能和指令，编程您的机器并执行它。",
+    newMachine: "新机器",
+    save: {
+      title: "保存您创建的机器",
+      name: "机器名称",
+      button: "保存",
+      titleUpdate: "更新或保存您的机器",
+      buttonUpdate: "更新",
+      buttonSaveNew: "另存为新文件",
+    },
     definitionStep: {
       stepTitle: "定义",
       title: "机器定义",

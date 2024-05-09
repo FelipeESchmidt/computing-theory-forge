@@ -29,8 +29,27 @@ export const KR: LanguageType = {
       button: "회원가입",
       alreadyUser: "이미 계정이 있으신가요?",
     },
+    update: {
+      name: "이름",
+      email: "이메일",
+      password: "기존 비밀번호",
+      newPassword: "새 비밀번호",
+      newPasswordConfirmation: "새 비밀번호 확인",
+      button: "업데이트",
+    },
   },
   theoreticalMachine: {
+    title: "이론적 기계",
+    description: "기록기를 기능 및 명령으로 정의하고, 기계를 프로그래밍하고 실행합니다.",
+    newMachine: "새 기계",
+    save: {
+      title: "생성된 기계 저장",
+      name: "기계 이름",
+      button: "저장",
+      titleUpdate: "기계 업데이트 또는 저장",
+      buttonUpdate: "업데이트",
+      buttonSaveNew: "새로 저장",
+    },
     definitionStep: {
       stepTitle: "정의",
       title: "기계 정의",

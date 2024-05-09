@@ -42,8 +42,9 @@ export const BaseContainer = styled.div<{ reversed?: 1 | 0 }>`
   position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 40vw;
-  height: 60vh;
+  min-height: 60vh;
   padding: 24px;
   border: 1px solid ${({ theme }) => theme.brand.dark};
   box-shadow: 0 0 4px ${({ theme }) => theme.brand.dark};

@@ -17,9 +17,11 @@ export const StyledHeaderContainer = styled.div`
 export const StyledTitle = styled.h1`
   font-size: 24px;
   color: ${({ theme }) => theme.brand.dark};
+  cursor: pointer;
 `;
 
 export const StyledHandlersContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 16px;
 `;

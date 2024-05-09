@@ -23,15 +23,28 @@ export const register = async (
   password: string,
   passwordConfirmation: string,
 ) => {
-  const { data } = await api.post<IResponseDataProps<ILoginResponseObjectProps>>(
-    `/auth/register`,
-    {
-      name,
-      email,
-      password,
-      passwordConfirmation,
-    },
-  );
+  const { data } = await api.post<IResponseDataProps>(`/auth/register`, {
+    name,
+    email,
+    password,
+    passwordConfirmation,
+  });
+
+  return data;
+};
+
+export const updateUser = async (
+  name: string,
+  password: string,
+  newPassword: string,
+  newPasswordConfirmation: string,
+) => {
+  const { data } = await api.put<IResponseDataProps>(`/auth/update`, {
+    name,
+    password,
+    newPassword,
+    newPasswordConfirmation,
+  });
 
   return data;
 };

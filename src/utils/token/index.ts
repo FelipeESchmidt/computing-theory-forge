@@ -17,3 +17,12 @@ export const getTokenEmail = (token: string): string => {
     return "";
   }
 };
+
+export const getTokenName = (token: string): string => {
+  try {
+    const decoded = jwtDecode(token) as { name: string };
+    return decoded.name;
+  } catch (e) {
+    return "";
+  }
+};

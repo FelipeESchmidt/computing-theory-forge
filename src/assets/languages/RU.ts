@@ -29,8 +29,28 @@ export const RU: LanguageType = {
       button: "Зарегистрироваться",
       alreadyUser: "Уже есть аккаунт?",
     },
+    update: {
+      name: "Имя",
+      email: "Электронная почта",
+      password: "Старый пароль",
+      newPassword: "Новый пароль",
+      newPasswordConfirmation: "Подтверждение нового пароля",
+      button: "Обновить",
+    },
   },
   theoreticalMachine: {
+    title: "Теоретическая машина",
+    description:
+      "Определите свой регистратор с функциональностью и инструкциями, программируйте свою машину и выполните ее.",
+    newMachine: "Новая Машина",
+    save: {
+      title: "Сохраните созданную машину",
+      name: "Имя Машины",
+      button: "Сохранить",
+      titleUpdate: "Обновить или сохранить вашу машину",
+      buttonUpdate: "Обновить",
+      buttonSaveNew: "Сохранить как новую",
+    },
     definitionStep: {
       stepTitle: "Определение",
       title: "Определение Машины",

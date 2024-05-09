@@ -27,8 +27,28 @@ export const BR = {
       button: "Cadastrar-se",
       alreadyUser: "Já possui conta?",
     },
+    update: {
+      name: "Nome",
+      email: "E-mail",
+      password: "Senha Antiga",
+      newPassword: "Nova Senha",
+      newPasswordConfirmation: "Confirmação de Nova Senha",
+      button: "Atualizar",
+    },
   },
   theoreticalMachine: {
+    title: "Máquinas Teóricas",
+    description:
+      "Defina seus registradores com funcionalidades e instruções, programe sua máquina e execute-a.",
+    newMachine: "Nova Máquina",
+    save: {
+      title: "Salve sua máquina criada",
+      name: "Nome da Máquina",
+      button: "Salvar",
+      titleUpdate: "Atualize ou salve sua máquina",
+      buttonUpdate: "Atualizar",
+      buttonSaveNew: "Salvar como nova",
+    },
     definitionStep: {
       stepTitle: "Definição",
       title: "Definição da Máquina",

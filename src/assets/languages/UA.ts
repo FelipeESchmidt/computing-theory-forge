@@ -29,8 +29,28 @@ export const UA: LanguageType = {
       button: "Зареєструватися",
       alreadyUser: "Вже є обліковий запис?",
     },
+    update: {
+      name: "Ім'я",
+      email: "Електронна пошта",
+      password: "Старий пароль",
+      newPassword: "Новий пароль",
+      newPasswordConfirmation: "Підтвердження нового пароля",
+      button: "Оновити",
+    },
   },
   theoreticalMachine: {
+    title: "Теоретична Машина",
+    description:
+      "Визначте свій реєстратор з функціональністю та інструкціями, програмуйте свою машину та виконайте її.",
+    newMachine: "Нова Машина",
+    save: {
+      title: "Збережіть створену машину",
+      name: "Ім'я Машини",
+      button: "Зберегти",
+      titleUpdate: "Оновити або зберегти вашу машину",
+      buttonUpdate: "Оновити",
+      buttonSaveNew: "Зберегти як новий файл",
+    },
     definitionStep: {
       stepTitle: "Визначення",
       title: "Визначення Машини",

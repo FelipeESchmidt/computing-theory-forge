@@ -29,8 +29,28 @@ export const NO: LanguageType = {
       button: "Registrer",
       alreadyUser: "Har du allerede en konto?",
     },
+    update: {
+      name: "Navn",
+      email: "E-post",
+      password: "Gammelt Passord",
+      newPassword: "Nytt Passord",
+      newPasswordConfirmation: "Bekreft Nytt Passord",
+      button: "Oppdater",
+    },
   },
   theoreticalMachine: {
+    title: "Teoretisk Maskin",
+    description:
+      "Definer dine opptakere med funksjoner og instruksjoner, programmer maskinen din og kjør den.",
+    newMachine: "Ny Maskin",
+    save: {
+      title: "Lagre din opprettede maskin",
+      name: "Maskinnavn",
+      button: "Lagre",
+      titleUpdate: "Oppdater eller lagre maskinen din",
+      buttonUpdate: "Oppdater",
+      buttonSaveNew: "Lagre som ny",
+    },
     definitionStep: {
       stepTitle: "Definisjon",
       title: "Maskindefinisjon",

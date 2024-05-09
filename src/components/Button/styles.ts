@@ -6,6 +6,18 @@ interface StyledButtonProps {
   variant: ButtonProps["variant"];
 }
 
+const disabledButton = css`
+  background-color: ${({ theme }) => theme.principal.text}80;
+  border-color: ${({ theme }) => theme.principal.text}80;
+  cursor: not-allowed;
+  pointer-events: none;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.principal.text}80;
+    border-color: ${({ theme }) => theme.principal.text}80;
+  }
+`;
+
 const getButtonsProps = (variant: ButtonProps["variant"]) => {
   const styles = {
     outlined: css`
@@ -23,6 +35,7 @@ const getButtonsProps = (variant: ButtonProps["variant"]) => {
         border-color: ${({ theme }) => theme.brand.dark};
         background-color: ${({ theme }) => theme.brand.deep};
       }
+      ${({ disabled }: any) => !!disabled && disabledButton};
     `,
     contained: css`
       transition-duration: 0.5s;
@@ -38,6 +51,7 @@ const getButtonsProps = (variant: ButtonProps["variant"]) => {
         border-color: ${({ theme }) => theme.brand.dark};
         background-color: ${({ theme }) => theme.brand.deep};
       }
+      ${({ disabled }: any) => !!disabled && disabledButton};
     `,
   };
 

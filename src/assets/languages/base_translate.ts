@@ -58,8 +58,28 @@ export const Base_Translate: LanguageType = {
       button: "Register",
       alreadyUser: "Already have an account?",
     },
+    update: {
+      name: "Name",
+      email: "E-mail",
+      password: "Old Password",
+      newPassword: "New Password",
+      newPasswordConfirmation: "New Password Confirmation",
+      button: "Update",
+    },
   },
   theoreticalMachine: {
+    title: "Theoretical Machines",
+    description:
+      "Define your recorders with functionalities and instructions, program your machine and execute it.",
+    newMachine: "New Machine",
+    save: {
+      title: "Save your created machine",
+      name: "Machine Name",
+      button: "Save",
+      titleUpdate: "Update or save your machine",
+      buttonUpdate: "Update",
+      buttonSaveNew: "Save as new",
+    },
     definitionStep: {
       stepTitle: "Definition",
       title: "Machine Definition",

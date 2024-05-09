@@ -29,8 +29,28 @@ export const ES: LanguageType = {
       button: "Registrarse",
       alreadyUser: "¿Ya tienes una cuenta?",
     },
+    update: {
+      name: "Nombre",
+      email: "Correo electrónico",
+      password: "Contraseña Antigua",
+      newPassword: "Nueva Contraseña",
+      newPasswordConfirmation: "Confirmación de Nueva Contraseña",
+      button: "Actualizar",
+    },
   },
   theoreticalMachine: {
+    title: "Máquinas Teóricas",
+    description:
+      "Define tus grabadores con funcionalidades e instrucciones, programa tu máquina y ejecútala.",
+    newMachine: "Nueva Máquina",
+    save: {
+      title: "Guarda tu máquina creada",
+      name: "Nombre de la Máquina",
+      button: "Guardar",
+      titleUpdate: "Actualiza o guarda tu máquina",
+      buttonUpdate: "Actualizar",
+      buttonSaveNew: "Guardar como nueva",
+    },
     definitionStep: {
       stepTitle: "Definición",
       title: "Definición de la Máquina",

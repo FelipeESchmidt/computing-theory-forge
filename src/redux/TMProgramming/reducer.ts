@@ -55,6 +55,10 @@ export default function reducer(state = defaultState, action: RecorderActions) {
       return { ...state, error, isValid: !error };
     }
 
+    case constants.CLEAR_PROGRAM: {
+      return { ...state, lines: [{}] };
+    }
+
     default: {
       return state;
     }

@@ -5,6 +5,7 @@ import {
 
 import {
   addLine,
+  clearProgram,
   removeLine,
   setLineSelection,
   setLineType,
@@ -19,6 +20,7 @@ export type RecorderActions = ReturnType<
   | typeof setLineSelection
   | typeof validateLines
   | typeof translateProgram
+  | typeof clearProgram
 >;
 
 export interface LineProps {

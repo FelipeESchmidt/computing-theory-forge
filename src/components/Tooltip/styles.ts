@@ -1,6 +1,17 @@
 import { styled } from "styled-components";
 
-export const StyledTooltip = styled.div``;
+export const StyledTooltip = styled.div<{ disabled: 1 | 0 }>`
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+
+  &:hover {
+    svg {
+      cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+      transition: color 0s;
+      color: ${({ theme }) => theme.principal.text} !important;
+    }
+  }
+`;
 
 export const StyledTooltipIcon = styled.div`
   font-size: 16px;
@@ -20,7 +31,7 @@ export const StyledTooltipContentWrapper = styled.div<{ show: 0 | 1 }>`
   inset: 0;
   transition: opacity 0.3s;
   background-color: ${({ theme }) => `${theme.principal.background}88`};
-  opacity: ${({ show }) => (show ? 1 : 0)};
+  display: ${({ show }) => (show ? "flex" : "none")};
   pointer-events: ${({ show }) => (show ? "all" : "none")};
   z-index: 100;
 `;

@@ -70,9 +70,14 @@ export default function reducer(state = defaultState, action: RecorderActions) {
         generateTheoreticalMachine(action.recorders, action.texts);
       return {
         ...state,
+        recorders: action.recorders,
         machine: { inputs, outputs, functions, comparators, definitionText: definition },
         machineIsGenerated: true,
       };
+    }
+
+    case constants.CLEAR_MACHINE: {
+      return { ...state, recorders: [], machineIsGenerated: false };
     }
 
     default: {

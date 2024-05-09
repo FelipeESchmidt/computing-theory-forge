@@ -29,8 +29,27 @@ export const JP: LanguageType = {
       button: "登録",
       alreadyUser: "すでにアカウントをお持ちですか？",
     },
+    update: {
+      name: "名前",
+      email: "メールアドレス",
+      password: "古いパスワード",
+      newPassword: "新しいパスワード",
+      newPasswordConfirmation: "新しいパスワードの確認",
+      button: "更新",
+    },
   },
   theoreticalMachine: {
+    title: "理論的なマシン",
+    description: "レコーダーを機能と命令で定義し、マシンをプログラムして実行します。",
+    newMachine: "新しいマシン",
+    save: {
+      title: "作成したマシンを保存",
+      name: "マシン名",
+      button: "保存",
+      titleUpdate: "マシンを更新または保存",
+      buttonUpdate: "更新",
+      buttonSaveNew: "新しいものとして保存",
+    },
     definitionStep: {
       stepTitle: "定義",
       title: "マシンの定義",

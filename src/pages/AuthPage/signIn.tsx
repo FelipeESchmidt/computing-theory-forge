@@ -3,7 +3,7 @@ import { Input, InputPassword } from "@components/Input";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import { register } from "@services/authentication";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import * as S from "./styles";
@@ -22,6 +22,14 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
     email: "",
     password: "",
     passwordConfirmation: "",
+  });
+
+  const [validValues, setValidValues] = React.useState({
+    name: false,
+    email: false,
+    password: false,
+    newPassword: false,
+    newPasswordConfirmation: false,
   });
 
   const handleChangeInput = (value: string, id: string) => {
@@ -45,6 +53,14 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
     }
   };
 
+  useEffect(() => {
+    setValidValues({ ...validValues, name: values.name.length > 0 });
+  }, [values.name]);
+
+  useEffect(() => {
+    setValidValues({ ...validValues, email: values.email.length > 0 });
+  }, [values.email]);
+
   return (
     <S.FormContainer>
       <S.Title>{texts.auth.register.title}</S.Title>
@@ -66,18 +82,35 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
           label={texts.auth.register.password}
           value={values.password}
           onChange={handleChangeInput}
+          onValidChange={(valid) => setValidValues({ ...validValues, password: valid })}
         />
         <InputPassword
           id="passwordConfirmation"
           label={texts.auth.register.passwordConfirmation}
           value={values.passwordConfirmation}
           onChange={handleChangeInput}
+          onValidChange={(valid) =>
+            setValidValues({ ...validValues, newPasswordConfirmation: valid })
+          }
+          additionalValidations={[
+            {
+              id: "passwordMatch",
+              label: "Passwords must match",
+              validation: (password) => password === values.password,
+            },
+          ]}
         />
         <S.ButtonContainer>
           <Button
             onClick={handleRegister}
             text={texts.auth.register.button}
             variant="contained"
+            disabled={
+              !validValues.name ||
+              !validValues.email ||
+              !validValues.password ||
+              !validValues.newPasswordConfirmation
+            }
           />
         </S.ButtonContainer>
       </S.Form>

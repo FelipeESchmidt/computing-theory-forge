@@ -1,14 +1,22 @@
-import { Card } from "@components/Card";
 import { Container } from "@components/Container";
 import { Header } from "@components/Header";
-import { FaPlusCircle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useHeaderController } from "@contexts/HeaderProvider";
+import { selectLanguage } from "@redux/Language/selectors";
+import { useEffect, useMemo } from "react";
+import { useSelector } from "react-redux";
 
-import { products } from "./constants";
+import { getProducts } from "./constants";
 import * as S from "./styles";
 
 export const Home: React.FC = () => {
-  const navigate = useNavigate();
+  const { setSteps } = useHeaderController();
+  const { texts } = useSelector(selectLanguage);
+
+  const products = useMemo(() => getProducts(texts), [texts]);
+
+  useEffect(() => {
+    setSteps([]);
+  }, []);
 
   return (
     <S.StyledContainer>
@@ -21,16 +29,7 @@ export const Home: React.FC = () => {
               <S.StyledProductDescription>
                 {product.description}
               </S.StyledProductDescription>
-              <S.StyledProductCards>
-                <Card onClick={() => navigate(product.path)}>
-                  <S.StyledCardContainer>
-                    <S.StyledNewIcon>
-                      <FaPlusCircle />
-                    </S.StyledNewIcon>
-                    <S.StyledProductTitle>Nova</S.StyledProductTitle>
-                  </S.StyledCardContainer>
-                </Card>
-              </S.StyledProductCards>
+              {product.cardsRender(product)}
             </S.StyledProductContainer>
           ))}
         </S.StyledProductsContainer>

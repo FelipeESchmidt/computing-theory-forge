@@ -2,7 +2,7 @@ import { LanguageOptions, languages } from "@assets/languages";
 import { Tooltip } from "@components/Tooltip";
 import { changeLanguageWithThunk } from "@redux/Language/actions";
 import { selectLanguage } from "@redux/Language/selectors";
-import React from "react";
+import React, { useEffect } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
@@ -10,11 +10,14 @@ import { Dispatch } from "redux";
 import * as S from "./styles";
 
 export const LanguageSelector: React.FC = () => {
+  const [forceHide, setForceHide] = React.useState(false);
+
   const dispatch: Dispatch<any> = useDispatch();
   const { currentLanguage, texts } = useSelector(selectLanguage);
 
   const handleChangeLanguage = (newLanguage: LanguageOptions) => {
     dispatch(changeLanguageWithThunk(newLanguage));
+    setForceHide(true);
   };
 
   const getFlag = () => {
@@ -27,8 +30,14 @@ export const LanguageSelector: React.FC = () => {
 
   const currentLanguages = Object.keys(languages) as unknown as LanguageOptions[];
 
+  useEffect(() => {
+    if (forceHide) {
+      setForceHide(false);
+    }
+  }, [forceHide]);
+
   return (
-    <Tooltip customIcon={getFlag()}>
+    <Tooltip customIcon={getFlag()} forceHide={forceHide}>
       <S.StyledTooltipContent>
         <S.StyledTooltipContentTitle>
           {texts.languageSelector.title}
