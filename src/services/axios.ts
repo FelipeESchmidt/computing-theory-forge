@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 
 import { IResponseDataProps } from "./types";
 
-const api = axios.create({ baseURL: "http://localhost:8080" });
+const api = axios.create({ baseURL: import.meta.env.VITE_BASE_URL });
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
