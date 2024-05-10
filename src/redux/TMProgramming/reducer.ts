@@ -5,7 +5,7 @@ import { adaptProgrammingLinesLanguage, validadePossibleErrors } from "./functio
 import { LineProps, RecorderActions } from "./types";
 
 const defaultState = {
-  lines: [{}] as LineProps[],
+  lines: [] as LineProps[],
   isValid: false,
   error: "",
 } as const;
@@ -56,7 +56,7 @@ export default function reducer(state = defaultState, action: RecorderActions) {
     }
 
     case constants.CLEAR_PROGRAM: {
-      return { ...state, lines: [{}] };
+      return { ...state, lines: [] };
     }
 
     default: {
