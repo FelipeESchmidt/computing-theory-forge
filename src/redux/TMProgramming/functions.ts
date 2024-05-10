@@ -67,6 +67,8 @@ export const adaptProgrammingLinesLanguage = (
   lines: LineProps[],
   texts: LanguageType,
 ) => {
+  console.log({ lines });
+
   const { condition: conditionType, function: functionType } = getLineTypes(texts);
 
   const translateFunctionality = (lineItem: LineItemsProps) => {
@@ -88,11 +90,28 @@ export const adaptProgrammingLinesLanguage = (
     const toGoLineSelection = items[2].text;
     const elseGoLineSelection = items[4].text;
 
-    newItems[0].id = conditionId;
-    newItems[0].text = comparatorsSelection;
-    newItems[2].text = toGoLineSelection;
-    newItems[4].text = elseGoLineSelection;
-    return [...conditionType.items];
+    return newItems.map((item, index) => {
+      if (index === 0) {
+        return {
+          ...item,
+          id: conditionId,
+          text: comparatorsSelection,
+        };
+      }
+      if (index === 2) {
+        return {
+          ...item,
+          text: toGoLineSelection,
+        };
+      }
+      if (index === 4) {
+        return {
+          ...item,
+          text: elseGoLineSelection,
+        };
+      }
+      return item;
+    });
   };
 
   const translateFunction = (items: LineItemsProps[]) => {
@@ -102,10 +121,22 @@ export const adaptProgrammingLinesLanguage = (
     const functionSelection = translateFunctionality(items[0]);
     const goToLineSelection = items[2].text;
 
-    newItems[0].id = functionId;
-    newItems[0].text = functionSelection;
-    newItems[2].text = goToLineSelection;
-    return [...functionType.items];
+    return newItems.map((item, index) => {
+      if (index === 0) {
+        return {
+          ...item,
+          id: functionId,
+          text: functionSelection,
+        };
+      }
+      if (index === 2) {
+        return {
+          ...item,
+          text: goToLineSelection,
+        };
+      }
+      return item;
+    });
   };
 
   return lines.map((line) => {
