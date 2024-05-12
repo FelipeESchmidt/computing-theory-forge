@@ -14,10 +14,12 @@ export const Programming: React.FC = () => {
     <Container>
       <S.Programming>
         <S.TopWrapper>
-          <S.DefinitionTitle>
+          <S.ProgrammingTitle>
             {texts.theoreticalMachine.programmingStep.title}
-          </S.DefinitionTitle>
-          <MainButton />
+          </S.ProgrammingTitle>
+          <S.RightHandlersContainer>
+            <MainButton />
+          </S.RightHandlersContainer>
         </S.TopWrapper>
         <CodeBlock />
       </S.Programming>

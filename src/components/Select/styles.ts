@@ -39,6 +39,12 @@ export const StyledSelect = styled.div<StyledSelectComponentProps>`
   border-radius: 4px;
   color: ${({ theme }) => theme.principal.text};
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    padding: 8px;
+    font-size: 12px;
+    text-wrap: nowrap;
+  }
 `;
 
 export const StyledOptions = styled.div<StyledSelectComponentOpenProps>`
@@ -53,6 +59,7 @@ export const StyledOptions = styled.div<StyledSelectComponentOpenProps>`
   border-radius: 0 0 4px 4px;
 
   opacity: ${({ open }) => (open ? 1 : 0)};
+  height: ${({ open }) => (open ? "fit-content" : 0)};
   z-index: ${({ open }) => (open ? 3 : -1)};
 
   &::-webkit-scrollbar {
@@ -87,6 +94,7 @@ export const StyledOption = styled.option<
   padding: ${({ type }) => getPadding(type)};
   cursor: pointer;
   color: ${({ theme }) => theme.principal.text};
+  text-align: start;
 
   pointer-events: ${({ open }) => (open ? "all" : "none")};
   white-space: normal;
@@ -94,5 +102,10 @@ export const StyledOption = styled.option<
   &:hover {
     background-color: ${({ theme }) => theme.principal.text};
     color: ${({ theme }) => theme.principal.background};
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 8px;
+    font-size: 12px;
   }
 `;

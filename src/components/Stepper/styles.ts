@@ -91,4 +91,8 @@ export const StyledStepNumber = styled.span<{ isActive: 1 | 0; bg?: string }>`
 
 export const StyledTitle = styled.h4`
   color: ${({ theme }) => theme.principal.text};
+
+  @media (max-width: 420px) {
+    font-size: 14px;
+  }
 `;

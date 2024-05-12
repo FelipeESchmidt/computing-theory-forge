@@ -21,7 +21,7 @@ export const getWhatTheFESMachineIsAbleToDo = (
     id: 1,
     functionalityId: "store",
     name: texts.theoreticalMachine.definitionStep.functionalities.store.title,
-    nameResponsive: "IN",
+    nameResponsive: "↑",
     definitionString:
       texts.theoreticalMachine.definitionStep.functionalities.store.definition,
     definitionStringFull:
@@ -32,7 +32,7 @@ export const getWhatTheFESMachineIsAbleToDo = (
     id: 2,
     functionalityId: "return",
     name: texts.theoreticalMachine.definitionStep.functionalities.return.title,
-    nameResponsive: "OUT",
+    nameResponsive: "↓",
     definitionString:
       texts.theoreticalMachine.definitionStep.functionalities.return.definition,
     definitionStringFull:

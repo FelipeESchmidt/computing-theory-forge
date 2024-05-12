@@ -20,6 +20,8 @@ export const StyledSnackbar = styled.div`
   transition-timing-function: ease-out;
   z-index: 5;
 
+  backdrop-filter: blur(3px);
+
   @media (max-width: 768px) {
     left: 10%;
     right: 10%;

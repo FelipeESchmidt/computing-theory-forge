@@ -7,28 +7,34 @@ export const Programming = styled.div`
 
 export const TopWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
   justify-content: space-between;
-  margin: 24px 0;
+  align-items: center;
+  margin-block: 24px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    > a {
-      width: 75%;
-    }
+    margin-block: 12px;
+    align-items: flex-start;
   }
   @media screen and (max-width: 400px) {
     flex-direction: column;
-    > a {
-      width: 90%;
-    }
   }
 `;
 
-export const DefinitionTitle = styled.h2`
+export const ProgrammingTitle = styled.h2`
   color: ${({ theme }) => theme.principal.text};
-  padding: 20px 0;
   @media screen and (max-width: 768px) {
     font-size: 1em;
+  }
+`;
+
+export const RightHandlersContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    align-self: flex-end;
   }
 `;

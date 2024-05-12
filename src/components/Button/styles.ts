@@ -80,4 +80,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
       transform: scale(1.1);
     }
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+  }
 `;
