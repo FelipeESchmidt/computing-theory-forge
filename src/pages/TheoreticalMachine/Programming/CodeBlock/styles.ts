@@ -8,6 +8,10 @@ export const StyledCodeBlock = styled.div`
   background-color: transparent;
   border: 2px solid ${({ theme }) => theme.principal.text};
   border-radius: 8px;
+
+  @media screen and (max-width: 768px) {
+    overflow-x: auto;
+  }
 `;
 
 export const StyledHeader = styled.div`
@@ -15,6 +19,11 @@ export const StyledHeader = styled.div`
   padding: 12px;
   justify-content: space-between;
   border-bottom: 2px solid ${({ theme }) => theme.principal.text};
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
 `;
 
 export const StyledAddLine = styled.div`
@@ -44,24 +53,34 @@ export const StyledAddLineText = styled.span`
   color: ${({ theme }) => theme.principal.text};
   font-size: 18px;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 420px) {
+    font-size: 14px;
+  }
 `;
 
 export const StyledLines = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 100%;
+  width: fit-content;
+  gap: 16px;
   padding: 12px;
+  @media screen and (max-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 export const StyledLine = styled.div`
   display: flex;
-  gap: 10px;
-  margin-bottom: 3px;
-  padding: 2px;
+  width: 100%;
+  gap: 12px;
   align-items: center;
   @media screen and (max-width: 768px) {
-    flex-direction: column;
+    gap: 8px;
   }
 `;
 
@@ -90,6 +109,10 @@ export const Text = styled.span`
       color: ${({ theme }) => theme.indicators.danger};
     }
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const LineText = styled(Text)`
@@ -97,21 +120,7 @@ export const LineText = styled(Text)`
   min-width: 30px;
   text-align: center;
   color: ${({ theme }) => theme.principal.text};
-  &:hover {
-    color: ${({ theme }) => theme.indicators.danger};
-    cursor: pointer;
-    &::before {
-      content: "x";
-      position: absolute;
-      color: ${({ theme }) => theme.indicators.danger};
-      top: 0;
-      left: -10px;
-      bottom: 0;
-    }
-    &::after {
-      background-color: ${({ theme }) => theme.indicators.danger};
-    }
-  }
+
   &::after {
     content: "";
     position: absolute;
@@ -121,23 +130,30 @@ export const LineText = styled(Text)`
     right: 0;
     bottom: 0;
   }
-  @media screen and (max-width: 768px) {
-    padding-left: 0;
-    padding-bottom: 10px;
-    &::after {
-      width: auto;
-      height: 1px;
-      top: auto;
-      left: 0;
-      right: 0;
-      bottom: 0;
+  @media screen and (min-width: 769px) {
+    &:hover {
+      color: ${({ theme }) => theme.indicators.danger};
+      cursor: pointer;
+      &::before {
+        content: "x";
+        position: absolute;
+        color: ${({ theme }) => theme.indicators.danger};
+        top: 0;
+        left: -10px;
+        bottom: 0;
+      }
+      &::after {
+        background-color: ${({ theme }) => theme.indicators.danger};
+      }
     }
+  }
+  @media screen and (max-width: 768px) {
     &::before {
       content: "x";
       position: absolute;
       color: ${({ theme }) => theme.indicators.danger};
-      top: -15px;
-      left: 0;
+      top: 0px;
+      left: -50px;
       right: 0;
       bottom: auto;
     }

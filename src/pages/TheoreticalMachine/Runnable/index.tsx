@@ -67,22 +67,22 @@ export const Runnable: React.FC = () => {
     <Container>
       <S.CodeRunner>
         <S.TopWrapper>
-          <S.DefinitionTitle>
-            {texts.theoreticalMachine.runnableStep.title}
-          </S.DefinitionTitle>
-          {code ? (
-            <Button
-              onClick={runCode}
-              text={texts.theoreticalMachine.runnableStep.runCode}
-              variant="contained"
-            />
-          ) : (
-            <Button
-              onClick={handleGenerateCode}
-              text={texts.theoreticalMachine.runnableStep.generateCode}
-              variant="contained"
-            />
-          )}
+          <S.RunnableTitle>{texts.theoreticalMachine.runnableStep.title}</S.RunnableTitle>
+          <S.RightHandlersContainer>
+            {code ? (
+              <Button
+                onClick={runCode}
+                text={texts.theoreticalMachine.runnableStep.runCode}
+                variant="contained"
+              />
+            ) : (
+              <Button
+                onClick={handleGenerateCode}
+                text={texts.theoreticalMachine.runnableStep.generateCode}
+                variant="contained"
+              />
+            )}
+          </S.RightHandlersContainer>
         </S.TopWrapper>
         <InitialValues />
         <TextArea id="traceTable" readOnly />

@@ -54,15 +54,15 @@ export const BaseContainer = styled.div<{ reversed?: 1 | 0 }>`
   color: ${({ theme }) => theme.principal.text};
 
   @media (max-width: 1024px) {
-    width: 60vw;
+    width: 65vw;
   }
 
   @media (max-width: 768px) {
-    width: 70vw;
+    width: 80vw;
   }
 
   @media (max-width: 420px) {
-    width: 85vw;
+    width: 90vw;
   }
 `;
 

@@ -38,4 +38,8 @@ export const StyledTextArea = styled.textarea`
   &::-webkit-resizer {
     display: none;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;

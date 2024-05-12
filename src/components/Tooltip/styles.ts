@@ -44,6 +44,14 @@ export const StyledTooltipContent = styled.div`
   overflow-y: auto;
   border: 1px solid ${({ theme }) => theme.principal.text};
   background-color: ${({ theme }) => theme.principal.background};
+
+  @media (max-width: 768px) {
+    inset: 10%;
+  }
+
+  @media (max-width: 420px) {
+    inset: 5%;
+  }
 `;
 
 export const StyleTooltipCloseButton = styled.div`

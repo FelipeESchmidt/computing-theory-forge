@@ -37,8 +37,8 @@ export const Header: React.FC = () => {
       <Container>
         <S.StyledHeaderContainer>
           <S.StyledTitle onClick={handleGoToHome}>Computing Theory Forge</S.StyledTitle>
+          <S.StyledStepsContainer>{stepperMemoized}</S.StyledStepsContainer>
           <S.StyledHandlersContainer>
-            {stepperMemoized}
             <ThemeSwitch />
             <LanguageSelector />
             <UserSettings />

@@ -29,6 +29,14 @@ export const StyledTooltipContent = styled.div`
   flex-direction: column;
   gap: 16px;
   padding: 16px;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+
+  @media (max-width: 420px) {
+    padding: 2%;
+  }
 `;
 
 export const StyledTooltipContentTitle = styled.h4`
@@ -39,7 +47,17 @@ export const StyledTooltipContentTitle = styled.h4`
 export const StyledTooltipContentFlags = styled.div`
   display: grid;
   row-gap: 24px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+  @media (max-width: 768px) {
+    row-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    row-gap: 8px;
+  }
 `;
 
 export const StyledTooltipContentFlag = styled.div`
