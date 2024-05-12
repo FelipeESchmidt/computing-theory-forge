@@ -3,6 +3,7 @@ import { Input, InputPassword } from "@components/Input";
 import { newMessage } from "@redux/AlertMessage/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import { register } from "@services/authentication";
+import { translateMessage } from "@utils/messages";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -43,11 +44,14 @@ export const SignIn: React.FC<SignInProps> = ({ onLoginClick }) => {
     const password = values.password;
     const passwordConfirmation = values.passwordConfirmation;
     try {
-      await register(name, email, password, passwordConfirmation);
+      const response = await register(name, email, password, passwordConfirmation);
+      const message = translateMessage(response.message, texts);
+      dispatch(newMessage(message, "success"));
       onLoginClick();
     } catch (error) {
       if (typeof error === "string") {
-        dispatch(newMessage(error, "danger"));
+        const errorMessage = translateMessage(error, texts);
+        dispatch(newMessage(errorMessage, "danger"));
         return;
       }
     }

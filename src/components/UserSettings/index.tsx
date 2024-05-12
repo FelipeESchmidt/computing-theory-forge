@@ -6,6 +6,7 @@ import { logout } from "@redux/Authentication/actions";
 import { selectAuthentication } from "@redux/Authentication/selectors";
 import { selectLanguage } from "@redux/Language/selectors";
 import { updateUser } from "@services/authentication";
+import { translateMessage } from "@utils/messages";
 import { getTokenEmail, getTokenName } from "@utils/token";
 import React, { useEffect } from "react";
 import { FiUser } from "react-icons/fi";
@@ -72,12 +73,14 @@ export const UserSettings: React.FC = () => {
         newPassword,
         newPasswordConfirmation,
       );
-      dispatch(newMessage(response.message, "success"));
+      const message = translateMessage(response.message, texts);
+      dispatch(newMessage(message, "success"));
       setForceHide(!forceHide);
       handleClear();
     } catch (error) {
       if (typeof error === "string") {
-        dispatch(newMessage(error, "danger"));
+        const errorMessage = translateMessage(error, texts);
+        dispatch(newMessage(errorMessage, "danger"));
         return;
       }
     }

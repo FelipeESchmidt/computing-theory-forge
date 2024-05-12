@@ -6,6 +6,7 @@ import { newMessage } from "@redux/AlertMessage/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import { TMDefinitionSelector } from "@redux/TMDefinition/selectors";
 import { saveMachine, updateMachine } from "@services/theoreticalMachines";
+import { translateMessage } from "@utils/messages";
 import { minifyMachine } from "@utils/theoreticalMachine";
 import React, { useEffect } from "react";
 import { FiSave } from "react-icons/fi";
@@ -30,7 +31,8 @@ export const SaveTooltip: React.FC = () => {
     try {
       const machineMinified = minifyMachine(recorders);
       const response = await saveMachine(machineName, machineMinified);
-      dispatch(newMessage(response.message, "success"));
+      const message = translateMessage(response.message, texts);
+      dispatch(newMessage(message, "success"));
       setMachineSaved({
         id: response.responseObject.id,
         machine: machineMinified,
@@ -38,7 +40,8 @@ export const SaveTooltip: React.FC = () => {
       });
     } catch (error) {
       if (typeof error === "string") {
-        dispatch(newMessage(error, "danger"));
+        const errorMessage = translateMessage(error, texts);
+        dispatch(newMessage(errorMessage, "danger"));
         return;
       }
     } finally {
@@ -54,7 +57,8 @@ export const SaveTooltip: React.FC = () => {
     try {
       const machineMinified = minifyMachine(recorders);
       const response = await updateMachine(machineSaved.id, machineName, machineMinified);
-      dispatch(newMessage(response.message, "success"));
+      const message = translateMessage(response.message, texts);
+      dispatch(newMessage(message, "success"));
       setMachineSaved({
         ...machineSaved,
         machine: machineMinified,
@@ -62,7 +66,8 @@ export const SaveTooltip: React.FC = () => {
       });
     } catch (error) {
       if (typeof error === "string") {
-        dispatch(newMessage(error, "danger"));
+        const errorMessage = translateMessage(error, texts);
+        dispatch(newMessage(errorMessage, "danger"));
         return;
       }
     } finally {
