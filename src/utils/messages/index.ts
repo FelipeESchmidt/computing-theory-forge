@@ -1,8 +1,15 @@
 import { LanguageType } from "@assets/languages";
 
-export const translateMessage = (
-  message: keyof LanguageType["messages"],
-  texts: LanguageType,
-) => {
-  return texts.messages[message] || message;
+type KnownMessage = keyof LanguageType["messages"];
+type Message = KnownMessage | string;
+
+export const translateMessage = (message: Message, texts: LanguageType) => {
+  const checkIsKnownMessage = (m: Message): m is KnownMessage =>
+    message in texts.messages;
+
+  if (!checkIsKnownMessage(message)) {
+    return message;
+  }
+
+  return texts.messages[message];
 };
