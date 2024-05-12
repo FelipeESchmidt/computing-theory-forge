@@ -4,6 +4,7 @@ import { newMessage } from "@redux/AlertMessage/actions";
 import { updateTokenAndSave } from "@redux/Authentication/actions";
 import { selectLanguage } from "@redux/Language/selectors";
 import { login } from "@services/authentication";
+import { translateMessage } from "@utils/messages";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
@@ -34,11 +35,13 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
     const password = values.password;
     try {
       const response = await login(email, password);
+      const message = translateMessage(response.message, texts);
       dispatch(updateTokenAndSave(response.responseObject.token));
-      dispatch(newMessage(response.message, "success"));
+      dispatch(newMessage(message, "success"));
     } catch (error) {
       if (typeof error === "string") {
-        dispatch(newMessage(error, "danger"));
+        const errorMessage = translateMessage(error, texts);
+        dispatch(newMessage(errorMessage, "danger"));
         return;
       }
     }
