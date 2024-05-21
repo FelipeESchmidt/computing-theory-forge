@@ -1,4 +1,4 @@
-import { IMinifiedMachine } from "@utils/theoreticalMachine";
+import { ISavedTheoreticalMachine } from "@utils/theoreticalMachine";
 
 import api from "./axios";
 import { IResponseDataProps } from "./types";
@@ -7,7 +7,7 @@ export interface ISavedTheoreticalMachineProps {
   id: number;
   userId: number;
   name: string;
-  machine: IMinifiedMachine;
+  machine: ISavedTheoreticalMachine;
 }
 
 export const getAllMachines = async (): Promise<ISavedTheoreticalMachineProps[]> => {
@@ -20,7 +20,7 @@ export const getAllMachines = async (): Promise<ISavedTheoreticalMachineProps[]>
 
 export const saveMachine = async (
   name: string,
-  machine: IMinifiedMachine,
+  machine: ISavedTheoreticalMachine,
 ): Promise<IResponseDataProps<{ id: number }>> => {
   const { data } = await api.post<IResponseDataProps<{ id: number }>>(
     `/theoretical-machineService/save-machine`,
@@ -33,7 +33,7 @@ export const saveMachine = async (
 export const updateMachine = async (
   id: number,
   name: string,
-  machine: IMinifiedMachine,
+  machine: ISavedTheoreticalMachine,
 ): Promise<IResponseDataProps<null>> => {
   const { data } = await api.put<IResponseDataProps<null>>(
     `/theoretical-machineService/update-machine/${id}`,
