@@ -12,7 +12,7 @@ export interface ISavedTheoreticalMachineProps {
 
 export const getAllMachines = async (): Promise<ISavedTheoreticalMachineProps[]> => {
   const { data } = await api.get<IResponseDataProps<ISavedTheoreticalMachineProps[]>>(
-    `/theoretical-machineService/get-all-machines`,
+    `/theoretical-machine/get-all-machines`,
   );
 
   return data.responseObject;
@@ -23,7 +23,7 @@ export const saveMachine = async (
   machine: ISavedTheoreticalMachine,
 ): Promise<IResponseDataProps<{ id: number }>> => {
   const { data } = await api.post<IResponseDataProps<{ id: number }>>(
-    `/theoretical-machineService/save-machine`,
+    `/theoretical-machine/save-machine`,
     { name, machine },
   );
 
@@ -36,7 +36,7 @@ export const updateMachine = async (
   machine: ISavedTheoreticalMachine,
 ): Promise<IResponseDataProps<null>> => {
   const { data } = await api.put<IResponseDataProps<null>>(
-    `/theoretical-machineService/update-machine/${id}`,
+    `/theoretical-machine/update-machine/${id}`,
     { name, machine },
   );
 
@@ -45,7 +45,7 @@ export const updateMachine = async (
 
 export const deleteMachine = async (id: number): Promise<IResponseDataProps<null>> => {
   const { data } = await api.delete<IResponseDataProps<null>>(
-    `/theoretical-machineService/delete-machine/${id}`,
+    `/theoretical-machine/delete-machine/${id}`,
   );
 
   return data;
