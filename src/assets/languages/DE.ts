@@ -184,6 +184,7 @@ export const DE: LanguageType = {
     TOKEN_IS_INVALID: "Token ist ungültig!",
     USER_NOT_FOUND: "Benutzer nicht gefunden!",
     MACHINE_SAVE_FAILED: "Fehler beim Speichern der Maschine",
+    MACHINE_NOT_FOUND: "Maschine nicht gefunden!",
     MACHINE_SAVE_SUCCESSFUL: "Maschine erfolgreich gespeichert!",
     MACHINE_GET_ALL_SUCCESSFUL: "Maschinen erfolgreich abgerufen!",
     MACHINE_DELETE_FAILED: "Fehler beim Löschen der Maschine!",

@@ -183,6 +183,7 @@ export const US: LanguageType = {
     TOKEN_IS_INVALID: "Token is invalid!",
     USER_NOT_FOUND: "User not found!",
     MACHINE_SAVE_FAILED: "Error saving machine!",
+    MACHINE_NOT_FOUND: "Machine not found!",
     MACHINE_SAVE_SUCCESSFUL: "Machine saved successfully!",
     MACHINE_GET_ALL_SUCCESSFUL: "Machines retrieved successfully!",
     MACHINE_DELETE_FAILED: "Error deleting machine!",

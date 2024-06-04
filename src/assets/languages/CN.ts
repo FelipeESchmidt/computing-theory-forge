@@ -178,6 +178,7 @@ export const CN: LanguageType = {
     TOKEN_IS_INVALID: "令牌无效！",
     USER_NOT_FOUND: "找不到用户！",
     MACHINE_SAVE_FAILED: "保存机器时出错！",
+    MACHINE_NOT_FOUND: "找不到机器！",
     MACHINE_SAVE_SUCCESSFUL: "机器保存成功！",
     MACHINE_GET_ALL_SUCCESSFUL: "机器检索成功！",
     MACHINE_DELETE_FAILED: "删除机器时出错！",

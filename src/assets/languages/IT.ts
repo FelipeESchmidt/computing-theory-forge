@@ -184,6 +184,7 @@ export const IT: LanguageType = {
     TOKEN_IS_INVALID: "Token non valido!",
     USER_NOT_FOUND: "Utente non trovato!",
     MACHINE_SAVE_FAILED: "Errore nel salvataggio della macchina!",
+    MACHINE_NOT_FOUND: "Macchina non trovata!",
     MACHINE_SAVE_SUCCESSFUL: "Macchina salvata con successo!",
     MACHINE_GET_ALL_SUCCESSFUL: "Macchine ottenute con successo!",
     MACHINE_DELETE_FAILED: "Errore nell'eliminazione della macchina!",

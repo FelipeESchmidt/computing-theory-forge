@@ -181,6 +181,7 @@ export const BR = {
     TOKEN_IS_INVALID: "Token inválido!",
     USER_NOT_FOUND: "Usuário não encontrado!",
     MACHINE_SAVE_FAILED: "Erro ao salvar máquina!",
+    MACHINE_NOT_FOUND: "Máquina não encontrada!",
     MACHINE_SAVE_SUCCESSFUL: "Máquina salva com sucesso!",
     MACHINE_GET_ALL_SUCCESSFUL: "Máquinas obtidas com sucesso!",
     MACHINE_DELETE_FAILED: "Erro ao deletar máquina!",

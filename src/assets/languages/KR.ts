@@ -181,6 +181,7 @@ export const KR: LanguageType = {
     TOKEN_IS_INVALID: "토큰이 잘못되었습니다!",
     USER_NOT_FOUND: "사용자를 찾을 수 없습니다!",
     MACHINE_SAVE_FAILED: "기계 저장 중 오류 발생!",
+    MACHINE_NOT_FOUND: "기계를 찾을 수 없습니다!",
     MACHINE_SAVE_SUCCESSFUL: "기계가 성공적으로 저장되었습니다!",
     MACHINE_GET_ALL_SUCCESSFUL: "기계가 성공적으로 검색되었습니다!",
     MACHINE_DELETE_FAILED: "기계 삭제 중 오류 발생!",

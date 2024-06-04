@@ -184,6 +184,7 @@ export const JP: LanguageType = {
     TOKEN_IS_INVALID: "トークンが無効です！",
     USER_NOT_FOUND: "ユーザーが見つかりません！",
     MACHINE_SAVE_FAILED: "マシンの保存中にエラーが発生しました！",
+    MACHINE_NOT_FOUND: "マシンが見つかりません！",
     MACHINE_SAVE_SUCCESSFUL: "マシンが正常に保存されました！",
     MACHINE_GET_ALL_SUCCESSFUL: "マシンが正常に取得されました！",
     MACHINE_DELETE_FAILED: "マシンの削除中にエラーが発生しました！",
