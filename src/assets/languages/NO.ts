@@ -183,6 +183,7 @@ export const NO: LanguageType = {
     TOKEN_IS_INVALID: "Ugyldig token!",
     USER_NOT_FOUND: "Bruker ikke funnet!",
     MACHINE_SAVE_FAILED: "Feil ved lagring av maskin!",
+    MACHINE_NOT_FOUND: "Maskin ikke funnet!",
     MACHINE_SAVE_SUCCESSFUL: "Maskin lagret vellykket!",
     MACHINE_GET_ALL_SUCCESSFUL: "Maskiner hentet vellykket!",
     MACHINE_DELETE_FAILED: "Feil ved sletting av maskin!",

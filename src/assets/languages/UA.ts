@@ -183,6 +183,7 @@ export const UA: LanguageType = {
     TOKEN_IS_INVALID: "Токен недійсний!",
     USER_NOT_FOUND: "Користувач не знайдений!",
     MACHINE_SAVE_FAILED: "Помилка збереження машини!",
+    MACHINE_NOT_FOUND: "Машина не знайдена!",
     MACHINE_SAVE_SUCCESSFUL: "Машина успішно збережена!",
     MACHINE_GET_ALL_SUCCESSFUL: "Машини успішно отримані!",
     MACHINE_DELETE_FAILED: "Помилка видалення машини!",

@@ -184,6 +184,7 @@ export const FR: LanguageType = {
     TOKEN_IS_INVALID: "Token invalide!",
     USER_NOT_FOUND: "Utilisateur non trouvé!",
     MACHINE_SAVE_FAILED: "Erreur lors de l'enregistrement de la machine!",
+    MACHINE_NOT_FOUND: "Machine non trouvée!",
     MACHINE_SAVE_SUCCESSFUL: "Machine enregistrée avec succès!",
     MACHINE_GET_ALL_SUCCESSFUL: "Machines récupérées avec succès!",
     MACHINE_DELETE_FAILED: "Erreur lors de la suppression de la machine!",

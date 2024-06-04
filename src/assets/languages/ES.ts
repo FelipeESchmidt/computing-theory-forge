@@ -183,6 +183,7 @@ export const ES: LanguageType = {
     TOKEN_IS_INVALID: "¡Token inválido!",
     USER_NOT_FOUND: "¡Usuario no encontrado!",
     MACHINE_SAVE_FAILED: "¡Error al guardar la máquina!",
+    MACHINE_NOT_FOUND: "¡Máquina no encontrada!",
     MACHINE_SAVE_SUCCESSFUL: "¡Máquina guardada exitosamente!",
     MACHINE_GET_ALL_SUCCESSFUL: "¡Máquinas recuperadas exitosamente!",
     MACHINE_DELETE_FAILED: "¡Error al eliminar la máquina!",

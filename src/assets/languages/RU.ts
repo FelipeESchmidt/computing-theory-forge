@@ -184,6 +184,7 @@ export const RU: LanguageType = {
     TOKEN_IS_INVALID: "Недействительный токен!",
     USER_NOT_FOUND: "Пользователь не найден!",
     MACHINE_SAVE_FAILED: "Ошибка сохранения машины!",
+    MACHINE_NOT_FOUND: "Машина не найдена!",
     MACHINE_SAVE_SUCCESSFUL: "Машина успешно сохранена!",
     MACHINE_GET_ALL_SUCCESSFUL: "Машины успешно получены!",
     MACHINE_DELETE_FAILED: "Ошибка удаления машины!",
