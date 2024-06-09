@@ -20,6 +20,7 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
 
   const { texts } = useSelector(selectLanguage);
 
+  const [disabled, setDisabled] = React.useState(true);
   const [values, setValues] = React.useState({
     email: "",
     password: "",
@@ -47,6 +48,10 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
     }
   };
 
+  React.useEffect(() => {
+    setDisabled(!(values.email && values.password));
+  }, [values]);
+
   return (
     <S.FormContainer>
       <S.Title>{texts.auth.login.title}</S.Title>
@@ -69,6 +74,7 @@ export const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
             onClick={handleLogin}
             text={texts.auth.login.button}
             variant="contained"
+            disabled={disabled}
           />
         </S.ButtonContainer>
       </S.Form>
