@@ -67,8 +67,6 @@ export const adaptProgrammingLinesLanguage = (
   lines: LineProps[],
   texts: LanguageType,
 ) => {
-  console.log({ lines });
-
   const { condition: conditionType, function: functionType } = getLineTypes(texts);
 
   const translateFunctionality = (lineItem: LineItemsProps) => {
