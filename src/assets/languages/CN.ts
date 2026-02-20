@@ -12,6 +12,10 @@ export const CN: LanguageType = {
     nextStep: "下一步",
   },
   auth: {
+    offline: {
+      title: "您处于离线模式",
+      user: "离线用户",
+    },
     login: {
       title: "登录",
       email: "电子邮件",

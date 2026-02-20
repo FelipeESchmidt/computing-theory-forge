@@ -32,6 +32,7 @@ export const StyledIcon = styled.span`
 
 export const UserSettingsTooltipContainer = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -65,4 +66,27 @@ export const FormContainer = styled.div`
   height: 100%;
   flex-direction: column;
   justify-content: center;
+`;
+
+export const OfflineModeContainer = styled.div`
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.principal.background}80;
+  border: 1px solid ${({ theme }) => theme.principal.text}40;
+`;
+
+export const OfflineModeMessage = styled.p`
+  font-size: 14px;
+  color: ${({ theme }) => theme.principal.text};
+  margin: 0;
+
+  strong {
+    font-weight: 700;
+    color: ${({ theme }) => theme.principal.text};
+  }
 `;

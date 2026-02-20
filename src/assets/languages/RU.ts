@@ -12,6 +12,10 @@ export const RU: LanguageType = {
     nextStep: "Следующий шаг",
   },
   auth: {
+    offline: {
+      title: "Вы находитесь в автономном режиме",
+      user: "Пользователь без сети",
+    },
     login: {
       title: "Вход",
       email: "Электронная почта",

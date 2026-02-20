@@ -12,6 +12,10 @@ export const JP: LanguageType = {
     nextStep: "次のステップ",
   },
   auth: {
+    offline: {
+      title: "オフラインモードです",
+      user: "オフラインユーザー",
+    },
     login: {
       title: "ログイン",
       email: "メールアドレス",

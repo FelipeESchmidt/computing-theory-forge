@@ -12,6 +12,10 @@ export const UA: LanguageType = {
     nextStep: "Наступний Крок",
   },
   auth: {
+    offline: {
+      title: "Ви в режимі офлайн",
+      user: "Офлайн користувач",
+    },
     login: {
       title: "Увійти",
       email: "Електронна пошта",

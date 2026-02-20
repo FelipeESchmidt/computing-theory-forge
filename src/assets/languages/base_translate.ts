@@ -41,6 +41,10 @@ export const Base_Translate: LanguageType = {
     nextStep: "Next Step",
   },
   auth: {
+    offline: {
+      title: "You are in Offline Mode",
+      user: "Offline User",
+    },
     login: {
       title: "Login",
       email: "E-mail",
