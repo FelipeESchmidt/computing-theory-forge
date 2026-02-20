@@ -114,7 +114,9 @@ export const UserSettings: React.FC = () => {
       >
         <S.UserSettingsTooltipContainer>
           <S.TopContainer>
-            <S.UserName>{getTokenName(token)}</S.UserName>
+            <S.UserName>
+              {isOffline ? texts.auth.offline.user : getTokenName(token)}
+            </S.UserName>
             {!isOffline && (
               <Button
                 onClick={handleLogout}
@@ -125,9 +127,7 @@ export const UserSettings: React.FC = () => {
           </S.TopContainer>
           {isOffline ? (
             <S.OfflineModeContainer>
-              <S.OfflineModeMessage>
-                You are in <strong>Offline Mode</strong>
-              </S.OfflineModeMessage>
+              <S.OfflineModeMessage>{texts.auth.offline.title}</S.OfflineModeMessage>
             </S.OfflineModeContainer>
           ) : (
             <S.Form>

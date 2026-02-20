@@ -12,6 +12,10 @@ export const IT: LanguageType = {
     nextStep: "Passaggio successivo",
   },
   auth: {
+    offline: {
+      title: "Sei in modalità offline",
+      user: "Utente Offline",
+    },
     login: {
       title: "Accesso",
       email: "E-mail",

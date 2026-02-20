@@ -12,6 +12,10 @@ export const NO: LanguageType = {
     nextStep: "Neste steg",
   },
   auth: {
+    offline: {
+      title: "Du er i offline-modus",
+      user: "Offline bruker",
+    },
     login: {
       title: "Logg inn",
       email: "E-post",

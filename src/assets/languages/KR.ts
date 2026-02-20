@@ -12,6 +12,10 @@ export const KR: LanguageType = {
     nextStep: "다음 단계",
   },
   auth: {
+    offline: {
+      title: "오프라인 모드입니다",
+      user: "오프라인 사용자",
+    },
     login: {
       title: "로그인",
       email: "이메일",

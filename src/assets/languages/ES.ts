@@ -12,6 +12,10 @@ export const ES: LanguageType = {
     nextStep: "Siguiente Paso",
   },
   auth: {
+    offline: {
+      title: "Estás en Modo Sin Conexión",
+      user: "Usuario Sin Conexión",
+    },
     login: {
       title: "Inicio de sesión",
       email: "Correo electrónico",

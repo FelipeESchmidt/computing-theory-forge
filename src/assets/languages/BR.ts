@@ -10,6 +10,10 @@ export const BR = {
     nextStep: "Próximo Passo",
   },
   auth: {
+    offline: {
+      title: "Você está em Modo Offline",
+      user: "Usuário Offline",
+    },
     login: {
       title: "Entrar",
       email: "E-mail",
