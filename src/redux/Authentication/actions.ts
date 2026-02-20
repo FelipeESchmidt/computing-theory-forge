@@ -1,5 +1,6 @@
 import { IRootState } from "@redux/store";
-import { tokenIsValid } from "@utils/token";
+import { isBackendEnabled, isOfflineMode } from "@utils/config";
+import { isOfflineToken, tokenIsValid } from "@utils/token";
 import { UnknownAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
@@ -30,8 +31,21 @@ export const validateAlreadyLoggedIn = (): ThunkAction<
   return (dispatch) => {
     const token = localStorage.getItem("token");
 
+    // If backend is enabled and token is offline, remove it and require login
+    if (token && isOfflineToken(token) && isBackendEnabled()) {
+      localStorage.removeItem("token");
+      return;
+    }
+
     if (token && tokenIsValid(token)) {
       dispatch(updateToken(token));
+      return;
+    }
+
+    // In offline mode, automatically create a fake token
+    if (isOfflineMode()) {
+      const offlineToken = `offline_${Date.now()}`;
+      dispatch(updateTokenAndSave(offlineToken));
     }
   };
 };

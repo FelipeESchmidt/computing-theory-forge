@@ -1,4 +1,11 @@
+import { isBackendEnabled } from "@utils/config";
+
 import api from "./axios";
+import {
+  offlineLogin,
+  offlineRegister,
+  offlineUpdateUser,
+} from "./offlineAuthentication";
 import { IResponseDataProps } from "./types";
 
 export interface ILoginResponseObjectProps {
@@ -6,6 +13,10 @@ export interface ILoginResponseObjectProps {
 }
 
 export const login = async (email: string, password: string) => {
+  if (!isBackendEnabled()) {
+    return offlineLogin(email, password);
+  }
+
   const { data } = await api.post<IResponseDataProps<ILoginResponseObjectProps>>(
     `/auth/login`,
     {
@@ -23,6 +34,10 @@ export const register = async (
   password: string,
   passwordConfirmation: string,
 ) => {
+  if (!isBackendEnabled()) {
+    return offlineRegister(name, email, password, passwordConfirmation);
+  }
+
   const { data } = await api.post<IResponseDataProps>(`/auth/register`, {
     name,
     email,
@@ -39,6 +54,10 @@ export const updateUser = async (
   newPassword: string,
   newPasswordConfirmation: string,
 ) => {
+  if (!isBackendEnabled()) {
+    return offlineUpdateUser(name, password, newPassword, newPasswordConfirmation);
+  }
+
   const { data } = await api.put<IResponseDataProps>(`/auth/update`, {
     name,
     password,

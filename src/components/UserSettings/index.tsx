@@ -6,6 +6,7 @@ import { logout } from "@redux/Authentication/actions";
 import { selectAuthentication } from "@redux/Authentication/selectors";
 import { selectLanguage } from "@redux/Language/selectors";
 import { updateUser } from "@services/authentication";
+import { isOfflineMode } from "@utils/config";
 import { translateMessage } from "@utils/messages";
 import { getTokenEmail, getTokenName } from "@utils/token";
 import React, { useEffect } from "react";
@@ -22,6 +23,7 @@ export const UserSettings: React.FC = () => {
   const { texts } = useSelector(selectLanguage);
 
   const [forceHide, setForceHide] = React.useState(false);
+  const isOffline = isOfflineMode();
 
   const [values, setValues] = React.useState({
     name: getTokenName(token),
@@ -113,66 +115,76 @@ export const UserSettings: React.FC = () => {
         <S.UserSettingsTooltipContainer>
           <S.TopContainer>
             <S.UserName>{getTokenName(token)}</S.UserName>
-            <Button
-              onClick={handleLogout}
-              text={texts.auth.login.logout}
-              variant="contained"
-            />
+            {!isOffline && (
+              <Button
+                onClick={handleLogout}
+                text={texts.auth.login.logout}
+                variant="contained"
+              />
+            )}
           </S.TopContainer>
-          <S.Form>
-            <S.FormContainer>
-              <Input
-                id="email"
-                type="email"
-                label={texts.auth.update.email}
-                value={values.email}
-                disabled
-                onChange={() => null}
-              />
-              <InputPassword
-                id="password"
-                label={texts.auth.update.password}
-                value={values.password}
-                onChange={handleChangeInput}
-                hideValidations
-              />
-              <InputPassword
-                id="newPassword"
-                label={texts.auth.update.newPassword}
-                value={values.newPassword}
-                onChange={handleChangeInput}
-                onValidChange={(valid) =>
-                  setValidValues({ ...validValues, newPassword: valid })
+          {isOffline ? (
+            <S.OfflineModeContainer>
+              <S.OfflineModeMessage>
+                You are in <strong>Offline Mode</strong>
+              </S.OfflineModeMessage>
+            </S.OfflineModeContainer>
+          ) : (
+            <S.Form>
+              <S.FormContainer>
+                <Input
+                  id="email"
+                  type="email"
+                  label={texts.auth.update.email}
+                  value={values.email}
+                  disabled
+                  onChange={() => null}
+                />
+                <InputPassword
+                  id="password"
+                  label={texts.auth.update.password}
+                  value={values.password}
+                  onChange={handleChangeInput}
+                  hideValidations
+                />
+                <InputPassword
+                  id="newPassword"
+                  label={texts.auth.update.newPassword}
+                  value={values.newPassword}
+                  onChange={handleChangeInput}
+                  onValidChange={(valid) =>
+                    setValidValues({ ...validValues, newPassword: valid })
+                  }
+                />
+                <InputPassword
+                  id="newPasswordConfirmation"
+                  label={texts.auth.update.newPasswordConfirmation}
+                  value={values.newPasswordConfirmation}
+                  onChange={handleChangeInput}
+                  onValidChange={(valid) =>
+                    setValidValues({ ...validValues, newPasswordConfirmation: valid })
+                  }
+                  additionalValidations={[
+                    {
+                      id: "passwordMatch",
+                      label: "Passwords must match",
+                      validation: (password) => password === values.newPassword,
+                    },
+                  ]}
+                />
+              </S.FormContainer>
+              <Button
+                text={texts.auth.update.button}
+                variant="contained"
+                onClick={handleUpdate}
+                disabled={
+                  !validValues.password ||
+                  !validValues.newPassword ||
+                  !validValues.newPasswordConfirmation
                 }
               />
-              <InputPassword
-                id="newPasswordConfirmation"
-                label={texts.auth.update.newPasswordConfirmation}
-                value={values.newPasswordConfirmation}
-                onChange={handleChangeInput}
-                onValidChange={(valid) =>
-                  setValidValues({ ...validValues, newPasswordConfirmation: valid })
-                }
-                additionalValidations={[
-                  {
-                    id: "passwordMatch",
-                    label: "Passwords must match",
-                    validation: (password) => password === values.newPassword,
-                  },
-                ]}
-              />
-            </S.FormContainer>
-            <Button
-              text={texts.auth.update.button}
-              variant="contained"
-              onClick={handleUpdate}
-              disabled={
-                !validValues.password ||
-                !validValues.newPassword ||
-                !validValues.newPasswordConfirmation
-              }
-            />
-          </S.Form>
+            </S.Form>
+          )}
         </S.UserSettingsTooltipContainer>
       </Tooltip>
     </S.UserSettingsContainer>
